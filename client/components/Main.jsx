@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Main() {
 
@@ -12,8 +13,8 @@ export default function Main() {
                     <span>Would you like to becom pet sitter?</span><br />
                 </div>
 
-                <a href='/' className='nav-register'>Resister Now !</a>
-                <a href='/' className='nav-register'>Find a pet sitter</a>
+                <Link to='/' className='nav-register'>Resister Now !</Link>
+                <Link to='/' className='nav-register'>Find a pet sitter</Link>
                 {/* have to change Link!!! */}
             </div>
         </section>

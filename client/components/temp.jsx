@@ -33,7 +33,6 @@ function Registration() {
 
   async function handleClick(e) {
     e.preventDefault()
-    // registerUser(form, authUser, history.push)
     try {
       await addUser(form)
       navigate('/')

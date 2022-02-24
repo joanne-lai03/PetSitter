@@ -6,23 +6,23 @@ import { useSelector } from 'react-redux'
 
 import { Link } from 'react-router-dom'
 
-function Nav () {
+function Nav() {
   const user = useSelector(state => state.user)
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
   const register = getRegisterFn(useAuth0)
 
-  function handleLogin (event) {
+  function handleLogin(event) {
     event.preventDefault()
     login()
   }
 
-  function handleLogoff (event) {
+  function handleLogoff(event) {
     event.preventDefault()
     logout()
   }
 
-  function handleRegister (event) {
+  function handleRegister(event) {
     event.preventDefault()
     register()
   }
@@ -41,7 +41,7 @@ function Nav () {
           <section className='sign'>
             <Link to='/' className='nav-link'>Home</Link>
             <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
-            <a href='/' onClick={handleRegister} className='nav-link nav-register'>Register</a>
+            <a href='/register' onClick={handleRegister} className='nav-link nav-register'>Register</a>
           </section>
           {/* </section> */}
         </IfNotAuthenticated>

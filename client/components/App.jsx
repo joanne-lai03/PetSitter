@@ -1,11 +1,12 @@
 import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { cacheUser } from '../auth0-utils'
+import { Routes, Route } from 'react-router-dom'
 import Nav from './Nav'
 import Main from './Main'
 
-import Registration from './Registration'
-import { Routes, Route } from 'react-router-dom'
+// import Registration from './Registration'
+import Register from '../components/Registration/Registration'
 
 
 export default function App() {
@@ -17,7 +18,7 @@ export default function App() {
         <Nav />
         <Routes>
           <Route path='/' element={<Main />} />
-          <Route path='/register' element={<Registration />} />
+          <Route path='/register' element={<Register />} />
         </Routes>
       </div>
     </>
