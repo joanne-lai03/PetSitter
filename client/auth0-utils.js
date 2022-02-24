@@ -1,6 +1,6 @@
 import { setUser } from './actions/user'
 import { getUserRoles } from './apis/users'
-import store from './store'
+import { dispatch } from './store'
 
 const emptyUser = {
   auth0Id: '',
@@ -10,11 +10,11 @@ const emptyUser = {
   roles: []
 }
 
-function saveUser (user = emptyUser) {
-  store.dispatch(setUser(user))
+function saveUser(user = emptyUser) {
+  dispatch(setUser(user))
 }
 
-export async function cacheUser (useAuth0) {
+export async function cacheUser(useAuth0) {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
   if (isAuthenticated) {
     try {
@@ -36,19 +36,19 @@ export async function cacheUser (useAuth0) {
   }
 }
 
-export function getLoginFn (useAuth0) {
+export function getLoginFn(useAuth0) {
   return useAuth0().loginWithRedirect
 }
 
-export function getLogoutFn (useAuth0) {
+export function getLogoutFn(useAuth0) {
   return useAuth0().logout
 }
 
-export function getIsAuthenticated (useAuth0) {
+export function getIsAuthenticated(useAuth0) {
   return useAuth0().isAuthenticated
 }
 
-export function getRegisterFn (useAuth0) {
+export function getRegisterFn(useAuth0) {
   const { loginWithRedirect } = useAuth0()
   const redirectUri = `${window.location.origin}/#/register`
   return () => loginWithRedirect({
