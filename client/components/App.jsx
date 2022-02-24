@@ -2,22 +2,24 @@ import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { cacheUser } from '../auth0-utils'
 import Nav from './Nav'
-import PingRoutes from './PingRoutes'
-import Registration from './Registration'
-import Users from './Users'
-import { Route } from 'react-router'
+import Main from './Main'
 
-function App () {
+import Registration from './Registration'
+import { Routes, Route } from 'react-router-dom'
+
+
+export default function App() {
   cacheUser(useAuth0)
 
   return (
-    <div className='app'>
-      <Route exact path='/' component={Nav} />
-      <Route exact path='/' component={Users} />
-      <Route exact path='/' component={PingRoutes} />
-      <Route path='/register' component={Registration} />
-    </div>
+    <>
+      <div className='app'>
+        <Nav />
+        <Routes>
+          <Route path='/' element={<Main />} />
+          <Route path='/register' element={<Registration />} />
+        </Routes>
+      </div>
+    </>
   )
 }
-
-export default App
