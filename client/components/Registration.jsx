@@ -1,91 +1,92 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router'
-import { addUser } from '../apis/users'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import addUser from '../apis/registerationApi'
+import { useAuth0 } from '@auth0/auth0-react'
 
-function Registration () {
-  const user = useSelector(state => state.user)
-  const history = useHistory()
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
-  const [form, setForm] = useState({
-    auth0Id: '',
-    name: '',
-    email: '',
-    description: ''
-  })
+const registerSchema = Yup.object().shape({
+    firstName: Yup.string()
+        .min(2, 'This must be at least 2 characters long')
+        .max(15, 'Sorry, this must be under 15 characters long')
+        .required('Required'),
+    lastName: Yup.string()
+        .required('Required')
+        .min(2, 'This must be at least 2 characters long')
+        .max(20, 'Sorry, this must be under 20 characters long'),
+    petType: Yup.number()
+        .required('Required')
+})
 
-  useEffect(() => {
-    setForm({
-      auth0Id: user.auth0Id,
-      name: user.name,
-      email: user.email,
-      description: user.description
+export default function Register() {
+    // const user = useSelector(state => state.user)
+    const authUser = useAuth0().user
+    const navigate = useNavigate()
+
+    const formik = useFormik({
+        initialValues: {
+            firstName: '',
+            lastName: '',
+            gardenId: null
+        },
+        onSubmit: values => {
+            addUser(values, authUser, navigate)
+        },
+        validationSchema: registerSchema
     })
-  }, [user])
 
-  function handleChange (e) {
-    const { name, value } = e.target
-    setForm({
-      ...form,
-      [name]: value
-    })
-  }
-
-  async function handleClick (e) {
-    e.preventDefault()
-    // registerUser(form, authUser, history.push)
-    try {
-      await addUser(form)
-      history.push('/')
-    } catch (error) {
-      console.error(error)
+    function showAnyErrors(inputName) {
+        return formik.errors[inputName] && formik.touched[inputName]
+            ? <p className='inputError'>{formik.errors[inputName]}</p>
+            : null
     }
-  }
 
-  return (
-    <section className='form'>
-      <h2>Register Profile</h2>
-      <form className='registration'>
-        <label htmlFor='auth0Id'>auth0Id</label>
-        <input
-          name='auth0Id'
-          value={form.auth0Id}
-          onChange={handleChange}
-          disabled={true}
-        ></input>
+    return (
+        <>
+            <h2>Register Profile</h2>
+            <section className='flex-container centre-flex'>
+                <form onSubmit={formik.handleSubmit}>
+                    <div className="field">
+                        <label htmlFor='firstName' className='label'>First Name</label>
+                        {showAnyErrors('firstName')}
+                        <input
+                            className='form-box'
+                            id='firstName'
+                            name='firstName'
+                            onChange={formik.handleChange}
+                            value={formik.values.firstName}
+                        />
+                        <label htmlFor='lastName' className='label'>Last Name</label>
+                        {showAnyErrors('lastName')}
+                        <input
+                            className='form-box'
+                            id='lastName'
+                            name='lastName'
+                            onChange={formik.handleChange}
+                            value={formik.values.lastName}
+                        />
+                        <label htmlFor='petType' className='label'>Type of Pet</label>
+                        {showAnyErrors('petType')}
+                        <select
+                            className='form-box'
+                            name='petType'
+                            id='petType'
+                            onChange={formik.handleChange}
+                        >
+                            <option hidden>Select from this list</option>
+                            <option value={1}>Dog</option>
+                            <option value={2}>Cat</option>
+                            <option value={3}>No Pet...</option>
+                        </select>
+                    </div>
 
-        <label htmlFor='name'>Name</label>
-        <input
-          name='name'
-          value={form.name}
-          onChange={handleChange}
-          disabled={true}
-        ></input>
-
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          value={form.email}
-          onChange={handleChange}
-          disabled={true}
-        ></input>
-
-        <label htmlFor='description' >Description</label>
-        <textarea
-          name='description'
-          value={form.description}
-          onChange={handleChange}
-          cols={3}
-        ></textarea>
-        <button
-          type='button'
-          onClick={handleClick}
-        >
-          Register
-        </button>
-      </form>
-    </section>
-  )
+                    <button
+                        className='submit profile-submit'
+                        type='submit'
+                    >Register</button>
+                </form>
+            </section>
+        </>
+    )
 }
-
-export default Registration

@@ -4,43 +4,44 @@ import { getLoginFn, getLogoutFn, getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useSelector } from 'react-redux'
 
-function Nav () {
+import { Link } from 'react-router-dom'
+
+function Nav() {
   const user = useSelector(state => state.user)
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
   const register = getRegisterFn(useAuth0)
 
-  function handleLogin (event) {
+  function handleLogin(event) {
     event.preventDefault()
     login()
   }
 
-  function handleLogoff (event) {
+  function handleLogoff(event) {
     event.preventDefault()
     logout()
   }
 
-  function handleRegister (event) {
+  function handleRegister(event) {
     event.preventDefault()
     register()
   }
 
   return (
     <nav>
-      <h1 className='logo'>Full-stack Boilerplate with Auth0</h1>
+      <h1 className='logo'>Petsitter</h1>
       <section className='nav-item'>
         <IfAuthenticated>
-          <p>Hello, {user.name} {user.roles ? `(${user.roles})` : null}</p>
           <section className='sign'>
             <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
           </section>
         </IfAuthenticated>
         <IfNotAuthenticated>
           {/* <section className='nav-item'> */}
-          <p>Hello, guest</p>
           <section className='sign'>
+            <Link to='/' className='nav-link'>Home</Link>
             <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
-            <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
+            <a href='/register' onClick={handleRegister} className='nav-link nav-register'>Register</a>
           </section>
           {/* </section> */}
         </IfNotAuthenticated>
