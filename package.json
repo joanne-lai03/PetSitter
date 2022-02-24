@@ -16,7 +16,7 @@
     "build": "run-p build:client build:server",
     "build:client": "npm run webpack -- --mode production",
     "build:server": "npm run knex -- migrate:latest",
-    "build:seed":"npm run knex -- seed:run",
+    "build:seed": "npm run knex -- seed:run",
     "lint": "eslint --ext .js,.jsx .",
     "webpack": "webpack --config ./client/webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js"
@@ -70,7 +70,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-redux": "^7.2.5",
-    "react-router-dom": "^5.3.0",
+    "react-router-dom": "^6.2.1",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
     "sass": "^1.42.1",
