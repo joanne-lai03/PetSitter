@@ -19,7 +19,7 @@ export default function App() {
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/profiles' element={Profile /} />
+          <Route path='/profiles' element={<Profile />} />
           {/* 🎈 if you build your Componets comments out! this and check it's working */}
           {/* <Route path='/petsitters/listing' element={<Listing />} /> */}
           <Route path='/petsitters/profiles' element={<PetsitterProfiles />} />
