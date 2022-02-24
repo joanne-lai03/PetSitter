@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import addUser from './registerationApi'
 import { useAuth0 } from '@auth0/auth0-react'
 
@@ -22,7 +22,7 @@ const registerSchema = Yup.object().shape({
 export default function Register() {
     // const user = useSelector(state => state.user)
     const authUser = useAuth0().user
-    const navigate = Navigate()
+    const navigate = useNavigate()
 
     const formik = useFormik({
         initialValues: {
