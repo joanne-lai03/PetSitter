@@ -16,7 +16,6 @@ export default function App() {
       <div className='app'>
         <Nav />
         <Routes>
-          {/* <Route path='/' element={<Nav />} /> */}
           <Route path='/' element={<Main />} />
           <Route path='/register' element={<Registration />} />
         </Routes>

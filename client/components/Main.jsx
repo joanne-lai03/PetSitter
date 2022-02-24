@@ -11,9 +11,10 @@ export default function Main() {
                     <span>or</span><br />
                     <span>Would you like to becom pet sitter?</span><br />
                 </div>
-                
-                <button className='main-btn'>Resister Now !</button>
-                <button className='main-btn'>Find a pet sitter</button>
+
+                <a href='/' className='nav-register'>Resister Now !</a>
+                <a href='/' className='nav-register'>Find a pet sitter</a>
+                {/* have to change Link!!! */}
             </div>
         </section>
 

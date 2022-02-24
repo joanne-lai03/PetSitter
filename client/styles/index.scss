@@ -8,8 +8,8 @@ body {
 nav {
   display: flex;
   align-items: center;
-  background-color: black;
-  color: white;
+  background-color: #FFF3DD;
+  color: #333333;
   padding: 10px;
   align-self: stretch;
 }
@@ -35,6 +35,22 @@ a {
   width: 50%;
   text-align: right;
 }
+.nav-register{
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #FFF;
+  background-color: #FB923C;
+  // background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  transition: .4s;
+}
+.nav-link{
+  padding-top:7px;
+  margin-right: 40px;
+  text-decoration: none;
+}
+    
 
 .app {
   display: flex;
@@ -80,9 +96,7 @@ a {
 
 // Main screen 
 
-.main-box {
 
-}
 
 .main-comment {
   text-align: center;
@@ -90,3 +104,8 @@ a {
 
 }
 
+.ping {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
