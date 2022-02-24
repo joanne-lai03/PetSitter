@@ -6,7 +6,7 @@ import Nav from './Nav'
 import Main from './Main'
 
 // import Registration from './Registration'
-import Register from '../components/Registration/Registration'
+import Register from './Registration'
 
 
 export default function App() {
@@ -19,6 +19,10 @@ export default function App() {
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/profiles' element={Profile /} />
+          {/* 🎈 if you build your Componets comments out! this and check it's working */}
+          {/* <Route path='/petsitters/listing' element={<Listing />} /> */}
+          <Route path='/petsitters/profiles' element={<PetsitterProfiles />} />
         </Routes>
       </div>
     </>

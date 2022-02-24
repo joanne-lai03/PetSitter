@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import addUser from './registerationApi'
+import addUser from '../apis/registerationApi'
 import { useAuth0 } from '@auth0/auth0-react'
 
 import { useFormik } from 'formik'
