@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router'
+import { Navigate } from 'react-router-dom'
 import { addUser } from '../apis/users'
 
-function Registration () {
+function Registration() {
   const user = useSelector(state => state.user)
-  const history = useHistory()
+  const navigate = Navigate()
 
   const [form, setForm] = useState({
     auth0Id: '',
@@ -23,7 +23,7 @@ function Registration () {
     })
   }, [user])
 
-  function handleChange (e) {
+  function handleChange(e) {
     const { name, value } = e.target
     setForm({
       ...form,
@@ -31,12 +31,12 @@ function Registration () {
     })
   }
 
-  async function handleClick (e) {
+  async function handleClick(e) {
     e.preventDefault()
     // registerUser(form, authUser, history.push)
     try {
       await addUser(form)
-      history.push('/')
+      navigate('/')
     } catch (error) {
       console.error(error)
     }
