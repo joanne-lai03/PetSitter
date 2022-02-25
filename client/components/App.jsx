@@ -11,8 +11,7 @@ import PetsitterForm from './PetsitterForm'
 import PetsitterProfiles from './PetsitterProfiles'
 import Register from './Registration'
 
-
-export default function App() {
+export default function App () {
   cacheUser(useAuth0)
 
   return (
