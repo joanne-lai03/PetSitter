@@ -25,7 +25,7 @@ export default function App () {
           <Route path='/register' element={<Registration />} />
           {/* <Route path='/profiles' element={<Profile />} /> */}
           {/* 🎈 if you build your Componets comments out! this and check it's working */}
-          <Route path='/petsitters/listings' element={<Listing />} />
+          <Route path='/petsitters' element={<Listing />} />
           <Route path='/petsitters/add' element={<PetsitterForm />} />
           <Route path='/petsitters/profiles' element={<PetsitterProfiles />} />
         </Routes>

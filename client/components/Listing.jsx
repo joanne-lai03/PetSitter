@@ -3,15 +3,34 @@ import { Link } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchListing, createNewListing } from '../actions/listing'
+import { fetchListing } from '../actions/listing'
+// import { request } from 'express'
+import request from 'superagent'
 
 // import ProductListItem from './ProductListItem'
+
+// const initial = [{
+//   id: 1,
+//   name: 'Claire',
+//   location: 'Auckland',
+//   pet_size: 'small',
+//   availability: 'All day weekends',
+//   promo_listing: 'Cat owner who is happy to look after other cats'
+// },
+// {
+//   id: 2,
+//   name: 'Claire',
+//   location: 'Auckland',
+//   pet_size: 'small',
+//   availability: 'All day weekends',
+//   promo_listing: 'Cat owner who is happy to look after other cats'
+// }]
 
 function Listing (props) {
   const { children, history } = props
 
-  const listings = useSelector(state => state.listing)
-  console.log('listings', listings)
+  // const listings = useSelector(state => state.listing)
+  // console.log('listings', listings)
 
   const dispatch = useDispatch()
 
@@ -25,8 +44,23 @@ function Listing (props) {
   //   }
   // )
 
+  // useEffect(() => {
+  //   dispatch(fetchListing())
+  // }, [])
+
+  const [listings, setListings] = useState([])
+
   useEffect(() => {
-    dispatch(fetchListing())
+    request
+      .get('api/v1/petsitters')
+      .then(res => {
+        console.log(res.body)
+        setListings(res.body)
+        return null
+      })
+      .catch(err => {
+        console.error(err)
+      })
   }, [])
 
   return (
@@ -56,22 +90,28 @@ function Listing (props) {
       </div>
       {/* display all lists */}
       <p>Scroll down to browse Pet Sitters for Boarding and Sitting near you💗</p>
-      <div className="lists-all">
-        <div className="lists-left">
-          <img src="/images/sample.png" alt=""/>
-        </div>
-        <div className="lists-right">
-          <i className="fa-solid fa-user"></i>
-          <h3>Prue</h3>
-          <ul>
-            <li>Parnell, Auckland 1010</li>
-            <li>Accept Dog size: 1.0kg</li>
-            <li>Weekday</li>
-            <li>Caring Dog Lover</li>
-          </ul>
-          <Link to='/petsitters/profiles' className="button-orange button-checkprofile">Check profile</Link>
-        </div>
-      </div>
+
+      {listings.map((item) => {
+        return <>
+          <div className="lists-all">
+            <div className="lists-left">
+              <img src="/images/sample.png" />
+            </div>
+            <ul className="lists-right">
+              <li>
+                <h3><i className="fa-solid fa-user"></i>{item.name}</h3>
+                <ul className="lists-ul-item">
+                  <li><i className="fa-solid fa-house"></i>{item.location}</li>
+                  <li><i className="fa-solid fa-clock"></i>{item.availability}</li>
+                  <li><i className="fa-solid fa-dog"></i>{item.pet_size}</li>
+                  <li><i className="fa-solid fa-hand-holding-heart"></i>{item.promo_listing}</li>
+                </ul>
+                <Link to='/petsitters/profiles' className="button-orange button-checkprofile">Check profile</Link>
+              </li>
+            </ul>
+          </div>
+        </>
+      })}
 
     </>
 
