@@ -6,7 +6,7 @@ import { showError } from '../actions/error'
 
 const rootUrl = '/api/v1/users'
 
-export default function addUser(user, isAdmin, authUser, navigate) {
+export default function addUser(user, authUser, navigate) {
     const newUser = {
         firstName: user.firstName,
         lastName: user.lastName,
@@ -23,6 +23,7 @@ export default function addUser(user, isAdmin, authUser, navigate) {
         .set('authorization', `Bearer ${token}`)
         .set({ Accept: 'application/json' })['send'](newUser)
         .then((res) => {
+            console.log(res)
             const newUser = res.body
             newUser.isAdmin = isAdmin
             newUser.token = token
