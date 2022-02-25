@@ -8,11 +8,18 @@ const rootUrl = '/api/v1/users'
 
 export default function addUser(user, authUser, navigate) {
     const newUser = {
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: authUser.email,
-        auth0Id: authUser.sub
+        name: user.name,
+        location: user.location,
+        description: user.description,
+        // email: authUser.email,
+        // auth0Id: authUser.sub
+        //🎈if AuthUser setup finished comment out!
     }
+
+    console.log('From APi', user, authUser, navigate)
+    console.log('from addUser registeration', newUser)
+
+
     const storeState = getState()
     const { token } = storeState.user
 
@@ -21,12 +28,12 @@ export default function addUser(user, authUser, navigate) {
     return request
         .post(rootUrl)
         .set('authorization', `Bearer ${token}`)
-        .set({ Accept: 'application/json' })['send'](newUser)
+        .set(({ Accept: 'application/json' })['send'](newUser))
         .then((res) => {
-            console.log(res)
+            console.log('from inside api', newUser, res.body)
             const newUser = res.body
-            newUser.isAdmin = isAdmin
-            newUser.token = token
+            // newUser.isAdmin = isAdmin
+            // newUser.token = token
             dispatch(setUser(newUser))
             navigate(`/`)
             return newUser

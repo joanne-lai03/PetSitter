@@ -1,10 +1,8 @@
-import { getUsers } from '../apis/users'
-
-
 export const SET_USER = 'SET_USER'
 export const SET_USERS = 'SET_USERS'
 export const CLEAR_USER = 'CLEAR_USER'
 export const CLEAR_USERS = 'CLEAR_USERS'
+// import { getUsers } from '../apis/users'
 
 export function setUser(user) {
   return {
