@@ -9,10 +9,10 @@ import Nav from './Nav'
 import Main from './Main'
 import PetsitterForm from './PetsitterForm'
 import PetsitterProfiles from './PetsitterProfiles'
-import Register from './Registration'
+import Registration from './Registration'
 import Listing from './Listing'
 
-export default function App () {
+export default function App() {
   cacheUser(useAuth0)
 
   return (
@@ -22,7 +22,7 @@ export default function App () {
         <Nav />
         <Routes>
           <Route path='/' element={<Main />} />
-          <Route path='/register' element={<Register />} />
+          <Route path='/register' element={<Registration />} />
           {/* <Route path='/profiles' element={<Profile />} /> */}
           {/* 🎈 if you build your Componets comments out! this and check it's working */}
           <Route path='/petsitters' element={<Listing />} />

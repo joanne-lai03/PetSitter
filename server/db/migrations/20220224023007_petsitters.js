@@ -1,6 +1,3 @@
-
-
-
 exports.up = function (knex) {
     return knex.schema.createTable('petsitters', table => {
         table.increments('id').primary()

@@ -7,86 +7,115 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
 const registerSchema = Yup.object().shape({
-    firstName: Yup.string()
-        .min(2, 'This must be at least 2 characters long')
-        .max(15, 'Sorry, this must be under 15 characters long')
-        .required('Required'),
-    lastName: Yup.string()
-        .required('Required')
-        .min(2, 'This must be at least 2 characters long')
-        .max(20, 'Sorry, this must be under 20 characters long'),
-    petType: Yup.number()
-        .required('Required')
+  name: Yup.string()
+    .min(2, 'This must be at least 2 characters long')
+    .max(15, 'Sorry, this must be under 15 characters long')
+    .required('Sorry it\'s Required')
+  // email: Yup.string().email(),
 })
 
-export default function Register() {
-    // const user = useSelector(state => state.user)
-    const authUser = useAuth0().user
-    const navigate = useNavigate()
+export default function Register () {
+  // const user = useSelector(state => state.user)
+  const authUser = useAuth0().user
+  const navigate = useNavigate()
 
-    const formik = useFormik({
-        initialValues: {
-            firstName: '',
-            lastName: '',
-            gardenId: null
-        },
-        onSubmit: values => {
-            addUser(values, authUser, navigate)
-        },
-        validationSchema: registerSchema
-    })
+  // 🎃🎃🎃 We need to think about input Email instead Auth0.user.email data....
 
-    function showAnyErrors(inputName) {
-        return formik.errors[inputName] && formik.touched[inputName]
-            ? <p className='inputError'>{formik.errors[inputName]}</p>
-            : null
-    }
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      location: '',
+      description: ''
+    },
+    onSubmit: values => {
+      addUser(values, authUser, navigate)
+    },
+    validationSchema: registerSchema
+  })
 
-    return (
-        <>
-            <h2>Register Profile</h2>
-            <section className='flex-container centre-flex'>
-                <form onSubmit={formik.handleSubmit}>
-                    <div className="field">
-                        <label htmlFor='firstName' className='label'>First Name</label>
-                        {showAnyErrors('firstName')}
-                        <input
-                            className='form-box'
-                            id='firstName'
-                            name='firstName'
-                            onChange={formik.handleChange}
-                            value={formik.values.firstName}
-                        />
-                        <label htmlFor='lastName' className='label'>Last Name</label>
-                        {showAnyErrors('lastName')}
-                        <input
-                            className='form-box'
-                            id='lastName'
-                            name='lastName'
-                            onChange={formik.handleChange}
-                            value={formik.values.lastName}
-                        />
-                        <label htmlFor='petType' className='label'>Type of Pet</label>
-                        {showAnyErrors('petType')}
-                        <select
-                            className='form-box'
-                            name='petType'
-                            id='petType'
-                            onChange={formik.handleChange}
-                        >
-                            <option hidden>Select from this list</option>
-                            <option value={1}>Dog</option>
-                            <option value={2}>Cat</option>
-                            <option value={3}>No Pet...</option>
-                        </select>
-                    </div>
+  function showAnyErrors (inputName) {
+    return formik.errors[inputName] && formik.touched[inputName]
+      ? <p className='inputError'>{formik.errors[inputName]}</p>
+      : null
+  }
 
-                    <button
-                        className='submit profile-submit'
-                        type='submit'
-                    >Register</button>
-                </form>
-            </section>
-        </>
-    )
+  return (
+    <>
+      <h2>Register Profile</h2>
+      <section className='flex-container centre-flex'>
+        <form onSubmit={formik.handleSubmit}>
+          <div className="field">
+
+            <label htmlFor='name' className='label'>Name</label>
+            {showAnyErrors('name')}
+            <input
+              className='form-box'
+              id='name'
+              name='name'
+              placeholder='Please write your Name...'
+              onChange={formik.handleChange}
+              value={formik.values.name}
+            />
+            <label htmlFor='email' className='label'>Email</label>
+            {showAnyErrors('email')}
+            <input
+              className='form-box'
+              type='email'
+              id='email'
+              name='email'
+              placeholder='Please write your email...'
+              onChange={formik.handleChange}
+              value={formik.values.email}
+            />
+            <label htmlFor='location' className='label'>Your Location</label>
+            {showAnyErrors('location')}
+            <input
+              className='form-box'
+              id='location'
+              name='location'
+              onChange={formik.handleChange}
+              value={formik.values.location}
+            />
+
+            <label htmlFor='description' className='label'>About yourself</label>
+            {showAnyErrors('description')}
+            <textarea
+              className='form-box'
+              id='description'
+              name='description'
+              onChange={formik.handleChange}
+              value={formik.values.description}
+            />
+
+          </div>
+
+          <button
+            className='submit profile-submit'
+            type='submit'
+          >Register</button>
+
+        </form>
+      </section>
+    </>
+  )
 }
+
+{ /* <label htmlFor='firstName' className='label'>First Name</label>
+{showAnyErrors('firstName')}
+<input
+    className='form-box'
+    id='firstName'
+    name='firstName'
+    onChange={formik.handleChange}
+    value={formik.values.firstName}
+/>
+<label htmlFor='lastName' className='label'>Last Name</label>
+{showAnyErrors('lastName')}
+<input
+    className='form-box'
+    id='lastName'
+    name='lastName'
+    onChange={formik.handleChange}
+    value={formik.values.lastName}
+/> */ }
