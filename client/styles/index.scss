@@ -5,6 +5,15 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+.container {
+  border-style: solid;
+  border: flex;
+  border-color: #FB923C;
+  background-color: #fce5d2;
+  box-sizing: content-box;
+  width: 100%;
+}
+
 nav {
   display: flex;
   align-items: center;
