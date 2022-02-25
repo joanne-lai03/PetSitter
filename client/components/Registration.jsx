@@ -101,21 +101,21 @@ export default function Register () {
   )
 }
 
-{ /* <label htmlFor='firstName' className='label'>First Name</label>
-{showAnyErrors('firstName')}
-<input
-    className='form-box'
-    id='firstName'
-    name='firstName'
-    onChange={formik.handleChange}
-    value={formik.values.firstName}
-/>
-<label htmlFor='lastName' className='label'>Last Name</label>
-{showAnyErrors('lastName')}
-<input
-    className='form-box'
-    id='lastName'
-    name='lastName'
-    onChange={formik.handleChange}
-    value={formik.values.lastName}
-/> */ }
+// { /* <label htmlFor='firstName' className='label'>First Name</label>
+// {showAnyErrors('firstName')}
+// <input
+//     className='form-box'
+//     id='firstName'
+//     name='firstName'
+//     onChange={formik.handleChange}
+//     value={formik.values.firstName}
+// />
+// <label htmlFor='lastName' className='label'>Last Name</label>
+// {showAnyErrors('lastName')}
+// <input
+//     className='form-box'
+//     id='lastName'
+//     name='lastName'
+//     onChange={formik.handleChange}
+//     value={formik.values.lastName}
+// /> */ }

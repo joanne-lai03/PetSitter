@@ -1,15 +1,34 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
-// import React, { useEffect, useState } from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-// import { addToCart } from '../actions/cart'
-// import { fetchProducts, createNewProduct } from '../actions/products'
+import { fetchListing, createNewListing } from '../actions/listing'
 
 // import ProductListItem from './ProductListItem'
 
-function Listing () {
+function Listing (props) {
+  const { children, history } = props
+
+  const listings = useSelector(state => state.listing)
+  console.log('listings', listings)
+
+  const dispatch = useDispatch()
+
+  // const [listing, setListing] = useState(
+  //   {
+  //     name: '',
+  //     location: '',
+  //     availability: '',
+  //     pet_size: '',
+  //     promo_listing: ''
+  //   }
+  // )
+
+  useEffect(() => {
+    dispatch(fetchListing())
+  }, [])
+
   return (
     <>
       <div className="listing-image">

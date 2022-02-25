@@ -42,7 +42,7 @@ export function addListingToList (listing) {
   }
 }
 
-export function createNewProduct (newListing) {
+export function createNewListing (newListing) {
   return (dispatch) => {
     return postListing(newListing)
       .then(() => {
