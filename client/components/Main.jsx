@@ -12,6 +12,7 @@ export default function Main () {
   }
 
   return (
+
     <section className='main'>
       <div className="main-box">
         <div className="main-comment">
@@ -19,10 +20,15 @@ export default function Main () {
           <span>or</span><br />
           <span>Would you like to becom pet sitter?</span><br />
         </div>
+
+        event.preventDefault()
+        register()
+
         <Link to='/register' className='nav-register' >Resister Now !</Link>
         {/* it needs to change for same Link as Nav Button */}
         {/* if you want to test remove "onClick={handleRegister}" parts */}
         <Link to='/' className='nav-register'>Find a pet sitter</Link>
+
         {/* have to change Link!!! */}
       </div>
     </section>
