@@ -5,6 +5,48 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex('petsitters').insert([
         {
+<<<<<<< HEAD
+          id: 1, auth0_id: 'rowValue1',
+          name: 'rowValue1',
+          location: 'Auckland',
+          pet_number: 2,
+          pet_type: 'cat',
+          pet_size: 'big',
+          home_type: 'apartment',
+          service_rate: 'allday',
+          availability: 'yes',
+          description: 'hellloooo',
+          promo_listing: '????'
+        },
+        {
+          id: 2,
+          auth0_id: 'rowValue1',
+          name: 'rowValue1',
+          location: 'Auckland',
+          pet_number: 2,
+          pet_type: 'cat',
+          pet_size: 'big',
+          home_type: 'apartment',
+          service_rate: 'allday',
+          availability: 'yes',
+          description: 'hellloooo',
+          promo_listing: '????'
+        },
+        {
+          id: 3,
+          auth0_id: 'rowValue1',
+          name: 'rowValue1',
+          location: 'Auckland',
+          pet_number: 2,
+          pet_type: 'cat',
+          pet_size: 'big',
+          home_type: 'apartment',
+          service_rate: 'allday',
+          availability: 'yes',
+          description: 'hellloooo',
+          promo_listing: '????'
+        }
+=======
           id: 1,
           auth0_id: 'rowValue1',
           name: 'Claire',
@@ -33,6 +75,7 @@ exports.seed = function (knex) {
           description: 'Dog lover who does not own her own pets but love looking after other dogs. Has plenty of experience looking after other dogs.',
           promo_listing: '????'
         },
+>>>>>>> 3dcbcec5663b777756cf7dd0a320076d1e5eff32
 
         {
           id: 3,
