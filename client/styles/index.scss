@@ -4,6 +4,13 @@ html,
 body {
   font-family: 'Montserrat', sans-serif;
 }
+p{
+  margin:0;
+}
+
+li{
+  list-style: none;
+}
 
 .container {
   border-style: solid;
@@ -117,4 +124,120 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+// Listing page
+.listing-image {
+  position: relative;
+  margin-top: -100px;
+  }
+
+.listing-button a {
+  display: inline-block;
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  }
+
+.listing-image img {
+  width: 100%;
+  }
+  
+.listing-top{
+  padding: 20px 0;
+  width: 800px;
+  background-color:rgba(255,237,213,0.8);
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  border-radius: 20px;
+  }
+
+.listing-top p{
+text-align: center;
+ font-size: 24px;
+ font-weight: bold;
+}
+
+.listing-button{
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.lisiting-button-item{
+  background-color: #FFEDD5;
+  padding: 10px;
+  margin-right: 20px;
+  border-radius: 20px;
+  border: solid 1px #333;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.searchbar {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.linkto-add-profile{
+  background-color: #FB923C;
+  width: 400px;
+  padding: 2em;
+  text-align: center;
+  border-radius: 4px;  
+}
+
+a.button-linktoaddprofile{
+  display: block;
+  text-decoration: none;
+  width: 195px; 
+  background-color: #FFEDD5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.lists-all {
+    display: flex;
+    width: 1000px;
+    border: 1px solid #333;
+    background-color: #F6F6F6;
+}
+
+.lists-right {
+  width: 80%;
+  
+  h3{
+    margin-left: 2em;
+  }
+}
+
+
+.button-orange{
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #FFF;
+  background-color: #FB923C;
+  transition: 0.4s;
+}
+
+.button-checkprofile{
+  margin-left:2em;
 }

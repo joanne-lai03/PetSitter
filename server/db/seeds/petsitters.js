@@ -5,6 +5,48 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex('petsitters').insert([
         {
+<<<<<<< HEAD
+          id: 1, auth0_id: 'rowValue1',
+          name: 'rowValue1',
+          location: 'Auckland',
+          pet_number: 2,
+          pet_type: 'cat',
+          pet_size: 'big',
+          home_type: 'apartment',
+          service_rate: 'allday',
+          availability: 'yes',
+          description: 'hellloooo',
+          promo_listing: '????'
+        },
+        {
+          id: 2,
+          auth0_id: 'rowValue1',
+          name: 'rowValue1',
+          location: 'Auckland',
+          pet_number: 2,
+          pet_type: 'cat',
+          pet_size: 'big',
+          home_type: 'apartment',
+          service_rate: 'allday',
+          availability: 'yes',
+          description: 'hellloooo',
+          promo_listing: '????'
+        },
+        {
+          id: 3,
+          auth0_id: 'rowValue1',
+          name: 'rowValue1',
+          location: 'Auckland',
+          pet_number: 2,
+          pet_type: 'cat',
+          pet_size: 'big',
+          home_type: 'apartment',
+          service_rate: 'allday',
+          availability: 'yes',
+          description: 'hellloooo',
+          promo_listing: '????'
+        }
+=======
           id: 1,
           auth0_id: 'rowValue1',
           name: 'Claire',
@@ -15,7 +57,7 @@ exports.seed = function (knex) {
           home_type: 'house',
           service_rate: '$20/day',
           availability: 'All day weekends',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+          description: 'Hi, my name is Claire and I am a proud owner of two cats. I am located in the eastern suburbs etc',
           promo_listing: 'Cat owner who is happy to look after other cats'
         },
 
@@ -30,9 +72,10 @@ exports.seed = function (knex) {
           home_type: 'house',
           service_rate: '$30/day',
           availability: 'Thursday - Sunday from 5pm',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-          promo_listing: 'Dog lover who does not own her own pets but love looking after other dogs. Has plenty of experience looking after other dogs.'
+          description: 'Dog lover who does not own her own pets but love looking after other dogs. Has plenty of experience looking after other dogs.',
+          promo_listing: '????'
         },
+>>>>>>> 3dcbcec5663b777756cf7dd0a320076d1e5eff32
 
         {
           id: 3,
@@ -45,8 +88,8 @@ exports.seed = function (knex) {
           home_type: 'granny flat',
           service_rate: '$40/day',
           availability: 'Monday - Friday from 5pm',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-          promo_listing: 'Cat lover who is always happy to help take care of others cats'
+          description: 'Cat lover who is always happy to help take care of others cats',
+          promo_listing: '????'
         },
         {
           id: 4,
@@ -59,8 +102,8 @@ exports.seed = function (knex) {
           home_type: 'apartment',
           service_rate: '$30/day',
           availability: 'Weekends after 3pm',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-          promo_listing: 'Big fan of all pets and has previous experience owning a dog and a cat'
+          description: 'Big fan of all pets and has previous experience owning a dog and a cat',
+          promo_listing: '????'
         },
         {
           id: 5,
@@ -73,8 +116,8 @@ exports.seed = function (knex) {
           home_type: 'house',
           service_rate: '$40/day',
           availability: 'Monday - Friday from 6pm',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-          promo_listing: 'Love having a dog run around my big backyard. Hoping to own my own dog one day!'
+          description: 'Love having a dog run around my big backyard. Hoping to own my own dog one day!',
+          promo_listing: '????'
         },
         {
           id: 6,
@@ -87,8 +130,8 @@ exports.seed = function (knex) {
           home_type: 'house',
           service_rate: '$50/day',
           availability: 'Weekends from 5am - 8pm',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-          promo_listing: 'I love dogs!!! Woohoo!'
+          description: 'I love dogs!!! Woohoo!',
+          promo_listing: '????'
         },
         {
           id: 7,
@@ -101,8 +144,8 @@ exports.seed = function (knex) {
           home_type: 'house',
           service_rate: '$30/day',
           availability: 'Weekdays between 6pm - 9pm',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-          promo_listing: 'Dogs are sick! Yeah, they\'re mean.'
+          description: 'Dogs are sick! Yeah, they\'re mean.',
+          promo_listing: '????'
         },
         {
           id: 8,
@@ -115,8 +158,8 @@ exports.seed = function (knex) {
           home_type: 'house',
           service_rate: '$40/day',
           availability: 'All day, everday',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-          promo_listing: 'I only look after dogs named Jerry'
+          description: 'I only look after dogs named Jerry',
+          promo_listing: '????'
         },
         {
           id: 9,
@@ -129,8 +172,8 @@ exports.seed = function (knex) {
           home_type: 'flat',
           service_rate: '$20/day',
           availability: 'Weekends from 3pm',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-          promo_listing: 'Love animals of all sizes. The bigger the better!'
+          description: 'Love animals of all sizes. The bigger the better!',
+          promo_listing: '????'
         }
 
       ])
