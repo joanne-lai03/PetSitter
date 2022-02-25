@@ -1,15 +1,22 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { submitListing } from '../actions/petsitterprofile'
 // import { addPetSitter } from '../apis/petSitters'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 // 🎈🎈Have to build or check API connection!!
 
 export default function PetSittingRegister () {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const listing = useSelector(state => state.listing)
+  // console.log('listing', listing) // undefined
 
-  async function handleClick () {
-    console.log('test')
+  function handleClick (event) {
+    console.log('handleClick activated')
+    dispatch(submitListing(listing))
     event.preventDefault()
+    navigate('/petsitters/listings')
   }
   return (
     <div>

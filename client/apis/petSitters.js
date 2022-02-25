@@ -1,4 +1,3 @@
-// testing by Jinny
 import request from 'superagent'
 
 const rootUrl = '/api/v1/petsitters'
@@ -11,8 +10,9 @@ export function getPetsitter () {
     })
 }
 
-export function addPetsitter (user) {
+// Submits a new pet sitter llisting through the form (clicking submit)
+export function addPetSitter (listing) {
   return request
-    .post(rootUrl + '/listing')
-    .send(user)
+    .post(rootUrl)
+    .send(listing)
 }
