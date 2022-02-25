@@ -10,7 +10,7 @@ server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
 
 server.use('/api/v1/users', usersRoutes)
-server.use('api/v1/petsitters', petsittersRoutes)
+server.use('/api/v1/petsitters', petsittersRoutes)
 
 server.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './public/index.html'))
