@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 // import React, { useEffect, useState } from 'react'
 // import { useDispatch, useSelector } from 'react-redux'
 
@@ -10,6 +12,7 @@ import React from 'react'
 function Listing () {
   return (
     <>
+      <i className="fa-solid fa-user"></i>
       <div className="listing-image">
         <img src="/images/listing-top.jpeg" alt=""/>
         <div className ="listing-top">
@@ -27,8 +30,30 @@ function Listing () {
             </div>
           </div>
         </div>
-
       </div>
+      <div className="linkto-add-profile">
+        <h3>Would you like to be a pet sitter?</h3>
+        <p>Please click here to post your profile!</p>
+        <Link to='/petsitters/add' className="button-linktoaddprofile">Add to listing</Link>
+      </div>
+      {/* display all lists */}
+      <p>Scroll down to browse Pet Sitters for Boarding and Sitting near you💗</p>
+      <div className="lists-all">
+        <div className="lists-left">
+          <img src="/images/sample.png" alt=""/>
+        </div>
+        <div className="lists-right">
+          <h3>Prue</h3>
+          <ul>
+            <li>Parnell, Auckland 1010</li>
+            <li>Accept Dog size: 1.0kg</li>
+            <li>Weekday</li>
+            <li>Caring Dog Lover</li>
+          </ul>
+          <Link to='/petsitters/profiles' className="button-orange button-checkprofile">Check profile</Link>
+        </div>
+      </div>
+
     </>
 
   )
