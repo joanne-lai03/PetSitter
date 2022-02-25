@@ -10,13 +10,14 @@ import Main from './Main'
 import PetsitterForm from './PetsitterForm'
 import PetsitterProfiles from './PetsitterProfiles'
 import Registration from './Registration'
-
+import Listing from './Listing'
 
 export default function App() {
   cacheUser(useAuth0)
 
   return (
     <>
+
       <div className='app'>
         <Nav />
         <Routes>
@@ -24,7 +25,7 @@ export default function App() {
           <Route path='/register' element={<Registration />} />
           {/* <Route path='/profiles' element={<Profile />} /> */}
           {/* 🎈 if you build your Componets comments out! this and check it's working */}
-          {/* <Route path='/petsitters' element={<Listing />} /> */}
+          <Route path='/petsitters' element={<Listing />} />
           <Route path='/petsitters/add' element={<PetsitterForm />} />
           <Route path='/petsitters/profiles' element={<PetsitterProfiles />} />
         </Routes>
