@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom'
 function Listing () {
   return (
     <>
-      <i className="fa-solid fa-user"></i>
       <div className="listing-image">
         <img src="/images/listing-top.jpeg" alt=""/>
         <div className ="listing-top">
@@ -43,6 +42,7 @@ function Listing () {
           <img src="/images/sample.png" alt=""/>
         </div>
         <div className="lists-right">
+          <i className="fa-solid fa-user"></i>
           <h3>Prue</h3>
           <ul>
             <li>Parnell, Auckland 1010</li>
