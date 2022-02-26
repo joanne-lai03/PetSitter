@@ -12,8 +12,19 @@ function listPetsitters (db = connection) {
 }
 
 function addListing (listing, db = connection) {
-  const { location, petSize, availability, promoListing } = listing
-  const newListing = { location, pet_size: petSize, availability, promo_listing: promoListing }
+  const { name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = listing
+  const newListing = {
+    name,
+    location,
+    pet_number: petNumber,
+    pet_type: petType,
+    pet_size: petSize,
+    home_type: homeType,
+    service_rate: serviceRate,
+    availability,
+    description,
+    promo_listing: promoListing
+  }
   return db('petsitters')
     .insert(newListing)
 }
