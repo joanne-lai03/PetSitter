@@ -4,7 +4,15 @@ import request from 'superagent'
 export function getListing () {
   return request
     .get('api/v1/petsitters')
-    .then((res) => res.body)
+    .then(res => {
+      console.log('from api', res.body)
+      return res.body
+    })
+  // << if you need MOCK DATA>>
+  // return Promise.resolve([{
+  //   id: 1,
+  //   name:'Ahmad' .....
+  // }])
 }
 
 // add listing

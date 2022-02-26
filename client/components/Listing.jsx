@@ -1,67 +1,47 @@
 import { Link } from 'react-router-dom'
 
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { getListing } from '../apis/listing'
+// import { dispatch } from '../store'
 
-import { fetchListing } from '../actions/listing'
-// import { request } from 'express'
-import request from 'superagent'
-
-// import ProductListItem from './ProductListItem'
-
-// const initial = [{
-//   id: 1,
-//   name: 'Claire',
-//   location: 'Auckland',
-//   pet_size: 'small',
-//   availability: 'All day weekends',
-//   promo_listing: 'Cat owner who is happy to look after other cats'
-// },
-// {
-//   id: 2,
-//   name: 'Claire',
-//   location: 'Auckland',
-//   pet_size: 'small',
-//   availability: 'All day weekends',
-//   promo_listing: 'Cat owner who is happy to look after other cats'
-// }]
+// import { useDispatch, useSelector } from 'react-redux'
+// import { fetchListing } from '../actions/listing'
 
 function Listing (props) {
-  const { children, history } = props
+  // console.log('props?', props)
 
+  // << Using redux >>
   // const listings = useSelector(state => state.listing)
   // console.log('listings', listings)
 
-  const dispatch = useDispatch()
-
-  // const [listing, setListing] = useState(
-  //   {
-  //     name: '',
-  //     location: '',
-  //     availability: '',
-  //     pet_size: '',
-  //     promo_listing: ''
-  //   }
-  // )
-
+  // const dispatch = useDispatch()
   // useEffect(() => {
   //   dispatch(fetchListing())
   // }, [])
 
+  // << Using useState >>
   const [listings, setListings] = useState([])
 
   useEffect(() => {
-    request
-      .get('api/v1/petsitters')
-      .then(res => {
-        console.log(res.body)
-        setListings(res.body)
+    // dispatch()
+    getListing()
+      .then(apiResponse => {
+        setListings(apiResponse)
+        // dispatch(clearWaiting)
         return null
       })
       .catch(err => {
         console.error(err)
       })
   }, [])
+
+  // << this is for location serach bar >>
+  const [filterTxt, setfilterTxt] = useState('')
+
+  function searchBar (text) {
+    console.log('hello~', text)
+    setfilterTxt(text)
+  }
 
   return (
     <>
@@ -71,14 +51,14 @@ function Listing (props) {
           <div>
             <p>I am looking for</p>
             <div className="listing-button">
-              <button className="lisiting-button-item">Dog boarding</button>
-              <button className="lisiting-button-item">Dog boarding</button>
-              <button className="lisiting-button-item">Dog boarding</button>
-              <button className="lisiting-button-item">Dog boarding</button>
+              <button className="lisiting-button-item">Pet Sitting </button>
+              <button className="lisiting-button-item">Pet Boarding</button>
+              <button className="lisiting-button-item">Pet Grooming</button>
+              <button className="lisiting-button-item">Pet Walking</button>
             </div>
             <div>
               <p>Near me in</p>
-              <input id='searchValue' type="search" className="searchbar" placeholder='Search location...' name='searchValue' />
+              <input onChange={(event) => searchBar(event.target.value)} id='searchValue' type="search" className="searchbar" placeholder='Search location...' name='searchValue' />
             </div>
           </div>
         </div>
@@ -91,27 +71,57 @@ function Listing (props) {
       {/* display all lists */}
       <p>Scroll down to browse Pet Sitters for Boarding and Sitting near you💗</p>
 
-      {listings.map((item) => {
-        return <>
-          <div className="lists-all">
-            <div className="lists-left">
-              <img src="/images/sample.png" />
+      {filterTxt.length === 0
+        ? listings.map((item) => {
+          return <>
+            <div className="lists-all">
+              <div className="lists-left">
+                <img src="/images/sample.png" />
+              </div>
+              <ul className="lists-right">
+                <li>
+                  <h3><i className="fa-solid fa-user"></i>{item.name}</h3>
+                  <ul className="lists-ul-item">
+                    <li><i className="fa-solid fa-house"></i>{item.location}</li>
+                    <li><i className="fa-solid fa-clock"></i>{item.availability}</li>
+                    <li><i className="fa-solid fa-dog"></i>{item.pet_size}</li>
+                    <li><i className="fa-solid fa-hand-holding-heart"></i>{item.promo_listing}</li>
+                  </ul>
+                  <Link to={`/petsitters/profiles/${item.id}`} className="button-orange button-checkprofile">Check profile</Link>
+                </li>
+              </ul>
+              <a><i className="fas fa-trash-alt fa-size"></i></a>
+              <a><i className="fa-solid fa-pen-to-square fa-size"></i></a>
             </div>
-            <ul className="lists-right">
-              <li>
-                <h3><i className="fa-solid fa-user"></i>{item.name}</h3>
-                <ul className="lists-ul-item">
-                  <li><i className="fa-solid fa-house"></i>{item.location}</li>
-                  <li><i className="fa-solid fa-clock"></i>{item.availability}</li>
-                  <li><i className="fa-solid fa-dog"></i>{item.pet_size}</li>
-                  <li><i className="fa-solid fa-hand-holding-heart"></i>{item.promo_listing}</li>
+          </>
+        })
+        : listings
+          .filter(item => item.location.toLowerCase().includes(filterTxt.toLowerCase()))
+          .map((item) => {
+            return <>
+              <div className="lists-all">
+                <div className="lists-left">
+                  <img src="/images/sample.png" />
+                </div>
+                <ul className="lists-right">
+                  <li>
+                    <h3><i className="fa-solid fa-user"></i>{item.name}</h3>
+                    <ul className="lists-ul-item">
+                      <li><i className="fa-solid fa-house"></i>{item.location}</li>
+                      <li><i className="fa-solid fa-clock"></i>{item.availability}</li>
+                      <li><i className="fa-solid fa-dog"></i>{item.pet_size}</li>
+                      <li><i className="fa-solid fa-hand-holding-heart"></i>{item.promo_listing}</li>
+                    </ul>
+                    <Link to={`/petsitters/profiles/${item.id}`} className="button-orange button-checkprofile">Check profile</Link>
+                  </li>
                 </ul>
-                <Link to='/petsitters/profiles' className="button-orange button-checkprofile">Check profile</Link>
-              </li>
-            </ul>
-          </div>
-        </>
-      })}
+                <a><i className="fas fa-trash-alt fa-size"></i></a>
+                <a><i className="fa-solid fa-pen-to-square fa-size"></i></a>
+              </div>
+            </>
+          })
+
+      }
 
     </>
 
