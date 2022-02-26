@@ -19,8 +19,8 @@ router.get('/', (req, res) => {
 
 // Add new petsitters lising
 router.post('/', (req, res) => {
-  const { location, petSize, availability, promoListing } = req.body
-  const listingData = { location, petSize, availability, promoListing }
+  const { name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = req.body
+  const listingData = { name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing }
   db.addListing(listingData)
     .then((result) => {
       res.json(result)
