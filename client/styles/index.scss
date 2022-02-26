@@ -157,12 +157,13 @@ a {
 text-align: center;
  font-size: 24px;
  font-weight: bold;
+ margin: .5em 0;
 }
 
 .listing-button{
   display: flex;
   justify-content: center;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .lisiting-button-item{
@@ -178,8 +179,9 @@ text-align: center;
   text-align: center;
   margin: 0 auto;
   display: block;
-  margin-top: 1em;
   margin-bottom: 1em;
+  width: 200px;
+  height: 30px;
 }
 
 .linkto-add-profile{
@@ -231,7 +233,7 @@ a.button-linktoaddprofile{
 
 .button-checkprofile{
   margin-left:2em;
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .fa-solid{
@@ -249,4 +251,12 @@ a.button-linktoaddprofile{
 
 .fa-trash-alt{
   margin-right: .5em;
+}
+
+.select-pet{
+  margin: 0 auto;
+  display: block;
+  width: 200px;
+  height: 30px;
+  text-align: center;
 }

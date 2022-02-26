@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom'
-
+import ListingItem from './ListingItem'
 import React, { useEffect, useState } from 'react'
 import { getListing } from '../apis/listing'
-// import { dispatch } from '../store'
-
 // import { useDispatch, useSelector } from 'react-redux'
 // import { fetchListing } from '../actions/listing'
 
@@ -35,11 +33,14 @@ function Listing (props) {
       })
   }, [])
 
-  // << this is for location serach bar >>
+  // << this is for service search bar >>
+  function selectService () {
+    console.log('hello')
+  }
+  // << this is for location search bar >>
   const [filterTxt, setfilterTxt] = useState('')
 
   function searchBar (text) {
-    console.log('hello~', text)
     setfilterTxt(text)
   }
 
@@ -51,15 +52,23 @@ function Listing (props) {
           <div>
             <p>I am looking for</p>
             <div className="listing-button">
-              <button className="lisiting-button-item">Pet Sitting </button>
+              <button onClick={selectService} className="lisiting-button-item">Pet Sitting </button>
               <button className="lisiting-button-item">Pet Boarding</button>
               <button className="lisiting-button-item">Pet Grooming</button>
               <button className="lisiting-button-item">Pet Walking</button>
             </div>
             <div>
-              <p>Near me in</p>
-              <input onChange={(event) => searchBar(event.target.value)} id='searchValue' type="search" className="searchbar" placeholder='Search location...' name='searchValue' />
+              <p>My pet type</p>
+              <select name="pet" className ="select-pet">
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+              </select>
             </div>
+            <div>
+              <p>Near me in</p>
+              <input onChange={(event) => searchBar(event.target.value)} id='searchValue' type="search" className="searchbar" placeholder='Input your area' name='searchValue' />
+            </div>
+
           </div>
         </div>
       </div>
@@ -68,61 +77,24 @@ function Listing (props) {
         <p>Please click here to post your profile!</p>
         <Link to='/petsitters/add' className="button-linktoaddprofile">Add to listing</Link>
       </div>
+
       {/* display all lists */}
       <p>Scroll down to browse Pet Sitters for Boarding and Sitting near you💗</p>
 
       {filterTxt.length === 0
-        ? listings.map((item) => {
+        ? listings.map((listing) => {
           return <>
-            <div className="lists-all">
-              <div className="lists-left">
-                <img src="/images/sample.png" />
-              </div>
-              <ul className="lists-right">
-                <li>
-                  <h3><i className="fa-solid fa-user"></i>{item.name}</h3>
-                  <ul className="lists-ul-item">
-                    <li><i className="fa-solid fa-house"></i>{item.location}</li>
-                    <li><i className="fa-solid fa-clock"></i>{item.availability}</li>
-                    <li><i className="fa-solid fa-dog"></i>{item.pet_size}</li>
-                    <li><i className="fa-solid fa-hand-holding-heart"></i>{item.promo_listing}</li>
-                  </ul>
-                  <Link to={`/petsitters/profiles/${item.id}`} className="button-orange button-checkprofile">Check profile</Link>
-                </li>
-              </ul>
-              <a><i className="fas fa-trash-alt fa-size"></i></a>
-              <a><i className="fa-solid fa-pen-to-square fa-size"></i></a>
-            </div>
+            <ListingItem listing={listing}/>
           </>
         })
         : listings
-          .filter(item => item.location.toLowerCase().includes(filterTxt.toLowerCase()))
-          .map((item) => {
+          .filter(listing => listing.location.toLowerCase().includes(filterTxt.toLowerCase()))
+          .map((listing) => {
             return <>
-              <div className="lists-all">
-                <div className="lists-left">
-                  <img src="/images/sample.png" />
-                </div>
-                <ul className="lists-right">
-                  <li>
-                    <h3><i className="fa-solid fa-user"></i>{item.name}</h3>
-                    <ul className="lists-ul-item">
-                      <li><i className="fa-solid fa-house"></i>{item.location}</li>
-                      <li><i className="fa-solid fa-clock"></i>{item.availability}</li>
-                      <li><i className="fa-solid fa-dog"></i>{item.pet_size}</li>
-                      <li><i className="fa-solid fa-hand-holding-heart"></i>{item.promo_listing}</li>
-                    </ul>
-                    <Link to={`/petsitters/profiles/${item.id}`} className="button-orange button-checkprofile">Check profile</Link>
-                  </li>
-                </ul>
-                <a><i className="fas fa-trash-alt fa-size"></i></a>
-                <a><i className="fa-solid fa-pen-to-square fa-size"></i></a>
-              </div>
+              <ListingItem listing={listing}/>
             </>
           })
-
       }
-
     </>
 
   )

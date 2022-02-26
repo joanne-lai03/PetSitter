@@ -24,10 +24,8 @@ export function postListing (listing) {
 
 // === stretch (delete) ===
 export function deleteListing (id) {
-  const idForDeleteListing = { id }
-
   return request
     .delete('api/v1/petsitters')
-    .send(idForDeleteListing)
+    .send({ id })
     .then(res => res.body)
 }
