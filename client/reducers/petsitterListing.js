@@ -1,4 +1,4 @@
-import { FETCH_LISTING_SUCCESS, DELETELISTING_FROM_LIST_SUCCESS } from '../actions/listing'
+import { FETCH_LISTING_SUCCESS, DELETELISTING_FROM_LIST_SUCCESS } from '../actions/petsitterListing'
 
 function listing (state = [], action) {
   switch (action.type) {

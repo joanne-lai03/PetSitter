@@ -22,7 +22,7 @@ export function postListing (listing) {
     .send(listing)
 }
 
-// === stretch (delete) ===
+// dlelet listing
 export function deleteListing (id) {
   return request
     .delete('api/v1/petsitters')

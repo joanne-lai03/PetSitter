@@ -1,17 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { deleteListingFromList } from '../actions/listing'
+// import { useDispatch } from 'react-redux'
+// import { deleteListingFromList } from '../actions/petsitterListing'
 
-function ListingItem (props) {
+function PetsitterListingItem (props) {
   const listing = props.listing
   const { id } = props.listing
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   function deleteFromList () {
-    console.log(id)
-    dispatch(deleteListingFromList(id))
+    props.deleteFromList(id)
   }
 
   return (
@@ -43,4 +42,4 @@ function ListingItem (props) {
   )
 }
 
-export default ListingItem
+export default PetsitterListingItem

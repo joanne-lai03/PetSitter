@@ -176,12 +176,13 @@ text-align: center;
 }
 
 .searchbar {
-  text-align: center;
+  // text-align: center;
   margin: 0 auto;
-  display: block;
+  // display: block;
   margin-bottom: 1em;
   width: 200px;
-  height: 30px;
+  height: 40px;
+  border: 3px orange solid;
 }
 
 .linkto-add-profile{
@@ -256,7 +257,21 @@ a.button-linktoaddprofile{
 .select-pet{
   margin: 0 auto;
   display: block;
-  width: 200px;
-  height: 30px;
-  text-align: center;
+  width: 230px;
+  height: 40px;
+  /* text-align: center; */
+  border: solid 3px orange;
 }
+.searchButton {
+  height: 40px;
+  border: 3px orange solid;
+  background: orange;
+  color: #fff;
+}
+.searchbar-button {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+
+}
+

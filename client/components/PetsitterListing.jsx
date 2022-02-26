@@ -1,18 +1,19 @@
 import { Link } from 'react-router-dom'
-import ListingItem from './ListingItem'
+import PetsitterListingItem from './PetsitterListingItem'
 import React, { useEffect, useState } from 'react'
-import { getListing } from '../apis/listing'
-// import { useDispatch, useSelector } from 'react-redux'
+import { getListing } from '../apis/petsittersListing'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteListingFromList } from '../actions/petsitterListing'
 // import { fetchListing } from '../actions/listing'
 
-function Listing (props) {
+function PetsitterListing (props) {
   // console.log('props?', props)
 
   // << Using redux >>
   // const listings = useSelector(state => state.listing)
   // console.log('listings', listings)
 
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   // useEffect(() => {
   //   dispatch(fetchListing())
   // }, [])
@@ -32,6 +33,19 @@ function Listing (props) {
         console.error(err)
       })
   }, [])
+
+  function deleteFromList (id) {
+    dispatch(deleteListingFromList(id))
+    getListing()
+      .then(apiResponse => {
+        setListings(apiResponse)
+        // dispatch(clearWaiting)
+        return null
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
 
   // << this is for service search bar >>
   function selectService () {
@@ -66,7 +80,15 @@ function Listing (props) {
             </div>
             <div>
               <p>Near me in</p>
-              <input onChange={(event) => searchBar(event.target.value)} id='searchValue' type="search" className="searchbar" placeholder='Input your area' name='searchValue' />
+              {/* <input onChange={(event) => searchBar(event.target.value)} id='searchValue' type="search" className="searchbar" placeholder='Input your area' name='searchValue' /> */}
+              <div className="wrap">
+                <div className="searchbar-button">
+                  <input type="text" onChange={(event) => searchBar(event.target.value)} id='searchValue' type="search" className="searchbar" placeholder='Input your area' name='searchValue'></input>
+                  <button type="submit" className="searchButton">
+                    <i className="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -84,14 +106,14 @@ function Listing (props) {
       {filterTxt.length === 0
         ? listings.map((listing) => {
           return <>
-            <ListingItem listing={listing}/>
+            <PetsitterListingItem listing={listing} deleteFromList={deleteFromList}/>
           </>
         })
         : listings
           .filter(listing => listing.location.toLowerCase().includes(filterTxt.toLowerCase()))
           .map((listing) => {
             return <>
-              <ListingItem listing={listing}/>
+              <PetsitterListingItem listing={listing} deleteFromList={deleteFromList}/>
             </>
           })
       }
@@ -100,4 +122,4 @@ function Listing (props) {
   )
 }
 
-export default Listing
+export default PetsitterListing

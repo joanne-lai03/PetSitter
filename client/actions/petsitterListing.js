@@ -1,5 +1,5 @@
-import { getListing, postListing, deleteListing } from '../apis/listing'
-import { showError } from '../actions/error'
+import { getListing, postListing, deleteListing } from '../apis/petsittersListing'
+import { showError } from './error'
 
 export const FETCH_LISTING_PENDING = 'FETCH_LISTING_PENDING'
 export const FETCH_LISTING_SUCCESS = 'FETCH_LISTING_SUCCESS'

@@ -2,10 +2,10 @@ import { combineReducers } from 'redux'
 
 import users from './users'
 import user from './user'
-import listing from './listing'
+import petsitterListing from './petsitterListing'
 
 export default combineReducers({
   users,
   user,
-  listing
+  petsitterListing
 })
