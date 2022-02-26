@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const db = require('../db/pettsitters')
+const db = require('../db/petsitters')
 
 module.exports = router
 
