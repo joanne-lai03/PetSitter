@@ -36,6 +36,7 @@ export function postListing (listing) {
   return request
     .post('api/v1/petsitters')
     .send(newListing)
+    .then(res => res.body)
 }
 
 // dlelet listing

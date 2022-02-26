@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { postListing } from '../apis/petsittersListing'
+import { postListing } from '../apis/Listings'
 import { useNavigate } from 'react-router-dom'
 
 // 🎈🎈Have to build or check API connection!!
@@ -20,7 +20,11 @@ export default function PetSitterForm () {
   })
 
   function handleChange (event) {
-    setForm(event.target.value)
+    setForm(
+      {
+        ...form,
+        [event.target.name]: event.target.value
+      })
   }
 
   function handleSubmit (event) {
