@@ -1,31 +1,31 @@
 import { setUser } from './actions/user'
-import { getUserRoles } from './apis/users'
+// import { getUserRoles } from './apis/users'
 import { dispatch } from './store'
 
 const emptyUser = {
   auth0Id: '',
   email: '',
   name: '',
-  token: '',
-  roles: []
+  token: ''
+  // roles: []
 }
 
 function saveUser(user = emptyUser) {
   dispatch(setUser(user))
 }
 
-export async function cacheUser(useAuth0) {
+export async function cacheUser(useAuth0, navigate) {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
   if (isAuthenticated) {
     try {
       const token = await getAccessTokenSilently()
-      const roles = await getUserRoles(user.sub)
+      // const roles = await getUserRoles(user.sub)
       const userToSave = {
         auth0Id: user.sub,
         email: user.email,
         name: user.nickname,
-        token,
-        roles
+        token
+        // roles
       }
       saveUser(userToSave)
     } catch (err) {

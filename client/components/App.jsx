@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { cacheUser } from '../auth0-utils'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // 🎈components linked
 // import Registration from './Registration'
@@ -13,11 +13,11 @@ import Registration from './Registration'
 import Listing from './Listing'
 
 export default function App() {
-  cacheUser(useAuth0)
+  const navigate = useNavigate()
+  cacheUser(useAuth0, navigate)
 
   return (
     <>
-
       <div className='app'>
         <Nav />
         <Routes>
