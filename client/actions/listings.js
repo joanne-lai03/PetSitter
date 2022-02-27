@@ -1,5 +1,5 @@
 import { getListing, postListing, deleteListing } from '../apis/listings'
-import { showError } from '../actions/error'
+import { showError } from './error'
 
 export const FETCH_LISTING_PENDING = 'FETCH_LISTING_PENDING'
 export const FETCH_LISTING_SUCCESS = 'FETCH_LISTING_SUCCESS'
@@ -42,7 +42,7 @@ export function addListingToList (listing) {
   }
 }
 
-export function createNewProduct (newListing) {
+export function createNewListing (newListing) {
   return (dispatch) => {
     return postListing(newListing)
       .then(() => {
