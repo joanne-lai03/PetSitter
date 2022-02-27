@@ -6,7 +6,7 @@ import { showError } from '../actions/error'
 
 const rootUrl = '/api/v1/users'
 
-export default function addUser(user, authUser, navigate) {
+export default function addUser (user, authUser, navigate) {
   const state = getState()
   const { token } = state.user
 
@@ -39,7 +39,7 @@ export default function addUser(user, authUser, navigate) {
     })
 }
 
-export function getUser(authId, token) {
+export function getUser (authId, token) {
   if (token) {
     return request
       .get(rootUrl)
