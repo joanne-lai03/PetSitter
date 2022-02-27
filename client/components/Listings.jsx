@@ -51,6 +51,10 @@ function PetsitterListing (props) {
   function selectService () {
     console.log('hello')
   }
+
+  // << this is for select pet >>
+  const [selectPet, setSelectPet] = useState()
+
   // << this is for location search bar >>
   const [filterTxt, setfilterTxt] = useState('')
 
@@ -71,14 +75,17 @@ function PetsitterListing (props) {
           <div>
             <p>I am looking for</p>
             <div className="listing-button">
-              <button onClick={selectService} className="lisiting-button-item">Pet Sitting </button>
-              <button className="lisiting-button-item">Pet Boarding</button>
-              <button className="lisiting-button-item">Pet Grooming</button>
-              <button className="lisiting-button-item">Pet Walking</button>
+              <select value={selectPet} onChange={e => setSelectPet(e.target.value)} name="pet" className ="select-pet">
+                <option value="Pet Sitting">Pet Sitting</option>
+                <option value="Pet Boarding">Pet Boarding</option>
+                <option value="Pet Boarding">Pet Boarding</option>
+                <option value="Pet Walking">Pet Walking</option>
+              </select>
             </div>
             <div>
               <p>My pet type</p>
-              <select name="pet" className ="select-pet">
+              <p>{selectPet}</p>
+              <select value={selectPet} onChange={e => setSelectPet(e.target.value)} name="pet" className ="select-pet">
                 <option value="Dog">Dog</option>
                 <option value="Cat">Cat</option>
               </select>
