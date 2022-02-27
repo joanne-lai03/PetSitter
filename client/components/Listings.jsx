@@ -58,6 +58,11 @@ function PetsitterListing (props) {
     setfilterTxt(text)
   }
 
+  function submitButton () {
+    console.log('hey, it/s me')
+    searchBar(text)
+  }
+
   return (
     <>
       <div className="listing-image">
@@ -82,8 +87,8 @@ function PetsitterListing (props) {
               <p>Near me in</p>
               <div className="wrap">
                 <div className="searchbar-button">
-                  <input type="text" onChange={(event) => searchBar(event.target.value)} id='searchValue' className="searchbar" placeholder='Input your area' name='searchValue'></input>
-                  <button type="submit" className="searchButton">
+                  <input onChange={(event) => searchBar(event.target.value) } type="text" id='searchValue' className="searchbar" placeholder='Input your area' name='searchValue'></input>
+                  <button onClick={(event) => submitButton()}type="submit" className="searchButton">
                     <i className="fa fa-search"></i>
                   </button>
                 </div>
