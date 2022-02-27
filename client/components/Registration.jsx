@@ -11,20 +11,15 @@ const registerSchema = Yup.object().shape({
     .min(2, 'This must be at least 2 characters long')
     .max(15, 'Sorry, this must be under 15 characters long')
     .required('Sorry it\'s Required')
-  // email: Yup.string().email(),
 })
 
-export default function Register () {
-  // const user = useSelector(state => state.user)
+export default function Register() {
   const authUser = useAuth0().user
   const navigate = useNavigate()
-
-  // 🎃🎃🎃 We need to think about input Email instead Auth0.user.email data....
 
   const formik = useFormik({
     initialValues: {
       name: '',
-      email: '',
       location: '',
       description: ''
     },
@@ -56,17 +51,6 @@ export default function Register () {
               placeholder='Please write your Name...'
               onChange={formik.handleChange}
               value={formik.values.name}
-            />
-            <label htmlFor='email' className='label'>Email</label>
-            {showAnyErrors('email')}
-            <input
-              className='form-box'
-              type='email'
-              id='email'
-              name='email'
-              placeholder='Please write your email...'
-              onChange={formik.handleChange}
-              value={formik.values.email}
             />
             <label htmlFor='location' className='label'>Your Location</label>
             {showAnyErrors('location')}
@@ -100,22 +84,3 @@ export default function Register () {
     </>
   )
 }
-
-// { /* <label htmlFor='firstName' className='label'>First Name</label>
-// {showAnyErrors('firstName')}
-// <input
-//     className='form-box'
-//     id='firstName'
-//     name='firstName'
-//     onChange={formik.handleChange}
-//     value={formik.values.firstName}
-// />
-// <label htmlFor='lastName' className='label'>Last Name</label>
-// {showAnyErrors('lastName')}
-// <input
-//     className='form-box'
-//     id='lastName'
-//     name='lastName'
-//     onChange={formik.handleChange}
-//     value={formik.values.lastName}
-// /> */ }
