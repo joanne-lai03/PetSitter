@@ -1,7 +1,8 @@
 import React from 'react'
 
 function ListingProfilesItem (props) {
-  const listingProfiles = props.listingProfiles
+  console.log(props.listingProfile)
+  const listingProfiles = props.listingProfile
 
   return (
     <div className='listing-profile'>

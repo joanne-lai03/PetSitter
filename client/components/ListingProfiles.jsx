@@ -1,28 +1,49 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+// import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchListingProfiles } from '../actions/listingProfiles'
+// import { fetchListingProfiles } from '../actions/listingProfiles'
 import ListingProfilesItem from './ListingProfilesItem'
+
+import { getListing } from '../apis/listings'
 
 // 🎈🎈Have to build or check API connection!!
 
 function ListingProfiles (props) {
   const { children } = props
-  const listingProfiles = useSelector(state => state.listingProfiles)
-  const dispatch = useDispatch()
+  // const listingProfiles = useSelector(state => state.listingProfiles)
+  // console.log('hey listing profiles', listingProfiles)
+  // const dispatch = useDispatch()
+  // useEffect(() => {
+  //   dispatch(fetchListingProfiles)
+  // }, [])
+
+  // === Hiro ===
+  const [listingProfiles, setListingProfiles] = useState([])
+
   useEffect(() => {
-    dispatch(fetchListingProfiles)
+    // dispatch()
+    getListing()
+      .then(apiResponse => {
+        setListingProfiles(apiResponse)
+        // dispatch(clearWaiting)
+        return null
+      })
+      .catch(err => {
+        console.error(err)
+      })
   }, [])
 
   return (
     <div className='listingProfile'>
       {children}
-      {listingProfiles.map(listingProfile => {
+      {listingProfiles.map((listingProfile) => {
         return (
-          <ListingProfilesItem
-            key={listingProfile.id}
-            listingProfile={listingProfile}
-          />
+          <>
+            <ListingProfilesItem
+              key={listingProfile.id}
+              listingProfile={listingProfile}
+            />
+          </>
         )
       })}
       <img src="/images/sample.png" alt="Profile image"></img>

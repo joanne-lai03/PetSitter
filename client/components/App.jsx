@@ -19,6 +19,7 @@ export default function App () {
     <>
 
       <div className='app'>
+        <ListingProfiles />
         <Nav />
         <Routes>
           <Route path='/' element={<Main />} />
