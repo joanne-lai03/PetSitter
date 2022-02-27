@@ -21,8 +21,8 @@ router.get('/:id', checkJwt, (req, res) => {
 
 // Add new petsitters lising
 router.post('/', (req, res) => {
-  const { name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = req.body
-  const listingData = { name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing }
+  const { id, name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = req.body
+  const listingData = { id, name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing }
   db.addListing(listingData)
     .then((result) => {
       res.json(result)

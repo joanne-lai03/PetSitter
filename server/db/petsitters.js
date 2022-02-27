@@ -13,8 +13,9 @@ function listPetsitters (auth0Id, db = connection) {
 }
 
 function addListing (listing, db = connection) {
-  const { name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = listing
+  const { id, name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = listing
   const newListing = {
+    id,
     name,
     location,
     pet_number: petNumber,
