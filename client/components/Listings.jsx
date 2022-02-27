@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { deleteListingFromList } from '../actions/listings'
 // import { fetchListing } from '../actions/listing'
 
-function PetsitterListing(props) {
+function PetsitterListing (props) {
   // console.log('props?', props)
 
   // << Using redux >>

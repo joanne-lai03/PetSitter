@@ -40,7 +40,7 @@ export default function addUser (user, authUser, navigate) {
     })
 }
 
-export function getUser(authId, token) {
+export function getUser (authId, token) {
   return request
     .get(rootUrl)
     .set('authorization', `Bearer ${token}`)

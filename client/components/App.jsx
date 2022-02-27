@@ -12,7 +12,7 @@ import Registration from './Registration'
 import Listings from './Listings'
 import Login from './Login'
 
-export default function App() {
+export default function App () {
   const navigate = useNavigate()
   cacheUser(useAuth0, navigate)
 
