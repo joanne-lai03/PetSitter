@@ -1,21 +1,31 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { fetchListingProfiles } from '../actions/listingProfiles'
+import ListingProfilesItem from './ListingProfilesItem'
+
 // 🎈🎈Have to build or check API connection!!
 
-function pettSitterList (props) {
-  const { x, x} = props
-  const petSitter = useSelector(state => state.products)
+function ListingProfiles (props) {
+  const { children } = props
+  const listingProfiles = useSelector(state => state.listingProfiles)
   const dispatch = useDispatch()
-  useEffect(()=> {
-    dispatch()
-  })
-}
+  useEffect(() => {
+    dispatch(fetchListingProfiles)
+  }, [])
 
-export default function PetsitterProfiles () {
   return (
-    <div>
-      <img src="server/public/homeimg.jpeg" alt="Profile image"></img>
+    <div className='listingProfile'>
+      {children}
+      {listingProfiles.map(listingProfile => {
+        return (
+          <ListingProfilesItem
+            key={listingProfile.id}
+            listingProfile={listingProfile}
+          />
+        )
+      })}
+      <img src="/images/sample.png" alt="Profile image"></img>
       <h3>Prue</h3>
       <p>Parnell, Auckland 1010</p>
       <p>Accepted Dog size: 1kg</p>
@@ -41,3 +51,5 @@ export default function PetsitterProfiles () {
     </div>
   )
 }
+
+export default ListingProfiles

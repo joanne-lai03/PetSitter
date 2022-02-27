@@ -8,11 +8,11 @@ import { Routes, Route } from 'react-router-dom'
 import Nav from './Nav'
 import Main from './Main'
 import PetsitterForm from './PetsitterForm'
-import PetsitterProfiles from './PetsitterProfiles'
+import ListingProfiles from './ListingProfiles'
 import Registration from './Registration'
 import Listing from './Listing'
 
-export default function App() {
+export default function App () {
   cacheUser(useAuth0)
 
   return (
@@ -27,7 +27,7 @@ export default function App() {
           {/* 🎈 if you build your Componets comments out! this and check it's working */}
           <Route path='/petsitters' element={<Listing />} />
           <Route path='/petsitters/add' element={<PetsitterForm />} />
-          <Route path='/petsitters/profiles' element={<PetsitterProfiles />} />
+          <Route path='/petsitters/profiles' element={<ListingProfiles />} />
         </Routes>
       </div>
     </>
