@@ -6,30 +6,35 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 import { Link } from 'react-router-dom'
 
-function Nav () {
+function Nav() {
   // const user = useSelector(state => state.user)
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
   const register = getRegisterFn(useAuth0)
 
-  function handleLogin (event) {
+  function handleLogin(event) {
     event.preventDefault()
     login()
   }
 
-  function handleLogoff (event) {
+  function handleLogoff(event) {
     event.preventDefault()
     logout()
   }
 
-  function handleRegister (event) {
+  function handleRegister(event) {
     event.preventDefault()
     register()
   }
 
   return (
     <nav>
-      <h1 className='logo'>Petsitter</h1>
+      <div className='logo'>
+        <Link to='/' className='nav-link logo'>
+          <img className='logo-img' src='/images/logo_vector.svg' alt='PetsitterLogo' />
+          <h1 className='logo-text'>Petsitter</h1>
+        </Link>
+      </div>
       <section className='nav-item'>
         <IfAuthenticated>
           <section className='sign'>

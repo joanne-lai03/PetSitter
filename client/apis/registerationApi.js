@@ -26,7 +26,6 @@ export default function addUser (user, authUser, navigate) {
     .set({ Accept: 'application/json' })
     .send(newUser)
     .then(() => {
-      console.log(newUser)
       dispatch(setUser(newUser))
       newUser.token = token
       navigate('/myaccount')

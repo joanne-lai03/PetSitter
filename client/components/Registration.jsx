@@ -37,7 +37,7 @@ export default function Register() {
 
   return (
     <>
-      <h2>Register Profile</h2>
+      <h2>Register Your Account</h2>
       <section className='flex-container centre-flex'>
         <form onSubmit={formik.handleSubmit}>
           <div className="field">

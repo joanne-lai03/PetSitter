@@ -17,7 +17,6 @@ function saveUser(user = emptyUser) {
 }
 
 export async function cacheUser(useAuth0, navigate) {
-  const state = getState()
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
 
   if (isAuthenticated) {
@@ -65,6 +64,5 @@ export function getRegisterFn(useAuth0) {
   return () => loginWithRedirect({
     redirectUri,
     screen_hint: 'signup'
-    // scope: 'role:member'
   })
 }
