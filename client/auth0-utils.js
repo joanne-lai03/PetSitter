@@ -1,4 +1,5 @@
 import { setUser } from './actions/user'
+import { getUser } from './apis/registerationApi'
 import { dispatch, getState } from './store'
 
 const emptyUser = {
@@ -22,6 +23,9 @@ export async function cacheUser(useAuth0, navigate) {
   if (isAuthenticated) {
     try {
       const token = await getAccessTokenSilently()
+      const userinfo = await getUser(user.sub, token)
+      console.log(userinfo)
+
       const { id, name, description, location } = state.user
 
       const userToSave = {
@@ -34,8 +38,8 @@ export async function cacheUser(useAuth0, navigate) {
         location
       }
 
-      console.log(userToSave)
-      console.log(state)
+      // console.log(userToSave)
+      // console.log(state)
 
       saveUser(userToSave)
     } catch (err) {

@@ -5,7 +5,6 @@ import Registeration from './Registration'
 
 export default function Login() {
   const user = useSelector(state => state.user)
-  console.log('From Login components', user)
   return (
     <div>
       {

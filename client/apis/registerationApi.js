@@ -25,7 +25,8 @@ export default function addUser(user, authUser, navigate) {
     .set('authorization', `Bearer ${token}`)
     .set({ Accept: 'application/json' })
     .send(newUser)
-    .then(() => {
+    .then((res) => {
+      console.log('helllllllooooo', res)
       dispatch(setUser(newUser))
       newUser.token = token
       navigate('/myaccount')
@@ -36,5 +37,16 @@ export default function addUser(user, authUser, navigate) {
     })
     .finally(() => {
       dispatch(clearWaiting())
+    })
+}
+
+export function getUser(endpoint, token) {
+  return request
+    .get(rootUrl + endpoint)
+    .set('authorization', `Bearer ${token}`)
+    .set({ Accept: 'application/json' })
+    .then(res => {
+      console.log(res, res.body)
+      return res.body.users
     })
 }
