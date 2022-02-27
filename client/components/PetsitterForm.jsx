@@ -33,7 +33,7 @@ export default function PetSitterForm () {
 
     postListing(form)
       .then(() => {
-        navigate('/petsitter/profile/{id}')
+        navigate(`/petsitters/profiles/${form.id}`)
         return null
       })
       .catch(err => {
