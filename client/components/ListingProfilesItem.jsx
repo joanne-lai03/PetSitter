@@ -1,7 +1,7 @@
 import React from 'react'
 
-function ListingProfilesItem (props) {
-  console.log(props.listingProfile)
+export function ListingProfilesItem (props) {
+  // console.log(props.listingProfile)
   const listingProfiles = props.listingProfile
 
   return (
@@ -20,4 +20,3 @@ function ListingProfilesItem (props) {
   )
 }
 
-export default ListingProfilesItem
