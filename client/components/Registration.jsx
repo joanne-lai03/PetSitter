@@ -101,7 +101,7 @@ export default function Register () {
   )
 }
 
-{ /* <label htmlFor='firstName' className='label'>First Name</label>
+/* <label htmlFor='firstName' className='label'>First Name</label>
 {showAnyErrors('firstName')}
 <input
     className='form-box'
@@ -118,4 +118,4 @@ export default function Register () {
     name='lastName'
     onChange={formik.handleChange}
     value={formik.values.lastName}
-/> */ }
+/> */
