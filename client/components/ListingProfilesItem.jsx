@@ -1,6 +1,6 @@
 import React from 'react'
-
-export function ListingProfilesItem (props) {
+  
+  export function ListingProfilesItem (props) {
   // console.log(props.listingProfile)
   const listingProfiles = props.listingProfile
 

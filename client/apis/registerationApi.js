@@ -26,7 +26,6 @@ export default function addUser (user, authUser, navigate) {
     .set({ Accept: 'application/json' })
     .send(newUser)
     .then(() => {
-      console.log(newUser)
       dispatch(setUser(newUser))
       newUser.token = token
       navigate('/myaccount')
@@ -41,16 +40,18 @@ export default function addUser (user, authUser, navigate) {
 }
 
 export function getUser (authId, token) {
-  return request
-    .get(rootUrl)
-    .set('authorization', `Bearer ${token}`)
-    .set({ Accept: 'application/json' })
-    .then(res => {
-      const currentUser = res.body.users.filter(user => {
-        if (authId === user.auth0Id) {
-          return user
-        }
+  if (token) {
+    return request
+      .get(rootUrl)
+      .set('authorization', `Bearer ${token}`)
+      .set({ Accept: 'application/json' })
+      .then(res => {
+        const currentUser = res.body.users.filter(user => {
+          if (authId === user.auth0Id) {
+            return user
+          }
+        })
+        return currentUser
       })
-      return currentUser
-    })
+  }
 }
