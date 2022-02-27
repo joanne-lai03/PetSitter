@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { MyAccount } from './MyAccount'
+import MyAccount from './MyAccount'
 import Registeration from './Registration'
 
 export default function Login () {
