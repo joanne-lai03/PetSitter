@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 export default function PetSitterForm () {
   const navigate = useNavigate()
   const [form, setForm] = useState({
+    id: '',
     name: '',
     location: '',
     petNumber: '',
@@ -17,11 +18,10 @@ export default function PetSitterForm () {
     promoListing: ''
   })
 
-  function handleChange (event, id) {
+  function handleChange (event) {
     setForm(
       {
         ...form,
-        id,
         [event.target.name]: event.target.value
       })
   }

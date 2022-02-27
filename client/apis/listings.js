@@ -17,9 +17,26 @@ export function getListing () {
 
 // add listing
 export function postListing (listing) {
+  const newListing = {
+    id: listing.id,
+    name: listing.name,
+    location: listing.location,
+    petNumber: listing.petNumber,
+    petType: listing.petType,
+    petSize: listing.petSize,
+    homeType: listing.homeType,
+    serviceRate: listing.serviceRate,
+    availability: listing.availability,
+    description: listing.description,
+    promoListing: listing.promoListing
+
+  }
+  console.log('this is listing api', listing)
+  console.log('this is newListing api', newListing)
+
   return request
-    .post('api/v1/petsitters')
-    .send(listing)
+    .post('/api/v1/petsitters')
+    .send(newListing)
 }
 
 // dlelet listing
