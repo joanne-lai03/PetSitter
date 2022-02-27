@@ -1,7 +1,6 @@
 import React from 'react'
 
 function ListingProfilesItem (props) {
-  console.log(props.listingProfile)
   const listingProfiles = props.listingProfile
 
   return (

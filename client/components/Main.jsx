@@ -26,7 +26,7 @@ export default function Main() {
         </div>
         <div className='main-box-button'>
           <IfAuthenticated>
-            {!user.id
+            {user.id == null
               ? <> <Link to='/register' className='nav-register' onClick={handleRegister}>Resister Now !</Link>
                 <Link to='/' className='nav-register'>Find a pet sitter</Link>
               </>

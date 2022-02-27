@@ -5,7 +5,6 @@ export function getListing() {
   return request
     .get('api/v1/petsitters')
     .then(res => {
-      console.log('from api', res.body)
       return res.body
     })
   // << if you need MOCK DATA>>
@@ -30,8 +29,6 @@ export function postListing (listing) {
     promoListing: listing.promoListing
 
   }
-  console.log('this is listing api', listing)
-  console.log('this is newListing api', newListing)
 
   return request
     .post('/api/v1/petsitters')

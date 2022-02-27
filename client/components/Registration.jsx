@@ -13,7 +13,7 @@ const registerSchema = Yup.object().shape({
     .required('Sorry it\'s Required')
 })
 
-export default function Register() {
+export default function Register () {
   const authUser = useAuth0().user
   const navigate = useNavigate()
 

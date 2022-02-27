@@ -6,7 +6,7 @@ import { showError } from '../actions/error'
 
 const rootUrl = '/api/v1/users'
 
-export default function addUser (user, authUser, navigate) {
+export default function addUser(user, authUser, navigate) {
   const state = getState()
   const { token } = state.user
 
@@ -39,17 +39,19 @@ export default function addUser (user, authUser, navigate) {
     })
 }
 
-export function getUser (authId, token) {
-  return request
-    .get(rootUrl)
-    .set('authorization', `Bearer ${token}`)
-    .set({ Accept: 'application/json' })
-    .then(res => {
-      const currentUser = res.body.users.filter(user => {
-        if (authId === user.auth0Id) {
-          return user
-        }
+export function getUser(authId, token) {
+  if (token) {
+    return request
+      .get(rootUrl)
+      .set('authorization', `Bearer ${token}`)
+      .set({ Accept: 'application/json' })
+      .then(res => {
+        const currentUser = res.body.users.filter(user => {
+          if (authId === user.auth0Id) {
+            return user
+          }
+        })
+        return currentUser
       })
-      return currentUser
-    })
+  }
 }
