@@ -29,7 +29,6 @@ export default function PetSitterForm () {
   function handleSubmit (event) {
     event.preventDefault()
 
-    console.log('setForm :', setForm)
 
     postListing(form)
       .then(() => {

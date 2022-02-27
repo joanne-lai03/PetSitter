@@ -1,14 +1,14 @@
 const express = require('express')
 const router = express.Router()
-const checkJwt = require('../auth0')
+// const checkJwt = require('../auth0')
 const db = require('../db/petsitters')
 
 module.exports = router
 
 // Get listings for petsitters
-router.get('/:id', checkJwt, (req, res) => {
-  const auth0Id = req.params.id
-  db.listPetsitters(auth0Id)
+router.get('/', (req, res) => {
+  // const auth0Id = req.params.id
+  db.listPetsitters()
     .then((petsitters) => {
       res.json(petsitters)
       return null
