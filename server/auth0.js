@@ -30,6 +30,8 @@ const getAccessToken = async () => {
     .type('form')
   return body.access_token
 }
+
+
 const checkJwt = jwt({
   secret: jwks.expressJwtSecret({
     cache: true,

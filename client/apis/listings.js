@@ -3,7 +3,7 @@ import request from 'superagent'
 // router.get in petsitters
 export function getListing () {
   return request
-    .get('/api/v1/petsitters')
+    .get('api/v1/petsitters')
     .then(res => {
       console.log('from api', res.body)
       return res.body
@@ -18,7 +18,6 @@ export function getListing () {
 // add listing
 export function postListing (listing) {
   const newListing = {
-    id: listing.id,
     name: listing.name,
     location: listing.location,
     petNumber: listing.petNumber,
@@ -35,14 +34,15 @@ export function postListing (listing) {
   console.log('this is newListing api', newListing)
 
   return request
-    .post('/api/v1/petsitters')
+    .post('api/v1/petsitters')
     .send(newListing)
+    .then(res => res.body)
 }
 
 // dlelet listing
 export function deleteListing (id) {
   return request
-    .delete('/api/v1/petsitters')
+    .delete('api/v1/petsitters')
     .send({ id })
     .then(res => res.body)
 }
