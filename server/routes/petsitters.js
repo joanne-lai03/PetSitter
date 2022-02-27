@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
-
+const checkJwt = require('../auth0')
 const db = require('../db/petsitters')
 
 module.exports = router
 
 // Get listings for petsitters
-router.get('/', (req, res) => {
+router.get('/', checkJwt, (req, res) => {
   db.listPetsitters()
     .then((petsitters) => {
       res.json(petsitters)
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 })
 
 // Add new petsitters lising
-router.post('/', (req, res) => {
+router.post('/', checkJwt, (req, res) => {
   const { name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = req.body
   const listingData = { name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing }
   db.addListing(listingData)
@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
 })
 
 // Delete a single petsitters listing
-router.delete('/', (req, res) => {
+router.delete('/:id', checkJwt, (req, res) => {
   const { id } = req.body
   db.deleteListing(id)
     .then(() => {
