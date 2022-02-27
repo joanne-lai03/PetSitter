@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import { postListing } from '../apis/Listings'
+import { postListing } from '../apis/listings'
 import { useNavigate } from 'react-router-dom'
-
-// 🎈🎈Have to build or check API connection!!
 
 export default function PetSitterForm () {
   const navigate = useNavigate()
@@ -19,10 +17,11 @@ export default function PetSitterForm () {
     promoListing: ''
   })
 
-  function handleChange (event) {
+  function handleChange (event, id) {
     setForm(
       {
         ...form,
+        id,
         [event.target.name]: event.target.value
       })
   }
@@ -34,7 +33,7 @@ export default function PetSitterForm () {
 
     postListing(form)
       .then(() => {
-        navigate('/')
+        navigate('/petsitter/profile/{id}')
         return null
       })
       .catch(err => {
@@ -65,20 +64,23 @@ export default function PetSitterForm () {
         <p> Home Type:</p>
         <input name="homeType" onChange={handleChange} placeholder="castle"/>
 
+        <p> Availability: <a title="Write down the days you think you'll be available. This can be further discussed when the client makes an inquiry"><img src="https://i.ibb.co/smSqZXF/Screen-Shot-2022-02-25-at-3-02-05-PM.png" height="14px"/></a></p>
+        <input name="availability" onChange={handleChange} placeholder="all day errrdaay!"/>
+
         <p> Service and Rates:</p>
         <select id="serviceRate" name="serviceRate" onChange={handleChange} value={form.services}>
           <option value="-1">--- Select Service ---</option>
-          <option value="pet sitting">Pet Sitting - $15 per hour</option>
-          <option value="pet boarding">Pet Boarding - $40 per day</option>
-          <option value="pet grooming">Pet Grooming - discuss with pet sitter</option>
-          <option value="pet walking">Pet Walking - $10 per hour</option>
+          <option name="serviceRate1">Pet Sitting - $15 per hour</option>
+          <option name="serviceRate2">Pet Boarding - $40 per day</option>
+          <option name="serviceRate3">Pet Grooming - discuss with pet sitter</option>
+          <option name="serviceRate4">Pet Walking - $10 per hour</option>
         </select>
 
         <p> Description: <a title="Write a few sentences about who you are to attract potential clients!"><img src="https://i.ibb.co/smSqZXF/Screen-Shot-2022-02-25-at-3-02-05-PM.png" height="14px"/></a></p>
         <input name="description" onChange={handleChange} placeholder="I live on a lifestyle block. I have lots of grass and spare space for guinea pigs and"/>
 
-        <p> Promotion listing: <a title="Text will show up on the listings page"><img src="https://i.ibb.co/smSqZXF/Screen-Shot-2022-02-25-at-3-02-05-PM.png" height="14px"/></a></p>
-        <input name="promoListing" onChange={handleChange} placeholder="If you want someone to look after your guinea pig and rabbit, I'm your man!"/>
+        <p> Promotion listing: <a title="A sentence or two to grab your potential client's attention! This text that will show up in on the listings page"><img src="https://i.ibb.co/smSqZXF/Screen-Shot-2022-02-25-at-3-02-05-PM.png" height="14px"/></a></p>
+        <input name="promoListing" onChange={handleChange} placeholder="If you want someone to look after your furbaby, I'm your man!"/>
 
         <p><button type="submit" className='nav-register' onClick={handleSubmit} >Submit</button></p>
       </form>
