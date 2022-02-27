@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom'
 import { getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
-export default function Main() {
+export default function Main () {
   const register = getRegisterFn(useAuth0)
   const user = useSelector(state => state.user)
 
-  function handleRegister(event) {
+  function handleRegister (event) {
     event.preventDefault()
     register()
   }
@@ -26,11 +26,9 @@ export default function Main() {
         </div>
         <div className='main-box-button'>
           <IfAuthenticated>
-            {user.id == null
-              ? <> <Link to='/register' className='nav-register' onClick={handleRegister}>Resister Now !</Link>
-                <Link to='/' className='nav-register'>Find a pet sitter</Link>
-              </>
-              : <Link to='/petsitters' className='nav-register'>Find a pet sitter</Link>
+            {user.id === null
+              ? <Link to='/myaccount' className='nav-register' onClick={handleRegister}>Resister Now !</Link>
+              : <Link to='/petsitters' className='nav-register nav-petsitter'>Find a pet sitter</Link>
             }
           </IfAuthenticated>
           <IfNotAuthenticated>
