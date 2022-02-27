@@ -8,7 +8,7 @@ import { Routes, Route } from 'react-router-dom'
 import Nav from './Nav'
 import Main from './Main'
 import PetsitterForm from './PetsitterForm'
-import PetsitterProfiles from './ListingProfiles'
+import ListingProfiles from './ListingProfiles'
 import Registration from './Registration'
 import Listings from './Listings'
 
@@ -26,7 +26,7 @@ export default function App () {
           {/* 🎈 if you build your Componets comments out! this and check it's working */}
           <Route path='/petsitters' element={<Listings />} />
           <Route path='/petsitters/add' element={<PetsitterForm />} />
-          <Route path='/petsitters/profiles' element={<PetsitterProfiles />} />
+          <Route path='/petsitters/profiles' element={<ListingProfiles />} />
         </Routes>
       </div>
     </>
