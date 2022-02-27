@@ -13,8 +13,9 @@ export default function ListingProfiles (props) {
   const { id } = useParams
   const { children } = props
   // const listingProfiles = useSelector(state => state.listingProfiles)
-  // console.log('hey listing profiles', listingProfiles)
-  const dispatch = useDispatch()
+
+ // console.log('hey listing profiles', listingProfiles)
+  const dispatch = useDispatch() 
   // useEffect(() => {
   //   dispatch(fetchListingProfiles)
   // }, [])

@@ -12,21 +12,24 @@ const emptyUser = {
   location: ''
 }
 
-function saveUser(user = emptyUser) {
+function saveUser (user = emptyUser) {
   dispatch(setUser(user))
 }
 
-export async function cacheUser(useAuth0, navigate) {
-  const state = getState()
+export async function cacheUser (useAuth0, navigate) {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
 
   if (isAuthenticated) {
     try {
+      const state = getState()
+
       const token = await getAccessTokenSilently()
       const userinfo = await getUser(user.sub, token)
 
       const { id, name, description, location } = userinfo[0]
-
+      if (state.user.id === null && id === null) {
+        navigate('/register')
+      }
 
       const userToSave = {
         id,
@@ -47,24 +50,23 @@ export async function cacheUser(useAuth0, navigate) {
   }
 }
 
-export function getLoginFn(useAuth0) {
+export function getLoginFn (useAuth0) {
   return useAuth0().loginWithRedirect
 }
 
-export function getLogoutFn(useAuth0) {
+export function getLogoutFn (useAuth0) {
   return useAuth0().logout
 }
 
-export function getIsAuthenticated(useAuth0) {
+export function getIsAuthenticated (useAuth0) {
   return useAuth0().isAuthenticated
 }
 
-export function getRegisterFn(useAuth0) {
+export function getRegisterFn (useAuth0) {
   const { loginWithRedirect } = useAuth0()
-  const redirectUri = `${window.location.origin}/#/register`
+  const redirectUri = `${window.location.origin}/register`
   return () => loginWithRedirect({
     redirectUri,
     screen_hint: 'signup'
-    // scope: 'role:member'
   })
 }
