@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import PetsitterListingItem from './PetsitterListingItem'
+import ListingsItem from './ListingsItem'
 import React, { useEffect, useState } from 'react'
-import { getListing } from '../apis/petsittersListing'
+import { getListing } from '../apis/listings'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteListingFromList } from '../actions/petsitterListing'
+import { deleteListingFromList } from '../actions/listings'
 // import { fetchListing } from '../actions/listing'
 
 function PetsitterListing (props) {
@@ -80,10 +80,9 @@ function PetsitterListing (props) {
             </div>
             <div>
               <p>Near me in</p>
-              {/* <input onChange={(event) => searchBar(event.target.value)} id='searchValue' type="search" className="searchbar" placeholder='Input your area' name='searchValue' /> */}
               <div className="wrap">
                 <div className="searchbar-button">
-                  <input type="text" onChange={(event) => searchBar(event.target.value)} id='searchValue' type="search" className="searchbar" placeholder='Input your area' name='searchValue'></input>
+                  <input type="text" onChange={(event) => searchBar(event.target.value)} id='searchValue' className="searchbar" placeholder='Input your area' name='searchValue'></input>
                   <button type="submit" className="searchButton">
                     <i className="fa fa-search"></i>
                   </button>
@@ -106,14 +105,14 @@ function PetsitterListing (props) {
       {filterTxt.length === 0
         ? listings.map((listing) => {
           return <>
-            <PetsitterListingItem listing={listing} deleteFromList={deleteFromList}/>
+            <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
           </>
         })
         : listings
           .filter(listing => listing.location.toLowerCase().includes(filterTxt.toLowerCase()))
           .map((listing) => {
             return <>
-              <PetsitterListingItem listing={listing} deleteFromList={deleteFromList}/>
+              <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
             </>
           })
       }

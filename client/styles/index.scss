@@ -181,8 +181,9 @@ text-align: center;
   // display: block;
   margin-bottom: 1em;
   width: 200px;
-  height: 40px;
-  border: 3px orange solid;
+  height: 30px;
+  border: 2px orange solid;
+  outline: none;
 }
 
 .linkto-add-profile{
@@ -258,12 +259,13 @@ a.button-linktoaddprofile{
   margin: 0 auto;
   display: block;
   width: 230px;
-  height: 40px;
+  height: 30px;
   /* text-align: center; */
   border: solid 3px orange;
+  outline: none;
 }
 .searchButton {
-  height: 40px;
+  height: 36px;
   border: 3px orange solid;
   background: orange;
   color: #fff;

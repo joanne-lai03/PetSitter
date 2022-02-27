@@ -1,6 +1,6 @@
-import { FETCH_LISTING_SUCCESS, DELETELISTING_FROM_LIST_SUCCESS } from '../actions/petsitterListing'
+import { FETCH_LISTING_SUCCESS, DELETELISTING_FROM_LIST_SUCCESS } from '../actions/listings'
 
-function listing (state = [], action) {
+function listings (state = [], action) {
   switch (action.type) {
     case FETCH_LISTING_SUCCESS:
       return action.petsitters
@@ -13,4 +13,4 @@ function listing (state = [], action) {
   }
 }
 
-export default listing
+export default listings

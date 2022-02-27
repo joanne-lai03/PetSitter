@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 // import { useDispatch } from 'react-redux'
 // import { deleteListingFromList } from '../actions/petsitterListing'
 
-function PetsitterListingItem (props) {
+function ListingsItem (props) {
   const listing = props.listing
   const { id } = props.listing
 
@@ -42,4 +42,4 @@ function PetsitterListingItem (props) {
   )
 }
 
-export default PetsitterListingItem
+export default ListingsItem
