@@ -2,21 +2,12 @@ import { Link } from 'react-router-dom'
 import ListingsItem from './ListingsItem'
 import React, { useEffect, useState } from 'react'
 import { getListing } from '../apis/listings'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { deleteListingFromList } from '../actions/listings'
 // import { fetchListing } from '../actions/listing'
 
-function PetsitterListing (props) {
-  // console.log('props?', props)
-
-  // << Using redux >>
-  // const listings = useSelector(state => state.listing)
-  // console.log('listings', listings)
-
+function PetsitterListing () {
   const dispatch = useDispatch()
-  // useEffect(() => {
-  //   dispatch(fetchListing())
-  // }, [])
 
   // << Using useState >>
   const [listings, setListings] = useState([])
@@ -39,7 +30,6 @@ function PetsitterListing (props) {
     getListing()
       .then(apiResponse => {
         setListings(apiResponse)
-        // dispatch(clearWaiting)
         return null
       })
       .catch(err => {
@@ -47,50 +37,55 @@ function PetsitterListing (props) {
       })
   }
 
-  // << this is for service search bar >>
-  function selectService () {
-    console.log('hello')
-  }
-
-  // << this is for select pet >>
+  // << this is for select service and pet type >>
   const [selectPet, setSelectPet] = useState('')
 
   function setSelectPetBar (value) {
-    console.log('1', value)
+    console.log(value)
     setSelectPet(value)
+    console.log('hey', selectPet)
   }
 
   // << this is for location search bar >>
-  const [filterTxt, setfilterTxt] = useState('')
+  const [search, setSearch] = useState('')
+  const [results, setResults] = useState([])
 
-  function searchBar (text) {
-    setfilterTxt(text)
+  function handleChange (event) {
+    const searchTerm = event.target.value
+    console.log('handleChange', searchTerm)
+    setSearch(searchTerm)
   }
 
-  function submitButton () {
-    console.log('hey, it/s me')
-    searchBar(text)
+  function handleSubmit (event) {
+    event.preventDefault()
+    console.log('handle submit')
+    getListing(search)
+      .then(listings => {
+        setResults(listings)
+        return null
+      })
   }
 
   return (
     <>
       <div className="listing-image">
-        <img src="/images/listing-top.jpeg" alt=""/>
-        <div className ="listing-top">
+        <img src="/images/listing-top.jpeg" alt="" />
+        <div className="listing-top">
           <div>
             <p>I am looking for</p>
             <div className="listing-button">
-              <select value={selectPet} onChange={event => setSelectPetBar(event.target.value)} name="pet" className ="select-pet">
-                <option value="Pet Sitting">Pet Sitting</option>
-                <option value="Pet Boarding">Pet Boarding</option>
-                <option value="Pet Grooming">Pet Grooming</option>
-                <option value="Pet Walking">Pet Walking</option>
+              <select onChange={event => setSelectPetBar(event.target.value)} name="service" className ="select-pet">
+                <option>--- Select Service ---</option>
+                <option value="$20/day">Pet Sitting</option>
+                <option value="$30/day">Pet Boarding</option>
+                <option value="$40/day">Pet Grooming</option>
+                <option value="$50/day">Pet Walking</option>
               </select>
             </div>
             <div>
               <p>My pet type</p>
-              <p>{selectPet}</p>
-              <select value={selectPet} onChange={event => setSelectPetBar(event.target.value)} name="pet" className ="select-pet">
+              <select onChange={event => setSelectPetBar(event.target.value)} name="pet" className ="select-pet">
+                <option>--- Select Pet Type ---</option>
                 <option value="dog">Dog</option>
                 <option value="cat">Cat</option>
               </select>
@@ -99,7 +94,7 @@ function PetsitterListing (props) {
               <p>Near me in</p>
               <div className="wrap">
                 <div className="searchbar-button">
-                  <input onChange={(event) => searchBar(event.target.value) } type="text" id='searchValue' className="searchbar" placeholder='Input your area' name='searchValue'></input>
+                  <input onChange={handleChange} value={search} type="text" id='searchValue' className="searchbar" placeholder='Input your area' name='searchValue'></input>
                   <button onClick={(event) => submitButton()}type="submit" className="searchButton">
                     <i className="fa fa-search"></i>
                   </button>
@@ -119,26 +114,35 @@ function PetsitterListing (props) {
       {/* display all lists */}
       <p>Scroll down to browse Pet Sitters for Boarding and Sitting near you💗</p>
 
-      {listings
-        .filter(pet => pet.pet_type === 'dog')
-        .map((listing) => {
-          return <>
-            <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
-          </>
-        })
+      {/* search function : select service or pet type */}
+      { selectPet
+        ? listings
+          .filter(pet => pet.pet_type === selectPet || pet.service_rate === selectPet)
+          .map((listing) => {
+            return <>
+              <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
+            </>
+          })
+        : listings
+          .map((listing) => {
+            return <>
+              <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
+            </>
+          })
       }
 
-      {filterTxt.length === 0
+      {/* search function : location */}
+      {search.length === 0
         ? listings.map((listing) => {
           return <>
-            <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
+            <ListingsItem listing={listing} deleteFromList={deleteFromList} />
           </>
         })
         : listings
           .filter(listing => listing.location.toLowerCase().includes(filterTxt.toLowerCase()))
           .map((listing) => {
             return <>
-              <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
+              <ListingsItem listing={listing} deleteFromList={deleteFromList} />
             </>
           })
       }

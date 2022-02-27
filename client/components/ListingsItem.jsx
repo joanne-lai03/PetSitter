@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 function ListingsItem (props) {
   const listing = props.listing
-  console.log(listing)
+  // console.log(listing)
   const { id } = props.listing
 
   // const dispatch = useDispatch()

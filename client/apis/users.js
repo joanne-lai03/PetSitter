@@ -2,7 +2,7 @@ import request from 'superagent'
 
 const rootUrl = '/api/v1'
 
-export function getUsers() {
+export function getUsers () {
   return request
     .get(rootUrl + '/users')
     .then(res => {
@@ -10,13 +10,13 @@ export function getUsers() {
     })
 }
 
-export function addUser(user) {
+export function addUser (user) {
   return request
     .post(rootUrl + '/users')
     .send(user)
 }
 
-export function getUserRoles(id) {
+export function getUserRoles (id) {
   return request
     .get(`${rootUrl}/users/${id}`)
     .then(res => {
