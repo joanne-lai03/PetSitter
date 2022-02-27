@@ -4,7 +4,15 @@ import request from 'superagent'
 export function getListing () {
   return request
     .get('api/v1/petsitters')
-    .then((res) => res.body)
+    .then(res => {
+      console.log('from api', res.body)
+      return res.body
+    })
+  // << if you need MOCK DATA>>
+  // return Promise.resolve([{
+  //   id: 1,
+  //   name:'Ahmad' .....
+  // }])
 }
 
 // add listing
@@ -14,12 +22,10 @@ export function postListing (listing) {
     .send(listing)
 }
 
-// === stretch (delete) ===
+// dlelet listing
 export function deleteListing (id) {
-  const idForDeleteListing = { id }
-
   return request
     .delete('api/v1/petsitters')
-    .send(idForDeleteListing)
+    .send({ id })
     .then(res => res.body)
 }

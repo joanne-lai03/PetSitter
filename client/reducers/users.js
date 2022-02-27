@@ -9,7 +9,7 @@ const reducer = (state = initialState, action) => {
 
     case CLEAR_USERS:
       return []
-      
+
     default:
       return state
   }
