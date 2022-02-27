@@ -7,7 +7,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import Nav from './Nav'
 import Main from './Main'
 import PetsitterForm from './PetsitterForm'
-import PetsitterProfiles from './ListingProfiles'
+import ListingProfiles from './ListingProfiles'
 import Registration from './Registration'
 import Listings from './Listings'
 import Login from './Login'
@@ -26,7 +26,7 @@ export default function App() {
           <Route path='/myaccount' element={<Login />} />
           <Route path='/petsitters' element={<Listings />} />
           <Route path='/petsitters/add' element={<PetsitterForm />} />
-          <Route path='/petsitters/profiles' element={<PetsitterProfiles />} />
+          <Route path='/petsitters/profiles' element={<ListingProfiles />} />
         </Routes>
       </div>
     </>
