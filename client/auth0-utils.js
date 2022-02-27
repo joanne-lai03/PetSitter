@@ -1,13 +1,14 @@
 import { setUser } from './actions/user'
-// import { getUserRoles } from './apis/users'
-import { dispatch } from './store'
+import { dispatch, getState } from './store'
 
 const emptyUser = {
   auth0Id: '',
   email: '',
   name: '',
-  token: ''
-  // roles: []
+  token: '',
+  id: null,
+  description: '',
+  location: ''
 }
 
 function saveUser(user = emptyUser) {
@@ -15,18 +16,27 @@ function saveUser(user = emptyUser) {
 }
 
 export async function cacheUser(useAuth0, navigate) {
+  const state = getState()
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
+
   if (isAuthenticated) {
     try {
       const token = await getAccessTokenSilently()
-      // const roles = await getUserRoles(user.sub)
+      const { id, name, description, location } = state.user
+
       const userToSave = {
+        id,
         auth0Id: user.sub,
         email: user.email,
-        name: user.nickname,
-        token
-        // roles
+        name,
+        token,
+        description,
+        location
       }
+
+      console.log(userToSave)
+      console.log(state)
+
       saveUser(userToSave)
     } catch (err) {
       console.error(err)
@@ -53,7 +63,7 @@ export function getRegisterFn(useAuth0) {
   const redirectUri = `${window.location.origin}/#/register`
   return () => loginWithRedirect({
     redirectUri,
-    screen_hint: 'signup',
-    scope: 'role:member'
+    screen_hint: 'signup'
+    // scope: 'role:member'
   })
 }

@@ -11,6 +11,7 @@ import PetsitterForm from './PetsitterForm'
 import PetsitterProfiles from './PetsitterProfiles'
 import Registration from './Registration'
 import Listing from './Listing'
+import Login from './Login'
 
 export default function App() {
   const navigate = useNavigate()
@@ -23,8 +24,7 @@ export default function App() {
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/register' element={<Registration />} />
-          {/* <Route path='/profiles' element={<Profile />} /> */}
-          {/* 🎈 if you build your Componets comments out! this and check it's working */}
+          <Route path='/myaccount' element={<Login />} />
           <Route path='/petsitters' element={<Listing />} />
           <Route path='/petsitters/add' element={<PetsitterForm />} />
           <Route path='/petsitters/profiles' element={<PetsitterProfiles />} />

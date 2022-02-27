@@ -6,21 +6,18 @@ import { showError } from '../actions/error'
 
 const rootUrl = '/api/v1/users'
 
-export default function addUserv(user, authUser, navigate) {
+export default function addUser(user, authUser, navigate) {
+  const state = getState()
+  const { token } = state.user
+
   const newUser = {
     name: user.name,
     location: user.location,
     description: user.description,
     email: authUser.email,
-    auth0Id: authUser.sub
+    auth0Id: authUser.sub,
+    token
   }
-
-  console.log('From APi', user, authUser, navigate)
-
-  const storeState = getState()
-  const { token } = storeState.user
-
-  console.log('from addUser registeration', newUser)
 
   dispatch(setWaiting())
   return request
@@ -28,12 +25,10 @@ export default function addUserv(user, authUser, navigate) {
     .set('authorization', `Bearer ${token}`)
     .set({ Accept: 'application/json' })
     .send(newUser)
-    .then((res) => {
-      const newUser = res.body
-      console.log('from addUser registeration22222', newUser)
-      newUser.token = token
+    .then(() => {
       dispatch(setUser(newUser))
-      navigate('/')
+      newUser.token = token
+      navigate('/myaccount')
       return newUser
     })
     .catch((err) => {

@@ -33,6 +33,8 @@ function Nav() {
       <section className='nav-item'>
         <IfAuthenticated>
           <section className='sign'>
+            <Link to='/' className='nav-link'>Home</Link>
+            <Link to='/myaccount' className='nav-link'>my account</Link>
             <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
           </section>
         </IfAuthenticated>

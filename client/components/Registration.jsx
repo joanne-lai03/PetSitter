@@ -24,11 +24,11 @@ export default function Register() {
   const formik = useFormik({
     initialValues: {
       name: '',
-      email: '',
       location: '',
       description: ''
     },
     onSubmit: values => {
+      console.log(values)
       addUser(values, authUser, navigate)
     },
     validationSchema: registerSchema
