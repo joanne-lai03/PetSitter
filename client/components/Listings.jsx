@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom'
 import ListingsItem from './ListingsItem'
 import React, { useEffect, useState } from 'react'
 import { getListing } from '../apis/listings'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { deleteListingFromList } from '../actions/listings'
 // import { fetchListing } from '../actions/listing'
 
-function PetsitterListing (props) {
+function PetsitterListing(props) {
   // console.log('props?', props)
 
   // << Using redux >>
@@ -34,7 +34,7 @@ function PetsitterListing (props) {
       })
   }, [])
 
-  function deleteFromList (id) {
+  function deleteFromList(id) {
     dispatch(deleteListingFromList(id))
     getListing()
       .then(apiResponse => {
@@ -48,21 +48,21 @@ function PetsitterListing (props) {
   }
 
   // << this is for service search bar >>
-  function selectService () {
+  function selectService() {
     console.log('hello')
   }
   // << this is for location search bar >>
   const [filterTxt, setfilterTxt] = useState('')
 
-  function searchBar (text) {
+  function searchBar(text) {
     setfilterTxt(text)
   }
 
   return (
     <>
       <div className="listing-image">
-        <img src="/images/listing-top.jpeg" alt=""/>
-        <div className ="listing-top">
+        <img src="/images/listing-top.jpeg" alt="" />
+        <div className="listing-top">
           <div>
             <p>I am looking for</p>
             <div className="listing-button">
@@ -73,7 +73,7 @@ function PetsitterListing (props) {
             </div>
             <div>
               <p>My pet type</p>
-              <select name="pet" className ="select-pet">
+              <select name="pet" className="select-pet">
                 <option value="Dog">Dog</option>
                 <option value="Cat">Cat</option>
               </select>
@@ -105,14 +105,14 @@ function PetsitterListing (props) {
       {filterTxt.length === 0
         ? listings.map((listing) => {
           return <>
-            <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
+            <ListingsItem listing={listing} deleteFromList={deleteFromList} />
           </>
         })
         : listings
           .filter(listing => listing.location.toLowerCase().includes(filterTxt.toLowerCase()))
           .map((listing) => {
             return <>
-              <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
+              <ListingsItem listing={listing} deleteFromList={deleteFromList} />
             </>
           })
       }

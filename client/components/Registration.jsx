@@ -11,11 +11,9 @@ const registerSchema = Yup.object().shape({
     .min(2, 'This must be at least 2 characters long')
     .max(15, 'Sorry, this must be under 15 characters long')
     .required('Sorry it\'s Required')
-  // email: Yup.string().email(),
 })
 
 export default function Register() {
-  // const user = useSelector(state => state.user)
   const authUser = useAuth0().user
   const navigate = useNavigate()
 
@@ -31,7 +29,7 @@ export default function Register() {
     validationSchema: registerSchema
   })
 
-  function showAnyErrors(inputName) {
+  function showAnyErrors (inputName) {
     return formik.errors[inputName] && formik.touched[inputName]
       ? <p className='inputError'>{formik.errors[inputName]}</p>
       : null

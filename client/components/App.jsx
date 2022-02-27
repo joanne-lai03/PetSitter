@@ -4,7 +4,6 @@ import { cacheUser } from '../auth0-utils'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // 🎈components linked
-// import Registration from './Registration'
 import Nav from './Nav'
 import Main from './Main'
 import PetsitterForm from './PetsitterForm'
