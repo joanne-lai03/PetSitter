@@ -6,19 +6,21 @@ const db = require('../db/petsitters')
 module.exports = router
 
 // Get listings for petsitters
-router.get('/', checkJwt, (req, res) => {
-  db.listPetsitters()
+router.get('/:id', checkJwt, (req, res) => {
+  const auth0Id = req.params.id
+  db.listPetsitters(auth0Id)
     .then((petsitters) => {
       res.json(petsitters)
       return null
     })
     .catch((err) => {
-      res.status(500).send('DATABASE ERROR: ' + err.message)
+      console.error(err)
+      res.status(500).send(err.message)
     })
 })
 
 // Add new petsitters lising
-router.post('/', checkJwt, (req, res) => {
+router.post('/', (req, res) => {
   const { name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = req.body
   const listingData = { name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing }
   db.addListing(listingData)
@@ -33,7 +35,7 @@ router.post('/', checkJwt, (req, res) => {
 })
 
 // Delete a single petsitters listing
-router.delete('/:id', checkJwt, (req, res) => {
+router.delete('/:id', (req, res) => {
   const { id } = req.body
   db.deleteListing(id)
     .then(() => {

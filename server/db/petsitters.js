@@ -6,8 +6,9 @@ module.exports = {
   deleteListing
 }
 
-function listPetsitters (db = connection) {
+function listPetsitters (auth0Id, db = connection) {
   return db('petsitters')
+    .where('auth0_id', auth0Id)
     .select()
 }
 
