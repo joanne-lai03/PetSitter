@@ -7,11 +7,9 @@ import { deleteListingFromList } from '../actions/listings'
 // import { fetchListing } from '../actions/listing'
 
 function PetsitterListing (props) {
-  // console.log('props?', props)
 
   // << Using redux >>
   // const listings = useSelector(state => state.listing)
-  // console.log('listings', listings)
 
   const dispatch = useDispatch()
   // useEffect(() => {
@@ -49,7 +47,6 @@ function PetsitterListing (props) {
 
   // << this is for service search bar >>
   function selectService() {
-    console.log('hello')
   }
   // << this is for location search bar >>
   const [filterTxt, setfilterTxt] = useState('')

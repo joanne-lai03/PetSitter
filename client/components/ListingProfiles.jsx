@@ -11,7 +11,6 @@ import { getListing } from '../apis/listings'
 function ListingProfiles (props) {
   const { children } = props
   // const listingProfiles = useSelector(state => state.listingProfiles)
-  // console.log('hey listing profiles', listingProfiles)
   // const dispatch = useDispatch()
   // useEffect(() => {
   //   dispatch(fetchListingProfiles)
