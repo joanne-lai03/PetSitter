@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
 
+*
+
+
 html, 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -111,13 +114,21 @@ a {
 
 
 // Main screen 
-
-
+.main-box {
+ min-width: 500px;
+ background-color: #FFEDD5;
+ padding: 2rem;
+}
 
 .main-comment {
   text-align: center;
   line-height: 1.5;
+}
 
+.main-box-button{
+display: flex;
+justify-content: space-evenly;
+margin: 1rem;
 }
 
 .ping {

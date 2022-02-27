@@ -7,34 +7,29 @@ import { showError } from '../actions/error'
 const rootUrl = '/api/v1/users'
 
 export default function addUser (user, authUser, navigate) {
+  const state = getState()
+  const { token } = state.user
+
   const newUser = {
     name: user.name,
     location: user.location,
-    description: user.description
-    // email: authUser.email,
-    // auth0Id: authUser.sub
-    // 🎈if AuthUser setup finished comment out!
+    description: user.description,
+    email: authUser.email,
+    auth0Id: authUser.sub,
+    token
   }
 
-  console.log('From APi', user, authUser, navigate)
-  console.log('from addUser registeration', newUser)
-
-  const storeState = getState()
-  const { token } = storeState.user
-
   dispatch(setWaiting())
-
   return request
     .post(rootUrl)
     .set('authorization', `Bearer ${token}`)
-    .set(({ Accept: 'application/json' }).send(newUser))
-    .then((res) => {
-      console.log('from inside api', newUser, res.body)
-      const newUser = res.body
-      // newUser.isAdmin = isAdmin
-      // newUser.token = token
+    .set({ Accept: 'application/json' })
+    .send(newUser)
+    .then(() => {
+      console.log(newUser)
       dispatch(setUser(newUser))
-      navigate('/')
+      newUser.token = token
+      navigate('/myaccount')
       return newUser
     })
     .catch((err) => {
@@ -42,5 +37,20 @@ export default function addUser (user, authUser, navigate) {
     })
     .finally(() => {
       dispatch(clearWaiting())
+    })
+}
+
+export function getUser (authId, token) {
+  return request
+    .get(rootUrl)
+    .set('authorization', `Bearer ${token}`)
+    .set({ Accept: 'application/json' })
+    .then(res => {
+      const currentUser = res.body.users.filter(user => {
+        if (authId === user.auth0Id) {
+          return user
+        }
+      })
+      return currentUser
     })
 }
