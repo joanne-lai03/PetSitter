@@ -19,8 +19,6 @@ export default function Register() {
   const authUser = useAuth0().user
   const navigate = useNavigate()
 
-  // 🎃🎃🎃 We need to think about input Email instead Auth0.user.email data....
-
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -56,7 +54,6 @@ export default function Register() {
               onChange={formik.handleChange}
               value={formik.values.name}
             />
-
             <label htmlFor='location' className='label'>Your Location</label>
             {showAnyErrors('location')}
             <input

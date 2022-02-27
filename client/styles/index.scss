@@ -168,12 +168,13 @@ margin: 1rem;
 text-align: center;
  font-size: 24px;
  font-weight: bold;
+ margin: .5em 0;
 }
 
 .listing-button{
   display: flex;
   justify-content: center;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .lisiting-button-item{
@@ -186,11 +187,14 @@ text-align: center;
 }
 
 .searchbar {
-  text-align: center;
+  // text-align: center;
   margin: 0 auto;
-  display: block;
-  margin-top: 1em;
+  // display: block;
   margin-bottom: 1em;
+  width: 200px;
+  height: 30px;
+  border: 2px orange solid;
+  outline: none;
 }
 
 .linkto-add-profile{
@@ -242,4 +246,45 @@ a.button-linktoaddprofile{
 
 .button-checkprofile{
   margin-left:2em;
+  margin-top: 1em;
 }
+
+.fa-solid{
+  margin-right:10px;
+}
+
+.lists-ul-item li{
+  padding: 5px 0;
+}
+
+.fa-size{
+ font-size: 1.25em;
+ margin-top: .5em;
+}
+
+.fa-trash-alt{
+  margin-right: .5em;
+}
+
+.select-pet{
+  margin: 0 auto;
+  display: block;
+  width: 230px;
+  height: 30px;
+  /* text-align: center; */
+  border: solid 3px orange;
+  outline: none;
+}
+.searchButton {
+  height: 36px;
+  border: 3px orange solid;
+  background: orange;
+  color: #fff;
+}
+.searchbar-button {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+
+}
+

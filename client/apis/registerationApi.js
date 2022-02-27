@@ -6,7 +6,7 @@ import { showError } from '../actions/error'
 
 const rootUrl = '/api/v1/users'
 
-export default function addUser(user, authUser, navigate) {
+export default function addUser (user, authUser, navigate) {
   const state = getState()
   const { token } = state.user
 

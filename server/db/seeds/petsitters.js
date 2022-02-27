@@ -5,7 +5,6 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex('petsitters').insert([
         {
-
           id: 1,
           auth0_id: 'rowValue1',
           name: 'Claire',

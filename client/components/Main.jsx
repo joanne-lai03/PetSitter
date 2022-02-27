@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 import { getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
-export default function Main() {
+export default function Main () {
   const register = getRegisterFn(useAuth0)
 
-  function handleRegister(event) {
+  function handleRegister (event) {
     event.preventDefault()
     register()
   }
