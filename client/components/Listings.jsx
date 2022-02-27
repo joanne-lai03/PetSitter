@@ -53,7 +53,12 @@ function PetsitterListing (props) {
   }
 
   // << this is for select pet >>
-  const [selectPet, setSelectPet] = useState()
+  const [selectPet, setSelectPet] = useState('')
+
+  function setSelectPetBar (value) {
+    console.log('1', value)
+    setSelectPet(value)
+  }
 
   // << this is for location search bar >>
   const [filterTxt, setfilterTxt] = useState('')
@@ -75,19 +80,19 @@ function PetsitterListing (props) {
           <div>
             <p>I am looking for</p>
             <div className="listing-button">
-              <select value={selectPet} onChange={e => setSelectPet(e.target.value)} name="pet" className ="select-pet">
+              <select value={selectPet} onChange={event => setSelectPetBar(event.target.value)} name="pet" className ="select-pet">
                 <option value="Pet Sitting">Pet Sitting</option>
                 <option value="Pet Boarding">Pet Boarding</option>
-                <option value="Pet Boarding">Pet Boarding</option>
+                <option value="Pet Grooming">Pet Grooming</option>
                 <option value="Pet Walking">Pet Walking</option>
               </select>
             </div>
             <div>
               <p>My pet type</p>
               <p>{selectPet}</p>
-              <select value={selectPet} onChange={e => setSelectPet(e.target.value)} name="pet" className ="select-pet">
-                <option value="Dog">Dog</option>
-                <option value="Cat">Cat</option>
+              <select value={selectPet} onChange={event => setSelectPetBar(event.target.value)} name="pet" className ="select-pet">
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
               </select>
             </div>
             <div>
@@ -113,6 +118,15 @@ function PetsitterListing (props) {
 
       {/* display all lists */}
       <p>Scroll down to browse Pet Sitters for Boarding and Sitting near you💗</p>
+
+      {listings
+        .filter(pet => pet.pet_type === 'dog')
+        .map((listing) => {
+          return <>
+            <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
+          </>
+        })
+      }
 
       {filterTxt.length === 0
         ? listings.map((listing) => {

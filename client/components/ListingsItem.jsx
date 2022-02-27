@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 function ListingsItem (props) {
   const listing = props.listing
+  console.log(listing)
   const { id } = props.listing
 
   // const dispatch = useDispatch()
@@ -23,6 +24,7 @@ function ListingsItem (props) {
           <li>
             <h3><i className="fa-solid fa-user"></i>{listing.name}</h3>
             <ul className="lists-ul-item">
+              <li><i className="fa-solid fa-house"></i>{listing.pet_type}</li>
               <li><i className="fa-solid fa-house"></i>{listing.location}</li>
               <li><i className="fa-solid fa-money-check-dollar"></i>{listing.service_rate}</li>
               <li><i className="fa-solid fa-clock"></i>{listing.availability}</li>

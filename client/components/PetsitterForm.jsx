@@ -29,11 +29,12 @@ export default function PetSitterForm () {
   function handleSubmit (event) {
     event.preventDefault()
 
-    console.log('setForm :', setForm)
+    console.log('setForm :')
 
     postListing(form)
       .then(() => {
-        navigate(`/petsitters/profiles/${form.id}`)
+        navigate('/')
+        // navigate(`/petsitters/profiles/${form.id}`)
         return null
       })
       .catch(err => {
@@ -82,7 +83,7 @@ export default function PetSitterForm () {
         <p> Promotion listing: <a title="A sentence or two to grab your potential client's attention! This text that will show up in on the listings page"><img src="https://i.ibb.co/smSqZXF/Screen-Shot-2022-02-25-at-3-02-05-PM.png" height="14px"/></a></p>
         <input name="promoListing" onChange={handleChange} placeholder="If you want someone to look after your furbaby, I'm your man!"/>
 
-        <p><button type="submit" className='nav-register' onClick={handleSubmit} >Submit</button></p>
+        <p><button type="submit" className='nav-register' onClick={() => { handleSubmit() } }>Submit</button></p>
       </form>
     </div>
   )
