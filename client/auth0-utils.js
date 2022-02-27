@@ -24,9 +24,9 @@ export async function cacheUser(useAuth0, navigate) {
     try {
       const token = await getAccessTokenSilently()
       const userinfo = await getUser(user.sub, token)
-      console.log(userinfo)
 
-      const { id, name, description, location } = state.user
+      const { id, name, description, location } = userinfo[0]
+
 
       const userToSave = {
         id,
@@ -37,9 +37,6 @@ export async function cacheUser(useAuth0, navigate) {
         description,
         location
       }
-
-      // console.log(userToSave)
-      // console.log(state)
 
       saveUser(userToSave)
     } catch (err) {

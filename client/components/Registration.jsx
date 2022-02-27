@@ -28,7 +28,6 @@ export default function Register() {
       description: ''
     },
     onSubmit: values => {
-      console.log(values)
       addUser(values, authUser, navigate)
     },
     validationSchema: registerSchema

@@ -8,7 +8,7 @@ export default function Login() {
   return (
     <div>
       {
-        user.name
+        user.id
           ? (<MyAccount user={user} />)
           : (<Registeration user={user} />)
       }
