@@ -21,10 +21,14 @@ export default function Main () {
           <span>Would you like to becom pet sitter?</span><br />
         </div>
 
+        event.preventDefault()
+        register()
+
         <Link to='/register' className='nav-register' >Resister Now !</Link>
         {/* it needs to change for same Link as Nav Button */}
         {/* if you want to test remove "onClick={handleRegister}" parts */}
         <Link to='/' className='nav-register'>Find a pet sitter</Link>
+
         {/* have to change Link!!! */}
       </div>
     </section>
