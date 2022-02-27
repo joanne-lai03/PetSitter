@@ -27,6 +27,7 @@ export default function App () {
           <Route path='/petsitters' element={<Listings />} />
           <Route path='/petsitters/add' element={<PetsitterForm />} />
           <Route path='/petsitters/profiles/:id' element={<ListingProfiles />} />
+          {/* <Route path='/helpdesk' element={<AskHelp />} /> */}
         </Routes>
       </div>
     </>

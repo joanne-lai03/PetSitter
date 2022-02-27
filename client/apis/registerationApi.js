@@ -4,6 +4,15 @@ import { setWaiting, clearWaiting } from '../actions/waiting'
 import { setUser } from '../actions/user'
 import { showError } from '../actions/error'
 
+export const UPDATE_USER = 'UPDATE_USER'
+
+export function updateUserAccount (user) {
+  return {
+    type: UPDATE_USER,
+    user
+  }
+}
+
 const rootUrl = '/api/v1/users'
 
 export default function addUser (user, authUser, navigate) {
@@ -52,6 +61,25 @@ export function getUser (authId, token) {
           }
         })
         return currentUser
+      })
+  }
+}
+
+// working on🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨
+
+export function updateUser (authId, token) {
+  dispatch(setWaiting())
+  if (token) {
+    return request
+      .post(rootUrl)
+      .set('authorization', `Bearer ${token}`)
+      .set({ Accept: 'application/json' })
+      .then(res => res)
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+      .finally(() => {
+        dispatch(clearWaiting())
       })
   }
 }
