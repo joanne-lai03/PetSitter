@@ -12,7 +12,7 @@ exports.seed = function (knex) {
         },
         {
           id: 2,
-          auth0_id: 'auth0|61414f84d35ac900717bc280',
+          auth0_id: 'auth0|61414f84d35ac900717bc285',
           name: 'cattttttttt',
           email: 'cheeeessssseeeeee@email.nz',
           location: 'Panmure',
@@ -20,7 +20,7 @@ exports.seed = function (knex) {
         },
         {
           id: 3,
-          auth0_id: 'auth0|61414f84d35ac900717bc280',
+          auth0_id: 'auth0|61414f84d35ac900717bc283',
           name: 'Jinny',
           email: 'cheeeesssssasdfsdfasdfasdfasdeeeeee@email.nz',
           location: 'Mt.Wellington',

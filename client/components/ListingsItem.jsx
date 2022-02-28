@@ -18,7 +18,7 @@ function ListingsItem (props) {
     <>
       <div className="lists-all">
         <div className="lists-left">
-          <img className="lists-profile-pic" src="/images/sample.png" />
+          <img className="lists-profile-pic" src={`/images/profilephotos/${listing.name}.jpeg`} />
         </div>
         <ul className="lists-right">
           <li>
