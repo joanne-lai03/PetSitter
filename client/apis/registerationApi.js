@@ -49,6 +49,7 @@ export default function addUser (user, authUser, navigate) {
 }
 
 export function getUser (authId, token) {
+  dispatch(setWaiting())
   if (token) {
     return request
       .get(rootUrl)
@@ -61,6 +62,12 @@ export function getUser (authId, token) {
           }
         })
         return currentUser
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+      .finally(() => {
+        dispatch(clearWaiting())
       })
   }
 }

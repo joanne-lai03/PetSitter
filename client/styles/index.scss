@@ -270,7 +270,6 @@ a {
   padding: 0 0 8px 8px;
   border-radius: 20px;
   cursor: pointer;
-  
 }
 
 //🎨🎨🎨 Listing page
@@ -429,4 +428,15 @@ a.button-linktoaddprofile {
   text-align: center;
   display: block;
   margin: 0 auto;
+}
+
+// Waitindicator
+.waitIndicator {
+  position: fixed;
+  top: 30%;
+}
+
+.waitIndicator--img {
+  z-index: 5;
+  max-width: 80vw;
 }

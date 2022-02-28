@@ -1,7 +1,7 @@
 import request from 'superagent'
 
 // router.get in petsitters
-export function getListing() {
+export function getListing () {
   return request
     .get('/api/v1/petsitters')
     .then(res => {

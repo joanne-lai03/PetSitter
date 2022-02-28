@@ -11,6 +11,7 @@ import ListingProfiles from './ListingProfiles'
 import Registration from './Registration'
 import Listings from './Listings'
 import Login from './Login'
+import WaitIndicator from './WaitIndicator'
 
 export default function App () {
   const navigate = useNavigate()
@@ -20,6 +21,7 @@ export default function App () {
     <>
       <div className='app'>
         <Nav />
+        <WaitIndicator />
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/register' element={<Registration />} />
@@ -27,7 +29,6 @@ export default function App () {
           <Route path='/petsitters' element={<Listings />} />
           <Route path='/petsitters/add' element={<PetsitterForm />} />
           <Route path='/petsitters/profiles/:id' element={<ListingProfiles />} />
-          {/* <Route path='/helpdesk' element={<AskHelp />} /> */}
         </Routes>
       </div>
     </>

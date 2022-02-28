@@ -10,7 +10,7 @@ const initialState = {
   location: ''
 }
 
-export default function user(state = initialState, action) {
+export default function user (state = initialState, action) {
   switch (action.type) {
     case SET_USER:
       return action.user
