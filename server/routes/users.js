@@ -1,6 +1,6 @@
 const express = require('express')
 const jwtAuthz = require('express-jwt-authz')
-const { getUserRoles, checkJwt } = require('../auth0')
+const { checkJwt } = require('../auth0')
 
 const db = require('../db/users')
 const router = express.Router()
@@ -11,7 +11,6 @@ const checkAdmin = jwtAuthz(['read:my_private_route'], { customScopeKey: 'permis
 // POST /api/v1/users/protected
 router.post('/', async (req, res) => {
   const user = req.body
-  console.log('I changed userdate straight instead destructuring', user)
   try {
     await db.addUser(user)
     res.sendStatus(201)

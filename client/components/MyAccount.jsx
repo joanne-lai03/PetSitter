@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function MyAccount(props) {
+export default function MyAccount(props) {
   const { name, email, location } = props.user
 
   return (
