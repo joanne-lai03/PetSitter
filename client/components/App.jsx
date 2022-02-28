@@ -26,7 +26,7 @@ export default function App () {
           <Route path='/myaccount' element={<Login />} />
           <Route path='/petsitters' element={<Listings />} />
           <Route path='/petsitters/add' element={<PetsitterForm />} />
-          <Route path='/petsitters/profiles' element={<ListingProfiles />} />
+          <Route path='/petsitters/profiles/:id' element={<ListingProfiles />} />
         </Routes>
       </div>
     </>

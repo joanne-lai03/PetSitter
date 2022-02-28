@@ -29,23 +29,27 @@ function Nav() {
 
   return (
     <nav>
-      <h1 className='logo'>Petsitter</h1>
+      <div className='logo'>
+        <Link to='/' className='nav-link logo'>
+          <img className='logo-img' src='/images/logo_vector.svg' alt='PetsitterLogo' />
+          <h1 className='logo-text'>Petsitter</h1>
+        </Link>
+      </div>
       <section className='nav-item'>
         <IfAuthenticated>
           <section className='sign'>
             <Link to='/' className='nav-link'>Home</Link>
             <Link to='/myaccount' className='nav-link'>my account</Link>
+            <Link to='/petsitters' className='nav-link'>PetSitterList</Link>
             <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
           </section>
         </IfAuthenticated>
         <IfNotAuthenticated>
-          {/* <section className='nav-item'> */}
           <section className='sign'>
             <Link to='/' className='nav-link'>Home</Link>
             <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
             <a href='/register' onClick={handleRegister} className='nav-link nav-register'>Register</a>
           </section>
-          {/* </section> */}
         </IfNotAuthenticated>
       </section>
     </nav >

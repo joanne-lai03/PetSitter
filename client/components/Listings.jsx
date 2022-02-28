@@ -6,7 +6,9 @@ import { useDispatch } from 'react-redux'
 import { deleteListingFromList } from '../actions/listings'
 // import { fetchListing } from '../actions/listing'
 
+
 function PetsitterListing () {
+
   const dispatch = useDispatch()
 
   // << Using useState >>
@@ -50,6 +52,7 @@ function PetsitterListing () {
       [event.target.name]: event.target.value
 
     })
+
   }
 
   // << this is for location search bar >>

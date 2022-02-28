@@ -13,7 +13,7 @@ const registerSchema = Yup.object().shape({
     .required('Sorry it\'s Required')
 })
 
-export default function Register() {
+export default function Register () {
   const authUser = useAuth0().user
   const navigate = useNavigate()
 
@@ -36,51 +36,51 @@ export default function Register() {
   }
 
   return (
-    <>
-      <h2>Register Profile</h2>
-      <section className='flex-container centre-flex'>
-        <form onSubmit={formik.handleSubmit}>
-          <div className="field">
+    <section className='flex-container'>
+      <h2>Register Your Account</h2>
 
-            <label htmlFor='name' className='label'>Name</label>
-            {showAnyErrors('name')}
-            <input
-              className='form-box'
-              id='name'
-              name='name'
-              placeholder='Please write your Name...'
-              onChange={formik.handleChange}
-              value={formik.values.name}
-            />
-            <label htmlFor='location' className='label'>Your Location</label>
-            {showAnyErrors('location')}
-            <input
-              className='form-box'
-              id='location'
-              name='location'
-              onChange={formik.handleChange}
-              value={formik.values.location}
-            />
+      <form onSubmit={formik.handleSubmit} className='register_form'>
+        <div className="field input-tray">
 
-            <label htmlFor='description' className='label'>About yourself</label>
-            {showAnyErrors('description')}
-            <textarea
-              className='form-box'
-              id='description'
-              name='description'
-              onChange={formik.handleChange}
-              value={formik.values.description}
-            />
+          <label htmlFor='name' className='label'>Name</label>
+          {showAnyErrors('name')}
+          <input
+            className='form-box'
+            id='name'
+            name='name'
+            placeholder='Please write your Name...'
+            onChange={formik.handleChange}
+            value={formik.values.name}
+          />
+          <label htmlFor='location' className='label'>Your Location</label>
+          {showAnyErrors('location')}
+          <input
+            className='form-box'
+            id='location'
+            name='location'
+            onChange={formik.handleChange}
+            value={formik.values.location}
+          />
 
-          </div>
+          <label htmlFor='description' className='label'>About yourself</label>
+          {showAnyErrors('description')}
+          <textarea
+            className='form-box form-textarea'
+            id='description'
+            name='description'
+            onChange={formik.handleChange}
+            value={formik.values.description}
+          />
 
-          <button
-            className='submit profile-submit'
-            type='submit'
-          >Register</button>
+        </div>
 
-        </form>
-      </section>
-    </>
+        <button
+          className='registerSubmit nav-register'
+          type='submit'
+        >Register</button>
+
+      </form>
+    </section>
+
   )
 }
