@@ -10,7 +10,7 @@ export default function ListingProfiles (props) {
   useEffect(() => {
     getListing()
       .then(apiResponse => {
-        setListingProfile(apiResponse.find(obj => obj.id === Number(id))) //find only the one that matches
+        setListingProfile(apiResponse.find(obj => obj.id === Number(id))) // find only the one that matches
         return null
       })
       .catch(err => {
@@ -19,14 +19,11 @@ export default function ListingProfiles (props) {
   }, [])
 
   return (
-    <div className='listingProfile'>
-      <>
-        <ListingProfilesItem
-          listingProfile={listingprofile}
-        />
-      </>
-
-    </div>
+    <>
+      <ListingProfilesItem
+        listingProfile={listingprofile}
+      />
+    </>
 
   )
 }

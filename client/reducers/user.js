@@ -1,4 +1,4 @@
-import { SET_USER, CLEAR_USER } from '../actions/user'
+import { SET_USER, CLEAR_USER, PETCH_USER } from '../actions/user'
 
 const initialState = {
   id: null,
@@ -10,9 +10,12 @@ const initialState = {
   location: ''
 }
 
-export default function user(state = initialState, action) {
+export default function user (state = initialState, action) {
   switch (action.type) {
     case SET_USER:
+      return action.user
+
+    case PETCH_USER:
       return action.user
 
     case CLEAR_USER:
