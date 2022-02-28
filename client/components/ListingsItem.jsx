@@ -28,7 +28,6 @@ function ListingsItem (props) {
               <li><i className="fa-solid fa-bone"></i><span className="profile-span">Pet type:</span>  {listing.pet_type}</li>
               <li><i className="fa-solid fa-money-check-dollar"></i><span className="profile-span">Service rate:</span>  {listing.service_rate}</li>
               <li><i className="fa-solid fa-clock"></i><span className="profile-span">Availability:</span>  {listing.availability}</li>
-              <li><i className="fa-solid fa-dog"></i><span className="profile-span">Accept pet size:</span>  {listing.pet_size}</li>
               <li><i className="fa-solid fa-hand-holding-heart"></i><span className="profile-span">About me:</span>  {listing.promo_listing}</li>
             </ul>
             <Link to={`/petsitters/profiles/${listing.id}`} className="button-orange button-checkprofile">Check profile</Link>

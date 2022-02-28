@@ -30,10 +30,7 @@ export function ListingProfilesItem (props) {
         <p className='description'>Description: {listingProfiles.description}</p>
       </div>
 
-      <div className="neko-box-d ">
-        <div className="neko-wrap-b">
-          <div className="neko-box-b">・x・</div>
-        </div>
+      <div className="profile-container">
         <h3>Service & Avialability </h3>
         <p className='service_rate'><i className="fa-solid fa-money-check-dollar"></i>Service rate: {listingProfiles.service_rate}</p>
         <p className='availability'><i className="fa-solid fa-clock"></i>Availability: {listingProfiles.availability}</p>

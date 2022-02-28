@@ -99,6 +99,7 @@ function Listings () {
                 <option value="cat">Cat</option>
                 <option value="guinea pig">Guinea pig</option>
                 <option value="rabbit">Rabbits</option>
+                <option value="rabbit">Sheep</option>
               </select>
             </div>
             <div>

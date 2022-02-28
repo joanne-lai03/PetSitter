@@ -58,6 +58,7 @@ a {
 .nav-item {
   width: 50%;
   text-align: right;
+  font-weight: bold;
 }
 .nav-register {
   display: inline-block;
@@ -308,9 +309,9 @@ a.button-linktoaddprofile:hover{
 .lists-all {
     display: flex;
     width: 1000px;
-    border: 1px solid #333;
     background-color: #F6F6F6;
     margin: -40px 0;
+    border: 2px solid #fff3dd;
 
 }
 
@@ -342,7 +343,7 @@ border: 1px solid #fb923c;
 
 .button-checkprofile {
   margin-left: 2em;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   margin-top: 1em;
 }
 .lists-left{
@@ -355,6 +356,8 @@ border: 1px solid #fb923c;
 
 .lists-profile-pic{
   margin-left: 10px;
+  width: 80%;
+  border-radius: 50%;
 }
 
 .fa-solid {
@@ -501,7 +504,7 @@ border: 1px solid #fb923c;
   position: relative;
   margin: 4em auto 3em;
   padding: 20px 30px;
-  width: 80%; 
+  width: 60%; 
   background: #fdf5e6; 
   color: #333333; 
   // font-weight: bold; 
@@ -547,8 +550,8 @@ border: 1px solid #fb923c;
   position: relative;
   margin: 3em auto;
   padding: 20px 50px 20px;
-  width: 80%; 
-  background: #F6E3AE; 
+  width: 60%; 
+  background: #fff3dd;; 
   color: #333333; 
   // font-weight: bold; 
   // text-align: center; 
