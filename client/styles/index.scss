@@ -18,15 +18,6 @@ li {
   list-style: none;
 }
 
-.container {
-  border-style: solid;
-  border: flex;
-  border-color: #fb923c;
-  background-color: #fce5d2;
-  box-sizing: content-box;
-  width: 100%;
-}
-
 nav {
   display: flex;
   align-items: center;
@@ -381,4 +372,34 @@ a.button-linktoaddprofile {
 
 .form-font {
   font-family: "Montserrat", sans-serif;
+}
+//Listing Profile Styles
+
+.listing-profile {
+  margin: auto
+}
+
+.container {
+  border-style: solid;
+  border: flex;
+  border-color: #fb923c;
+  background-color: #fce5d2;
+  box-sizing: content-box;
+  width: 100%;
+  border-radius: 20px
+}
+
+.profile-picture {
+  border-radius: 50%;
+  width: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  align-items: stretch;
 }
