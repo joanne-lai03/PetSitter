@@ -13,6 +13,7 @@ import Listings from './Listings'
 import Login from './Login'
 import WaitIndicator from './WaitIndicator'
 import MyAccountEdit from './MyAccountEdit'
+import ContectBtn from './ContectBtn'
 
 export default function App () {
   const navigate = useNavigate()
@@ -23,6 +24,7 @@ export default function App () {
       <div className='app'>
         <Nav />
         <WaitIndicator />
+        <ContectBtn />
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/register' element={<Registration />} />

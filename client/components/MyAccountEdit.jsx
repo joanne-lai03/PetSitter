@@ -41,7 +41,7 @@ export default function MyAccountEdit () {
   }
 
   return (
-    <section className='flex-container'>
+    <section className='flex-myaccountContainer'>
       <h1>MyAccount Edit</h1>
       <form onSubmit={formik.handleSubmit} className='register_form'>
         <div className="field input-tray">
