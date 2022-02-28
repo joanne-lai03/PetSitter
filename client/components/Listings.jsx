@@ -11,19 +11,25 @@ function PetsitterListing () {
 
   // << Using useState >>
   const [listings, setListings] = useState([])
+  const [search, setSearch] = useState('')
+  // const [results, setResults] = useState([])
+  const [dropdownLists, setDropdownLists] = useState({
+    service: '',
+    pet: ''
+  })
 
+  console.log(dropdownLists)
   useEffect(() => {
-    // dispatch()
+    console.log('useEffectTriger')
     getListing()
       .then(apiResponse => {
         setListings(apiResponse)
-        // dispatch(clearWaiting)
         return null
       })
       .catch(err => {
         console.error(err)
       })
-  }, [])
+  }, [dropdownLists])
 
   function deleteFromList (id) {
     dispatch(deleteListingFromList(id))
@@ -38,31 +44,34 @@ function PetsitterListing () {
   }
 
   // << this is for select service and pet type >>
-  const [selectPet, setSelectPet] = useState('')
+  function setSelectPetBar (event) {
+    setDropdownLists({
+      ...dropdownLists,
+      [event.target.name]: event.target.value
 
-  function setSelectPetBar (value) {
-    console.log(value)
-    setSelectPet(value)
-    console.log('hey', selectPet)
+    })
   }
 
   // << this is for location search bar >>
-  const [search, setSearch] = useState('')
-  const [results, setResults] = useState([])
-
   function handleChange (event) {
     const searchTerm = event.target.value
-    console.log('handleChange', searchTerm)
     setSearch(searchTerm)
   }
 
   function handleSubmit (event) {
     event.preventDefault()
-    console.log('handle submit')
+    console.log('drop', dropdownLists)
+    console.log('search', search)
+
     getListing(search)
       .then(listings => {
-        setResults(listings)
+        const filterdata = listings.filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()) && listing.pet_type === dropdownLists.pet && listing.service_rate === dropdownLists.service)
+        setListings(filterdata)
+
         return null
+      })
+      .catch(err => {
+        console.error(err)
       })
   }
 
@@ -74,8 +83,8 @@ function PetsitterListing () {
           <div>
             <p>I am looking for</p>
             <div className="listing-button">
-              <select onChange={event => setSelectPetBar(event.target.value)} name="service" className ="select-pet">
-                <option>--- Select Service ---</option>
+              <select onChange={ setSelectPetBar} value={dropdownLists.service} name="service" className ="select-pet">
+                <option value="-1">--- Select Service ---</option>
                 <option value="$20/day">Pet Sitting</option>
                 <option value="$30/day">Pet Boarding</option>
                 <option value="$40/day">Pet Grooming</option>
@@ -84,8 +93,8 @@ function PetsitterListing () {
             </div>
             <div>
               <p>My pet type</p>
-              <select onChange={event => setSelectPetBar(event.target.value)} name="pet" className ="select-pet">
-                <option>--- Select Pet Type ---</option>
+              <select onChange={setSelectPetBar} value={dropdownLists.pet} name="pet" className ="select-pet">
+                <option value="-1">--- Select Pet Type ---</option>
                 <option value="dog">Dog</option>
                 <option value="cat">Cat</option>
               </select>
@@ -94,8 +103,18 @@ function PetsitterListing () {
               <p>Near me in</p>
               <div className="wrap">
                 <div className="searchbar-button">
-                  <input onChange={handleChange} value={search} type="text" id='searchValue' className="searchbar" placeholder='Input your area' name='searchValue'></input>
-                  <button onClick={(event) => submitButton()}type="submit" className="searchButton">
+                  <input
+                    onChange={handleChange}
+                    value={search}
+                    type="text"
+                    id='searchValue'
+                    className="searchbar"
+                    placeholder='Input your area'
+                    name='searchValue'></input>
+                  <button
+                    onClick={handleSubmit}
+                    type="submit"
+                    className="searchButton">
                     <i className="fa fa-search"></i>
                   </button>
                 </div>
@@ -115,9 +134,9 @@ function PetsitterListing () {
       <p>Scroll down to browse Pet Sitters for Boarding and Sitting near you💗</p>
 
       {/* search function : select service or pet type */}
-      { selectPet
+      { dropdownLists
         ? listings
-          .filter(pet => pet.pet_type === selectPet || pet.service_rate === selectPet)
+          .filter(pet => pet.pet_type === dropdownLists.pet && pet.service_rate === dropdownLists.serice)
           .map((listing) => {
             return <>
               <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
@@ -139,7 +158,7 @@ function PetsitterListing () {
           </>
         })
         : listings
-          .filter(listing => listing.location.toLowerCase().includes(filterTxt.toLowerCase()))
+          // .filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()))
           .map((listing) => {
             return <>
               <ListingsItem listing={listing} deleteFromList={deleteFromList} />
