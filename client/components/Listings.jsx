@@ -44,10 +44,6 @@ function Listings () {
       })
   }
 
-
-  // << this is for service search bar >>
-  function selectService () {
-
   // << this is for select service and pet type >>
   function setSelectPetBar (event) {
     setDropdownLists({
@@ -77,7 +73,6 @@ function Listings () {
       .catch(err => {
         console.error(err)
       })
-
   }
 
   return (
