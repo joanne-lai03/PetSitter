@@ -607,12 +607,25 @@ a.button-linktoaddprofile:hover {
 }
 
 //Helpdesk page
+
 .helpdesk-title {
   text-align: center;
 }
 .helpdesk-logo {
   width: 60px;
 }
+.helpdesk-dropdown {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  margin: 0.5rem 0 2rem 0;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background-color: var(--color-lightorange);
+}
+
+//  main profile
+
 .mainprofile-right {
   // text-align: center;
   line-height: 2;

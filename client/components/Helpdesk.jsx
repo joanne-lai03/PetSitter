@@ -18,6 +18,7 @@ export default function Helpdesk () {
         <form onSubmit={handleSubmit} className='flex-myaccountContainer'>
           <label htmlFor='name'><i className="fa-solid icon_deco fa-user"></i>Name</label>
           <input
+            className='form-box'
             type='text'
             name='name'
             id='full-name'
@@ -34,6 +35,8 @@ export default function Helpdesk () {
             id='email'
             type='email'
             name='email'
+            className='form-box'
+            placeholder='email address'
           />
           <ValidationError
             prefix='Email'
@@ -41,7 +44,7 @@ export default function Helpdesk () {
             errors={state.errors}
           />
           <label htmlFor='help'><i className="fa-solid icon_deco fa-circle-question"></i>What we can help?</label>
-          <select name='help' id='help' required=''>
+          <select className='helpdesk-dropdown' name='help' id='help' required=''>
             <option value="-1">--- Select Service ---</option>
             <option value="Pet Sitting">Pet Sitting</option>
             <option value="Pet Walking">Pet Walking</option>
@@ -53,6 +56,7 @@ export default function Helpdesk () {
           </select>
           <label htmlFor='message'><i className="fa-solid icon_deco fa-message"></i>Message</label>
           <textarea
+            className='form-textarea form-box'
             id='message'
             name='message'
           />
@@ -61,7 +65,7 @@ export default function Helpdesk () {
             field='message'
             errors={state.errors}
           />
-          <button type='submit' className='common-button ' disabled={state.submitting}>
+          <button type='submit' className='registerSubmit common-button ' disabled={state.submitting}>
         Submit
           </button>
         </form>
