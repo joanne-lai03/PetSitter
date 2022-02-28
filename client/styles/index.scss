@@ -346,9 +346,8 @@ a {
   width: 400px;
   padding: 2em;
   text-align: center;
-  border-radius: 4px;  
-  margin: -60px 0 ;
-
+  border-radius: 4px;
+  margin: -60px 0;
 }
 
 a.button-linktoaddprofile {
@@ -365,12 +364,11 @@ a.button-linktoaddprofile {
 }
 
 .lists-all {
-    display: flex;
-    width: 1000px;
-    border: 1px solid #333;
-    background-color: #F6F6F6;
-    margin: -40px 0;
-
+  display: flex;
+  width: 1000px;
+  border: 1px solid #333;
+  background-color: #f6f6f6;
+  margin: -40px 0;
 }
 
 .lists-right {
@@ -428,6 +426,7 @@ a.button-linktoaddprofile {
   background: orange;
   color: #fff;
 }
+
 .searchbar-button {
   text-align: center;
   display: block;
