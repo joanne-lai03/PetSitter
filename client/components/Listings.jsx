@@ -128,8 +128,8 @@ function Listings () {
                   <i className="fa fa-search"></i>Search
                 </button>
               </div>
-            </div>
 
+            </div>
           </div>
         </div>
       </div>

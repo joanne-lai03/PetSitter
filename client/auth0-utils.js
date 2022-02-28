@@ -1,4 +1,5 @@
 import { setUser } from './actions/user'
+// import { setWaiting, clearWaiting } from './actions/waiting'
 import { getUser } from './apis/registerationApi'
 import { dispatch, getState } from './store'
 
@@ -18,7 +19,6 @@ function saveUser (user = emptyUser) {
 
 export async function cacheUser (useAuth0, navigate) {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
-
   if (isAuthenticated) {
     try {
       const state = getState()
@@ -27,6 +27,7 @@ export async function cacheUser (useAuth0, navigate) {
       const userinfo = await getUser(user.sub, token)
 
       const { id, name, description, location } = userinfo[0]
+
       if (state.user.id === null && id === null) {
         navigate('/register')
       }
@@ -45,8 +46,6 @@ export async function cacheUser (useAuth0, navigate) {
     } catch (err) {
       console.error(err)
     }
-  } else {
-    saveUser()
   }
 }
 
