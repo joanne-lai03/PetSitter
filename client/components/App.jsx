@@ -11,6 +11,7 @@ import ListingProfiles from './ListingProfiles'
 import Registration from './Registration'
 import Listings from './Listings'
 import Login from './Login'
+import Footer from './Footer'
 
 export default function App () {
   const navigate = useNavigate()
@@ -28,6 +29,7 @@ export default function App () {
           <Route path='/petsitters/add' element={<PetsitterForm />} />
           <Route path='/petsitters/profiles/:id' element={<ListingProfiles />} />
         </Routes>
+        <Footer />
       </div>
     </>
   )

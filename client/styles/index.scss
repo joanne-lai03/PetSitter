@@ -381,3 +381,21 @@ a.button-linktoaddprofile {
 .form-font {
   font-family: "Montserrat", sans-serif;
 }
+
+.footer{
+  margin-top: 1rem;
+  // text-align: right;
+  padding: 1rem;
+  background-color: #503500;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.footer-links {
+  text-align: right;
+  height: 40px;
+  padding: 0;
+  margin-right: 0.5rem;
+}
