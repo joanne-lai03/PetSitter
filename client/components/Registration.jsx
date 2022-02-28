@@ -36,7 +36,7 @@ export default function Register () {
   }
 
   return (
-    <section className='flex-container'>
+    <section className='flex-myaccountContainer'>
       <h2>Register Your Account</h2>
 
       <form onSubmit={formik.handleSubmit} className='register_form'>
