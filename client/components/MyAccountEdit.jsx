@@ -1,8 +1,7 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import addUser from '../apis/registerationApi'
-import { useAuth0 } from '@auth0/auth0-react'
-
+import { useSelector } from 'react-redux'
+import { useNavigate, Link } from 'react-router-dom'
+import { updateUser } from '../apis/registerationApi'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
@@ -10,11 +9,17 @@ const registerSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'This must be at least 2 characters long')
     .max(15, 'Sorry, this must be under 15 characters long')
+    .required('Sorry it\'s Required'),
+  location: Yup.string()
+    .required('Sorry it\'s Required'),
+  description: Yup.string()
+    .min(10, 'Could you explain yourself more? 😸')
     .required('Sorry it\'s Required')
 })
 
-export default function Register () {
-  const authUser = useAuth0().user
+export default function MyAccountEdit () {
+  const state = useSelector(state => state.user)
+
   const navigate = useNavigate()
 
   const formik = useFormik({
@@ -24,7 +29,7 @@ export default function Register () {
       description: ''
     },
     onSubmit: values => {
-      addUser(values, authUser, navigate)
+      updateUser(values, state, navigate)
     },
     validationSchema: registerSchema
   })
@@ -37,8 +42,7 @@ export default function Register () {
 
   return (
     <section className='flex-container'>
-      <h2>Register Your Account</h2>
-
+      <h1>MyAccount Edit</h1>
       <form onSubmit={formik.handleSubmit} className='register_form'>
         <div className="field input-tray">
 
@@ -48,7 +52,7 @@ export default function Register () {
             className='form-box'
             id='name'
             name='name'
-            placeholder='Please write your Name...'
+            placeholder={state.name}
             onChange={formik.handleChange}
             value={formik.values.name}
           />
@@ -58,6 +62,7 @@ export default function Register () {
             className='form-box'
             id='location'
             name='location'
+            placeholder={state.location}
             onChange={formik.handleChange}
             value={formik.values.location}
           />
@@ -68,19 +73,24 @@ export default function Register () {
             className='form-box form-textarea'
             id='description'
             name='description'
+            placeholder={state.description}
             onChange={formik.handleChange}
             value={formik.values.description}
           />
 
         </div>
-
-        <button
-          className='registerSubmit common-button'
-          type='submit'
-        >Register</button>
+        <div className='Editbuttons'>
+          <Link to='/myaccount' className='Editbuttons-link'
+          ><button
+              className='common-button opposit-button'
+            >Back</button></Link>
+          <button
+            className='common-button '
+            type='submit'
+          >Edit</button>
+        </div>
 
       </form>
     </section>
-
   )
 }

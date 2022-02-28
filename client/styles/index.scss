@@ -11,6 +11,35 @@
   --color-lightorange: #ffedd5;
 }
 
+// common unit
+.common-button {
+  background-color: var(--color-orange);
+  color: #fff;
+  outline: none;
+  text-decoration: none;
+  width: 10rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 2.5rem;
+  cursor: pointer;
+  transition: background-color 200ms ease-in-out, box-shadow 200ms ease-in-out;
+}
+.common-button:hover {
+  box-shadow: rgba(251, 146, 60, 0.3) 0px 10px 20px,
+    rgba(251, 146, 60, 0.15) 0px 15px 12px;
+}
+.common-button:focus {
+  background-color: #fff;
+  color: var(--color-orange);
+  border: var(--color-orange) solid 1px;
+}
+
+.opposit-button {
+  background-color: #fff;
+  color: var(--color-orange);
+  border: var(--color-orange) solid 1px;
+}
+
 html,
 body {
   font-family: "Montserrat", sans-serif;
@@ -270,6 +299,20 @@ a {
   padding: 0 0 8px 8px;
   border-radius: 20px;
   cursor: pointer;
+}
+
+//🎨🎨🎨 myaccount Edit page
+
+.Editbuttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.Editbuttons .Editbuttons-link {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
 }
 
 //🎨🎨🎨 Listing page

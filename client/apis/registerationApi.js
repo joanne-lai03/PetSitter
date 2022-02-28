@@ -1,7 +1,7 @@
 import request from 'superagent'
 import { dispatch, getState } from '../store'
 import { setWaiting, clearWaiting } from '../actions/waiting'
-import { setUser } from '../actions/user'
+import { setUser, patchUser } from '../actions/user'
 import { showError } from '../actions/error'
 
 export const UPDATE_USER = 'UPDATE_USER'
@@ -72,21 +72,33 @@ export function getUser (authId, token) {
   }
 }
 
-// working on🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨
-
-export function updateUser (authId, token) {
-  dispatch(setWaiting())
-  if (token) {
-    return request
-      .post(rootUrl)
-      .set('authorization', `Bearer ${token}`)
-      .set({ Accept: 'application/json' })
-      .then(res => res)
-      .catch((err) => {
-        dispatch(showError(err.message))
-      })
-      .finally(() => {
-        dispatch(clearWaiting())
-      })
+export function updateUser (user, userState, navigate) {
+  const { email, auth0Id, token } = userState
+  const newUser = {
+    name: user.name,
+    location: user.location,
+    description: user.description,
+    email,
+    auth0Id,
+    token
   }
+
+  dispatch(setWaiting())
+  return request
+    .patch(rootUrl)
+    .set('authorization', `Bearer ${token}`)
+    .set({ Accept: 'application/json' })
+    .send(newUser)
+    .then(() => {
+      dispatch(patchUser(newUser))
+      // newUser.token = token
+      navigate('/myaccount')
+      return newUser
+    })
+    .catch((err) => {
+      dispatch(showError(err.message))
+    })
+    .finally(() => {
+      dispatch(clearWaiting())
+    })
 }

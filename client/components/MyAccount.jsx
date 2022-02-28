@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function MyAccount (props) {
   const { name, email, location, description } = props.user
@@ -13,7 +14,7 @@ export default function MyAccount (props) {
         <li><i className="fa-solid icon_deco fa-kiwi-bird"></i><span>introduce</span><p className='descriptionP'> {description} </p></li>
       </ul>
       <div className="changeMyaccount">
-        <a className='linkBtn'><i className="fa-solid fa-pen-to-square fa-size icon_deco "></i></a>
+        <Link className='linkBtn' to='/myaccount/edit'><i className="fa-solid fa-pen-to-square fa-size icon_deco "></i></Link>
         <a className='linkBtn'><i className="fa-solid fa-trash-alt fa-size icon_deco "></i></a>
       </div>
     </section >
