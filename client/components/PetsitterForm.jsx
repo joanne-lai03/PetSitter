@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { postListing } from '../apis/listings'
+import { postListing } from '../apis/Listings'
 import { useNavigate } from 'react-router-dom'
 
 export default function PetSitterForm () {

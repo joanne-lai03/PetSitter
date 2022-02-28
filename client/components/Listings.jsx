@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import ListingsItem from './ListingsItem'
 import React, { useEffect, useState } from 'react'
-import { getListing } from '../apis/listings'
+import { getListing } from '../apis/Listings'
 import { useDispatch } from 'react-redux'
 import { deleteListingFromList } from '../actions/listings'
 // import { fetchListing } from '../actions/listing'
