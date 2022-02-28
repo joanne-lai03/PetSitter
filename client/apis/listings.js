@@ -7,6 +7,7 @@ export function getListing () {
   return request
     .get(rootUrl)
     .then(res => {
+
       return res.body
     })
   // << if you need MOCK DATA>>
@@ -20,6 +21,7 @@ export function getListing () {
 export function postListing (listing, token) {
   const newListing = {
     auth0Id: listing.auth0Id,
+    id: listing.id,
     name: listing.name,
     location: listing.location,
     petNumber: listing.petNumber,
