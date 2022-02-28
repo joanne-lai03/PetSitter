@@ -61,7 +61,7 @@ export default function Helpdesk () {
             field='message'
             errors={state.errors}
           />
-          <button type='submit' className='' disabled={state.submitting}>
+          <button type='submit' className='common-button ' disabled={state.submitting}>
         Submit
           </button>
         </form>
