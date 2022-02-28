@@ -4,7 +4,10 @@ import { useForm, ValidationError } from '@formspree/react'
 export default function Helpdesk () {
   const [state, handleSubmit] = useForm('mayvjned')
   if (state.succeeded) {
-    return <p>Thanks for joining!</p>
+    return (
+      <p>Your request sent to our manegement team, <br/>
+      we will reply soon, Thank you!</p>
+    )
   }
 
   return (
