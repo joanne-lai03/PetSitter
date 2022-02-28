@@ -27,7 +27,7 @@ export default function Helpdesk () {
             field='name'
             errors={state.errors}
           />
-          <label htmlFor='email'>
+          <label htmlFor='email'><i className="fa-solid icon_deco fa-envelope"></i>
         Email Address
           </label>
           <input
@@ -40,7 +40,7 @@ export default function Helpdesk () {
             field='email'
             errors={state.errors}
           />
-          <label htmlFor='help'>What we can help?</label>
+          <label htmlFor='help'><i className="fa-solid icon_deco fa-circle-question"></i>What we can help?</label>
           <select name='help' id='help' required=''>
             <option value="-1">--- Select Service ---</option>
             <option value="Pet Sitting">Pet Sitting</option>
@@ -51,7 +51,7 @@ export default function Helpdesk () {
             <option value="payment">Payments</option>
             <option value="feedback">Genaral Feedback \ Suggestions</option>
           </select>
-          <label htmlFor='message'>Message</label>
+          <label htmlFor='message'><i className="fa-solid icon_deco fa-message"></i>Message</label>
           <textarea
             id='message'
             name='message'
@@ -61,7 +61,7 @@ export default function Helpdesk () {
             field='message'
             errors={state.errors}
           />
-          <button type='submit' disabled={state.submitting}>
+          <button type='submit' className='' disabled={state.submitting}>
         Submit
           </button>
         </form>
