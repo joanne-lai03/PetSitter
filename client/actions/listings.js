@@ -1,4 +1,4 @@
-import { getListing, postListing, deleteListing } from '../apis/Listings'
+import { getListing, postListing, deleteListing } from '../apis/listings'
 import { showError } from './error'
 
 export const FETCH_LISTING_PENDING = 'FETCH_LISTING_PENDING'
