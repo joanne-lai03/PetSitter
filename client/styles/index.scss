@@ -14,7 +14,9 @@ p {
   margin: 0;
 }
 
-li {
+ul,li {
+  margin:0;
+  padding:0;
   list-style: none;
 }
 
@@ -64,8 +66,10 @@ a {
   text-decoration: none;
   color: #fff;
   background-color: #fb923c;
+  border: 1px solid #fb923c;
   // background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
   transition: 0.4s;
+  outline:none;
 }
 .nav-link {
   padding-top: 7px;
@@ -140,10 +144,6 @@ a {
   border-radius: 20px;
 }
 
-.main-comment {
-  text-align: center;
-  line-height: 1.5;
-}
 
 .main-box-button {
   display: flex;
@@ -373,11 +373,11 @@ a.button-linktoaddprofile {
 .form-font {
   font-family: "Montserrat", sans-serif;
 }
-//Listing Profile Styles
+// ========= Listing Profile Styles =========
 
-.listing-profile {
-  margin: auto
-}
+// .listing-profile {
+//   margin: auto
+// }
 
 .container {
   border-style: solid;
@@ -391,10 +391,10 @@ a.button-linktoaddprofile {
 
 .profile-picture {
   border-radius: 50%;
-  width: 70%;
+  // width: 70%;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  // margin-left: auto;
+  // margin-right: auto;
 }
 
 .flex-container {
@@ -402,4 +402,52 @@ a.button-linktoaddprofile {
   flex-direction: row;
   margin: auto;
   align-items: stretch;
+}
+
+.mainprofile-right {
+  // text-align: center;
+  line-height: 2;
+  width: 80%;
+  margin-left: 100px;
+  h3{
+    font-size: 24px;
+    margin:0;
+  }
+  
+  li{
+    font-size: 18px;
+  }
+}
+
+.profile-flex-container{
+  display: flex;
+  max-width: 800px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.button-profile{
+  margin-top: 20px;
+  width: 220px;
+  font-size: 18px;
+}
+
+.profile-container{
+  max-width: 800px;
+  border: solid 1px #fb923c;
+  background-color: #fce5d2;
+  box-sizing: content-box;
+  width: 100%;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  padding: 40px;
+  h3{
+    margin-top:0;
+  }
+  p{
+      line-height: 2;
+  }
 }
