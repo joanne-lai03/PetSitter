@@ -1,20 +1,17 @@
 import { Link } from 'react-router-dom'
 import ListingsItem from './ListingsItem'
 import React, { useEffect, useState } from 'react'
-import { getListing } from '../apis/Listings'
+import { getListing } from '../apis/listings'
 import { useDispatch } from 'react-redux'
 import { deleteListingFromList } from '../actions/listings'
-// import { fetchListing } from '../actions/listing'
-
 
 function PetsitterListing () {
-
   const dispatch = useDispatch()
 
   // << Using useState >>
   const [listings, setListings] = useState([])
   const [search, setSearch] = useState('')
-  // const [results, setResults] = useState([])
+
   const [dropdownLists, setDropdownLists] = useState({
     service: '',
     pet: ''
@@ -52,7 +49,6 @@ function PetsitterListing () {
       [event.target.name]: event.target.value
 
     })
-
   }
 
   // << this is for location search bar >>
@@ -88,10 +84,10 @@ function PetsitterListing () {
             <div className="listing-button">
               <select onChange={ setSelectPetBar} value={dropdownLists.service} name="service" className ="select-pet">
                 <option value="-1">--- Select Service ---</option>
-                <option value="$20/day">Pet Sitting</option>
-                <option value="$30/day">Pet Boarding</option>
-                <option value="$40/day">Pet Grooming</option>
-                <option value="$50/day">Pet Walking</option>
+                <option value="Pet Sitting">Pet Sitting</option>
+                <option value="Pet Walking">Pet Walking</option>
+                <option value="Pet Boarding">Pet Boarding</option>
+                <option value="Pet Grooming">Pet Walking</option>
               </select>
             </div>
             <div>
@@ -100,6 +96,8 @@ function PetsitterListing () {
                 <option value="-1">--- Select Pet Type ---</option>
                 <option value="dog">Dog</option>
                 <option value="cat">Cat</option>
+                <option value="guinea pig">Guinea pig</option>
+                <option value="rabbit">Rabbits</option>
               </select>
             </div>
             <div>
@@ -138,7 +136,7 @@ function PetsitterListing () {
       {/* search function : select service or pet type */}
       { dropdownLists
         ? listings
-          .filter(pet => pet.pet_type === dropdownLists.pet && pet.service_rate === dropdownLists.serice)
+          .filter(pet => pet.pet_type === dropdownLists.pet && pet.service_rate === dropdownLists.service)
           .map((listing) => {
             return <>
               <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
