@@ -368,10 +368,13 @@ a.button-linktoaddprofile {
   display: block;
   margin: 0 auto;
 }
+// For textarea form on listing form
 
 .form-font {
   font-family: "Montserrat", sans-serif;
 }
+
+// Footer
 
 .footer{
   margin-top: 1rem;
@@ -390,6 +393,17 @@ a.button-linktoaddprofile {
   padding: 0;
   margin-right: 0.5rem;
 }
+
+.alignleft {
+	float: left;
+  height: 40px;
+  width: 40px;
+  padding-right: 2em;
+}
+.alignright {
+	float: right;
+}
+
 //Listing Profile Styles
 
 .listing-profile {

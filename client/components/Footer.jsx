@@ -3,9 +3,10 @@ import React from 'react'
 
 const Footer = () => (
   <>
-    <i className="footer-img fa-brands fa-instagram" />
+
     <div className="footer">
-      <p><i className="footer-img fa-brands fa-instagram"></i> © 2022 Petsitters       Made by animal lover 💗 in Auckland, New Zealand</p>
+      <p><i className="alignleft fa-brands fa-instagram"></i></p>
+      <p className="alignright"> © 2022 Petsitters       Made by animal lover 💗 in Auckland, New Zealand</p>
     </div>
   </>
 )
