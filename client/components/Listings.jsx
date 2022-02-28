@@ -2,12 +2,11 @@ import { Link } from 'react-router-dom'
 import ListingsItem from './ListingsItem'
 import React, { useEffect, useState } from 'react'
 import { getListing } from '../apis/listings'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { deleteListingFromList } from '../actions/listings'
 // import { fetchListing } from '../actions/listing'
 
 function PetsitterListing (props) {
-
   // << Using redux >>
   // const listings = useSelector(state => state.listing)
 
@@ -18,6 +17,7 @@ function PetsitterListing (props) {
 
   // << Using useState >>
   const [listings, setListings] = useState([])
+  const token = useSelector(state => state.user.token)
 
   useEffect(() => {
     // dispatch()
@@ -32,8 +32,8 @@ function PetsitterListing (props) {
       })
   }, [])
 
-  function deleteFromList(id) {
-    dispatch(deleteListingFromList(id))
+  function deleteFromList (id) {
+    dispatch(deleteListingFromList(id, token))
     getListing()
       .then(apiResponse => {
         setListings(apiResponse)
@@ -46,12 +46,12 @@ function PetsitterListing (props) {
   }
 
   // << this is for service search bar >>
-  function selectService() {
+  function selectService () {
   }
   // << this is for location search bar >>
   const [filterTxt, setfilterTxt] = useState('')
 
-  function searchBar(text) {
+  function searchBar (text) {
     setfilterTxt(text)
   }
 
@@ -97,7 +97,7 @@ function PetsitterListing (props) {
       </div>
 
       {/* display all lists */}
-      <p>Scroll down to browse Pet Sitters for Boarding and Sitting near you💗</p>
+      <p>Scroll down to browse our friendly pet sitters to help with your boarding or caring needs for your furry best friend! 💖</p>
 
       {filterTxt.length === 0
         ? listings.map((listing) => {

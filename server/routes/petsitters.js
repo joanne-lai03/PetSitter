@@ -1,13 +1,12 @@
 const express = require('express')
 const router = express.Router()
-// const checkJwt = require('../auth0')
+const checkJwt = require('../auth0')
 const db = require('../db/petsitters')
 
 module.exports = router
 
 // Get listings for petsitters
 router.get('/', (req, res) => {
-  // const auth0Id = req.params.id
   db.listPetsitters()
     .then((petsitters) => {
       res.json(petsitters)
@@ -21,8 +20,8 @@ router.get('/', (req, res) => {
 
 // Add new petsitters lising
 router.post('/', (req, res) => {
-  const { id, name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = req.body
-  const listingData = { id, name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing }
+  const { id, auth0Id, name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = req.body
+  const listingData = { id, auth0Id, name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing }
   db.addListing(listingData)
     .then((result) => {
       res.json(result)
@@ -35,14 +34,21 @@ router.post('/', (req, res) => {
 })
 
 // Delete a single petsitters listing
-router.delete('/:id', (req, res) => {
-  const { id } = req.body
-  db.deleteListing(id)
+router.delete('/:id', checkJwt, (req, res) => {
+  const id = Number(req.params.id)
+  const auth0Id = req.user?.sub
+  db.deleteListing(id, auth0Id)
     .then(() => {
-      res.sendStatus(200)
+      res.sendStatus(201)
       return null
     })
     .catch((err) => {
-      res.status(500).json({ error: err.message })
+      console.error(err)
+      if (err.message === 'Unauthorized') {
+        return res.status(403).send(
+          'Unauthorized: Only the user who added the listing may delete it'
+        )
+      }
+      res.status(500).send(err.message)
     })
 })

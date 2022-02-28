@@ -1,9 +1,11 @@
 import request from 'superagent'
 
+const rootUrl = '/api/v1/petsitters'
+
 // router.get in petsitters
-export function getListing() {
+export function getListing () {
   return request
-    .get('/api/v1/petsitters')
+    .get(rootUrl)
     .then(res => {
       return res.body
     })
@@ -15,8 +17,9 @@ export function getListing() {
 }
 
 // add listing
-export function postListing (listing) {
+export function postListing (listing, token) {
   const newListing = {
+    auth0Id: listing.auth0Id,
     name: listing.name,
     location: listing.location,
     petNumber: listing.petNumber,
@@ -31,15 +34,17 @@ export function postListing (listing) {
   }
 
   return request
-    .post('/api/v1/petsitters')
+    .post(rootUrl)
+    .set('authorization', `Bearer ${token}`)
     .send(newListing)
     .then(res => res.body)
 }
 
 // dlelet listing
-export function deleteListing (id) {
+export function deleteListing (id, token) {
   return request
-    .delete('/api/v1/petsitters')
-    .send({ id })
+    .delete(`${rootUrl}/${id}`)
+    .set('authorization', `Bearer ${token}`)
+    .send()
     .then(res => res.body)
 }
