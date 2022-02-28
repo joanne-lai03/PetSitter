@@ -64,4 +64,18 @@ router.get('/', (req, res) => {
 //   }
 // })
 
+// PATCH /api/v1/users/
+router.patch('/', (req, res) => {
+  const user = req.body
+  db.patchUser(user)
+    .then(user => {
+      res.json({ user })
+      return null
+    })
+    .catch(err => {
+      console.error(err)
+      res.status(500).json({ message: 'Something went wrong' })
+    })
+})
+
 module.exports = router

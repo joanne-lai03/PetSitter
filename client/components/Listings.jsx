@@ -102,27 +102,47 @@ function Listings () {
               </select>
             </div>
             <div>
-              <p>Near me in</p>
-              <div className="wrap">
-                <div className="searchbar-button">
-                  <input
-                    onChange={handleChange}
-                    value={search}
-                    type="text"
-                    id='searchValue'
-                    className="searchbar"
-                    placeholder='Input your area'
-                    name='searchValue'></input>
-                  <button
-                    onClick={handleSubmit}
-                    type="submit"
-                    className="searchButton">
-                    <i className="fa fa-search"></i>
-                  </button>
+              <p>I am looking for</p>
+              <div className="listing-button">
+                <select onChange={ setSelectPetBar} value={dropdownLists.service} name="service" className ="select-pet">
+                  <option value="-1">--- Select Service ---</option>
+                  <option value="$20/day">Pet Sitting</option>
+                  <option value="$30/day">Pet Boarding</option>
+                  <option value="$40/day">Pet Grooming</option>
+                  <option value="$50/day">Pet Walking</option>
+                </select>
+              </div>
+              <div>
+                <p>My pet type</p>
+                <select onChange={setSelectPetBar} value={dropdownLists.pet} name="pet" className ="select-pet">
+                  <option value="-1">--- Select Pet Type ---</option>
+                  <option value="dog">Dog</option>
+                  <option value="cat">Cat</option>
+                </select>
+              </div>
+              <div>
+                <p>Near me in</p>
+                <div className="wrap">
+                  <div className="searchbar-button">
+                    <input
+                      onChange={handleChange}
+                      value={search}
+                      type="text"
+                      id='searchValue'
+                      className="searchbar"
+                      placeholder='Input your area'
+                      name='searchValue'></input>
+                    <button
+                      onClick={handleSubmit}
+                      type="submit"
+                      className="searchButton">
+                      <i className="fa fa-search"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
         </div>
       </div>
