@@ -12,8 +12,10 @@ function listPetsitters (db = connection) {
 }
 
 function addListing (listing, db = connection) {
-  const { name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = listing
+  const { id, auth0Id, name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = listing
   const newListing = {
+    id,
+    auth0_id: auth0Id,
     name,
     location,
     pet_number: petNumber,
@@ -29,8 +31,20 @@ function addListing (listing, db = connection) {
     .insert(newListing)
 }
 
-function deleteListing (id, db = connection) {
+function deleteListing (id, auth0Id, db = connection) {
   return db('petsitters')
     .where('id', id)
-    .del()
+    .first()
+    .then(listing => authorizeUpdate(listing, auth0Id))
+    .then(() => {
+      return db('petsitters')
+        .where('id', id)
+        .delete()
+    })
+}
+
+function authorizeUpdate (listing, auth0Id) {
+  if (listing.auth0_id !== auth0Id) {
+    throw new Error('Unauthorized')
+  }
 }

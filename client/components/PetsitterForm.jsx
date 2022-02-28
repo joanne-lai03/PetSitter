@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import { postListing } from '../apis/listings'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export default function PetSitterForm () {
+  const auth0Id = useSelector(state => state.user.auth0Id)
   const navigate = useNavigate()
   const [form, setForm] = useState({
+    auth0Id: auth0Id,
     id: '',
     name: '',
     location: '',
@@ -12,7 +15,7 @@ export default function PetSitterForm () {
     petType: '',
     petSize: '',
     homeType: '',
-    serviceRate: '-1',
+    serviceRate: '',
     availability: '',
     description: '',
     promoListing: ''
