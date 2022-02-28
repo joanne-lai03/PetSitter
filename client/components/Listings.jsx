@@ -124,15 +124,14 @@ function PetsitterListing () {
           </div>
         </div>
       </div>
+
       <div className="linkto-add-profile">
         <h3>Would you like to be a pet sitter?</h3>
         <p>Please click here to post your profile!</p>
         <Link to='/petsitters/add' className="button-linktoaddprofile">Add to listing</Link>
       </div>
-
       {/* display all lists */}
       <p>Scroll down to browse Pet Sitters for Boarding and Sitting near you💗</p>
-
       {/* search function : select service or pet type */}
       { dropdownLists
         ? listings
@@ -149,7 +148,6 @@ function PetsitterListing () {
             </>
           })
       }
-
       {/* search function : location */}
       {search.length === 0
         ? listings.map((listing) => {
@@ -158,7 +156,7 @@ function PetsitterListing () {
           </>
         })
         : listings
-          // .filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()))
+        // .filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()))
           .map((listing) => {
             return <>
               <ListingsItem listing={listing} deleteFromList={deleteFromList} />
