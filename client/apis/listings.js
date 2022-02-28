@@ -7,7 +7,6 @@ export function getListing () {
   return request
     .get(rootUrl)
     .then(res => {
-
       return res.body
     })
   // << if you need MOCK DATA>>
