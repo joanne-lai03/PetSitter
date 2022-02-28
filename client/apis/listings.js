@@ -17,6 +17,7 @@ export function getListing() {
 // add listing
 export function postListing (listing) {
   const newListing = {
+    id: listing.id,
     name: listing.name,
     location: listing.location,
     petNumber: listing.petNumber,
