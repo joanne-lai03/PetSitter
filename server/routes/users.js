@@ -1,6 +1,6 @@
 const express = require('express')
 const jwtAuthz = require('express-jwt-authz')
-const { checkJwt } = require('../auth0')
+const checkJwt = require('../auth0')
 
 const db = require('../db/users')
 const router = express.Router()

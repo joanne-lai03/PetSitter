@@ -2,14 +2,18 @@ import { Link } from 'react-router-dom'
 import ListingsItem from './ListingsItem'
 import React, { useEffect, useState } from 'react'
 import { getListing } from '../apis/listings'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { deleteListingFromList } from '../actions/listings'
+// import { fetchListing } from '../actions/listing'
 
-function PetsitterListing () {
+function Listings () {
   const dispatch = useDispatch()
 
   // << Using useState >>
   const [listings, setListings] = useState([])
+
+  const token = useSelector(state => state.user.token)
+
   const [search, setSearch] = useState('')
 
   const [dropdownLists, setDropdownLists] = useState({
@@ -17,9 +21,7 @@ function PetsitterListing () {
     pet: ''
   })
 
-  console.log(dropdownLists)
   useEffect(() => {
-    console.log('useEffectTriger')
     getListing()
       .then(apiResponse => {
         setListings(apiResponse)
@@ -31,7 +33,7 @@ function PetsitterListing () {
   }, [dropdownLists])
 
   function deleteFromList (id) {
-    dispatch(deleteListingFromList(id))
+    dispatch(deleteListingFromList(id, token))
     getListing()
       .then(apiResponse => {
         setListings(apiResponse)
@@ -66,7 +68,6 @@ function PetsitterListing () {
       .then(listings => {
         const filterdata = listings.filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()) && listing.pet_type === dropdownLists.pet && listing.service_rate === dropdownLists.service)
         setListings(filterdata)
-
         return null
       })
       .catch(err => {
@@ -132,7 +133,8 @@ function PetsitterListing () {
         <Link to='/petsitters/add' className="button-linktoaddprofile">Add to listing</Link>
       </div>
       {/* display all lists */}
-      <p>Scroll down to browse Pet Sitters for Boarding and Sitting near you💗</p>
+      <p>Scroll down to browse our friendly pet sitters to help with your boarding or caring needs for your furry best friend! 💖</p>
+
       {/* search function : select service or pet type */}
       { dropdownLists
         ? listings
@@ -169,4 +171,4 @@ function PetsitterListing () {
   )
 }
 
-export default PetsitterListing
+export default Listings
