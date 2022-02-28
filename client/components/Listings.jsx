@@ -113,13 +113,19 @@ function Listings () {
                     className="searchbar"
                     placeholder='Input your area'
                     name='searchValue'></input>
-                  <button
+                  {/* <button
                     onClick={handleSubmit}
                     type="submit"
                     className="searchButton">
                     <i className="fa fa-search"></i>
-                  </button>
+                  </button> */}
                 </div>
+                <button
+                  onClick={handleSubmit}
+                  type="submit"
+                  className="searchButton">
+                  <i className="fa fa-search"></i>Search
+                </button>
               </div>
             </div>
 

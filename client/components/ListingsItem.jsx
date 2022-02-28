@@ -18,18 +18,18 @@ function ListingsItem (props) {
     <>
       <div className="lists-all">
         <div className="lists-left">
-          <img src="/images/sample.png" />
+          <img className="lists-profile-pic" src="/images/sample.png" />
         </div>
         <ul className="lists-right">
           <li>
-            <h3><i className="fa-solid fa-user"></i>{listing.name}</h3>
+            <h3>{listing.name}</h3>
             <ul className="lists-ul-item">
-              <li><i className="fa-solid fa-house"></i>{listing.pet_type}</li>
-              <li><i className="fa-solid fa-house"></i>{listing.location}</li>
-              <li><i className="fa-solid fa-money-check-dollar"></i>{listing.service_rate}</li>
-              <li><i className="fa-solid fa-clock"></i>{listing.availability}</li>
-              <li><i className="fa-solid fa-dog"></i>{listing.pet_size}</li>
-              <li><i className="fa-solid fa-hand-holding-heart"></i>{listing.promo_listing}</li>
+              <li><i className="fa-solid fa-location-dot"></i><span className="profile-span">Location:</span>  {listing.location}</li>
+              <li><i className="fa-solid fa-bone"></i><span className="profile-span">Pet type:</span>  {listing.pet_type}</li>
+              <li><i className="fa-solid fa-money-check-dollar"></i><span className="profile-span">Service rate:</span>  {listing.service_rate}</li>
+              <li><i className="fa-solid fa-clock"></i><span className="profile-span">Availability:</span>  {listing.availability}</li>
+              <li><i className="fa-solid fa-dog"></i><span className="profile-span">Accept pet size:</span>  {listing.pet_size}</li>
+              <li><i className="fa-solid fa-hand-holding-heart"></i><span className="profile-span">About me:</span>  {listing.promo_listing}</li>
             </ul>
             <Link to={`/petsitters/profiles/${listing.id}`} className="button-orange button-checkprofile">Check profile</Link>
           </li>

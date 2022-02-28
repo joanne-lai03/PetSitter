@@ -24,12 +24,16 @@ export function ListingProfilesItem (props) {
         </div>
       </div>
 
-      <div className="profile-container">
+      <div className="inu-box-a">
+        <div>・ᴥ・</div>
         <h3>About {listingProfiles.name}</h3>
         <p className='description'>Description: {listingProfiles.description}</p>
       </div>
 
-      <div className="profile-container">
+      <div className="neko-box-d ">
+        <div className="neko-wrap-b">
+          <div className="neko-box-b">・x・</div>
+        </div>
         <h3>Service & Avialability </h3>
         <p className='service_rate'><i className="fa-solid fa-money-check-dollar"></i>Service rate: {listingProfiles.service_rate}</p>
         <p className='availability'><i className="fa-solid fa-clock"></i>Availability: {listingProfiles.availability}</p>
