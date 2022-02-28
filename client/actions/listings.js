@@ -71,19 +71,11 @@ export function deleteListingSuccess (id) {
   }
 }
 
-export function deleteListingFromList (id) {
+export function deleteListingFromList (id, token) {
   return (dispatch) => {
     dispatch(deleteListingPending())
 
-    return deleteListing(id)
-      .then(() => {
-        return getListing()
-      })
-      .then(listing => {
-        dispatch(deleteListingSuccess(listing))
-        return null
-      })
-
+    return deleteListing(id, token)
       .catch((err) => {
         const errMessage = err.response?.text || err.message
         dispatch(showError(errMessage))

@@ -5,18 +5,21 @@ export function ListingProfilesItem (props) {
   const listingProfiles = props.listingProfile
 
   return (
-    <div className='listing-profile'>
-      <div className='profile-picture'>
-        <img src="/images/sample.png" alt="Profile image"></img>
-      </div>
+    <div className='Listing-profile'>
+      <div className='flex-container'>
+        <div>
+          <img className='profile-picture' src="/images/sample.png" alt="Profile image"></img>
+        </div>
 
-      <div className='profile-summary'>
-        <p className='name'>Name: {listingProfiles.name}</p>
-        <p className='location'>Location: {listingProfiles.location}</p>
-        <p className='pet_number'>Number of Pet:{listingProfiles.pet_number}</p>
-        <p className='pet_type'>Type of Pet:{listingProfiles.pet_type}</p>
-        <p className='pet_size'>Size of Pet: {listingProfiles.pet_size}</p>
-        <p className='home_type'>Type of Home: {listingProfiles.home_type}</p>
+        <div className='main-comment'>
+          <h4 className='name'>Name: {listingProfiles.name}</h4>
+          <p className='location'>Location: {listingProfiles.location}</p>
+          <p className='pet_number'>Number of Pet:{listingProfiles.pet_number}</p>
+          <p className='pet_type'>Type of Pet:{listingProfiles.pet_type}</p>
+          <p className='pet_size'>Size of Pet: {listingProfiles.pet_size}</p>
+          <p className='home_type'>Type of Home: {listingProfiles.home_type}</p>
+          <button className='nav-register'>Contact {listingProfiles.name}</button>
+        </div>
       </div>
 
       <div className="container">
