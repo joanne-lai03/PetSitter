@@ -17,8 +17,8 @@ function Listings () {
   const [search, setSearch] = useState('')
 
   const [dropdownLists, setDropdownLists] = useState({
-    service: '',
-    pet: ''
+    service: '-1',
+    pet: '-1'
   })
 
   useEffect(() => {
@@ -66,7 +66,7 @@ function Listings () {
 
     getListing(search)
       .then(listings => {
-        const filterdata = listings.filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()) && listing.pet_type === dropdownLists.pet && listing.service_rate === dropdownLists.service)
+        const filterdata = listings.filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()) && listing.pet_type === dropdownLists.pet && listing.service_rate.toLowerCase().includes(dropdownLists.service.toLowerCase()))
         setListings(filterdata)
         return null
       })
@@ -83,7 +83,7 @@ function Listings () {
           <div>
             <p>I am looking for</p>
             <div className="listing-button">
-              <select onChange={ setSelectPetBar} value={dropdownLists.service} name="service" className ="select-pet">
+              <select onChange={setSelectPetBar} value={dropdownLists.service} name="service" className ="select-pet">
                 <option value="-1">--- Select Service ---</option>
                 <option value="Pet Sitting">Pet Sitting</option>
                 <option value="Pet Walking">Pet Walking</option>
@@ -134,11 +134,16 @@ function Listings () {
       </div>
       {/* display all lists */}
       <p>Scroll down to browse our friendly pet sitters to help with your boarding or caring needs for your furry best friend! 💖</p>
+      { listings.map((listing) => {
+        return <>
+          <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
+        </>
+      })}
 
       {/* search function : select service or pet type */}
-      { dropdownLists
+      {/* { dropdownLists
         ? listings
-          .filter(pet => pet.pet_type === dropdownLists.pet && pet.service_rate === dropdownLists.service)
+          // .filter(pet => pet.pet_type === dropdownLists.pet && pet.service_rate.toLowerCase().includes(dropdownLists.service.toLowerCase()))
           .map((listing) => {
             return <>
               <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
@@ -150,22 +155,22 @@ function Listings () {
               <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
             </>
           })
-      }
+      } */}
       {/* search function : location */}
-      {search.length === 0
+      {/* {search.length === 0
         ? listings.map((listing) => {
           return <>
             <ListingsItem listing={listing} deleteFromList={deleteFromList} />
           </>
         })
         : listings
-        // .filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()))
+          // .filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()))
           .map((listing) => {
             return <>
               <ListingsItem listing={listing} deleteFromList={deleteFromList} />
             </>
           })
-      }
+      } */}
     </>
 
   )
