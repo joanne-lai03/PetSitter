@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-// import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 // import { deleteListingFromList } from '../actions/petsitterListing'
 
 function ListingsItem (props) {
   const listing = props.listing
   // console.log(listing)
   const { id } = props.listing
-
+  const auth0Id = useSelector(state => state.user.auth0Id)
   // const dispatch = useDispatch()
 
   function deleteFromList () {
@@ -36,7 +36,7 @@ function ListingsItem (props) {
         </ul>
 
         {/* Delete botton */}
-        <a onClick={deleteFromList}><i className="fa-solid fa-trash-alt fa-size"></i></a>
+        {listing.auth0_id === auth0Id && <a onClick={deleteFromList}><i className="fa-solid fa-trash-alt fa-size"></i></a>}
         {/* Edit botton */}
         <a ><i className="fa-solid fa-pen-to-square fa-size"></i></a>
       </div>
