@@ -2,10 +2,9 @@ import { Link } from 'react-router-dom'
 import ListingsItem from './ListingsItem'
 import React, { useEffect, useState } from 'react'
 import { getListing } from '../apis/listings'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { deleteListingFromList } from '../actions/listings'
 // import { fetchListing } from '../actions/listing'
-
 
 function PetsitterListing () {
 
@@ -13,6 +12,9 @@ function PetsitterListing () {
 
   // << Using useState >>
   const [listings, setListings] = useState([])
+
+  const token = useSelector(state => state.user.token)
+
   const [search, setSearch] = useState('')
   // const [results, setResults] = useState([])
   const [dropdownLists, setDropdownLists] = useState({
@@ -34,7 +36,7 @@ function PetsitterListing () {
   }, [dropdownLists])
 
   function deleteFromList (id) {
-    dispatch(deleteListingFromList(id))
+    dispatch(deleteListingFromList(id, token))
     getListing()
       .then(apiResponse => {
         setListings(apiResponse)
@@ -45,6 +47,10 @@ function PetsitterListing () {
       })
   }
 
+
+  // << this is for service search bar >>
+  function selectService () {
+
   // << this is for select service and pet type >>
   function setSelectPetBar (event) {
     setDropdownLists({
@@ -52,6 +58,7 @@ function PetsitterListing () {
       [event.target.name]: event.target.value
 
     })
+
 
   }
 
@@ -71,11 +78,16 @@ function PetsitterListing () {
         const filterdata = listings.filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()) && listing.pet_type === dropdownLists.pet && listing.service_rate === dropdownLists.service)
         setListings(filterdata)
 
+
+  function searchBar (text) {
+    setfilterTxt(text)
+
         return null
       })
       .catch(err => {
         console.error(err)
       })
+
   }
 
   return (
@@ -134,7 +146,7 @@ function PetsitterListing () {
       </div>
 
       {/* display all lists */}
-      <p>Scroll down to browse Pet Sitters for Boarding and Sitting near you💗</p>
+      <p>Scroll down to browse our friendly pet sitters to help with your boarding or caring needs for your furry best friend! 💖</p>
 
       {/* search function : select service or pet type */}
       { dropdownLists
