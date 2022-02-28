@@ -5,6 +5,7 @@ export function getListing () {
   return request
     .get('/api/v1/petsitters')
     .then(res => {
+
       return res.body
     })
   // << if you need MOCK DATA>>
@@ -17,6 +18,7 @@ export function getListing () {
 // add listing
 export function postListing (listing) {
   const newListing = {
+    id: listing.id,
     name: listing.name,
     location: listing.location,
     petNumber: listing.petNumber,
