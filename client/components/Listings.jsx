@@ -6,38 +6,38 @@ import { useDispatch } from 'react-redux'
 import { deleteListingFromList } from '../actions/listings'
 // import { fetchListing } from '../actions/listing'
 
-function PetsitterListing (props) {
 
-  // << Using redux >>
-  // const listings = useSelector(state => state.listing)
+function PetsitterListing () {
 
   const dispatch = useDispatch()
-  // useEffect(() => {
-  //   dispatch(fetchListing())
-  // }, [])
 
   // << Using useState >>
   const [listings, setListings] = useState([])
+  const [search, setSearch] = useState('')
+  // const [results, setResults] = useState([])
+  const [dropdownLists, setDropdownLists] = useState({
+    service: '',
+    pet: ''
+  })
 
+  console.log(dropdownLists)
   useEffect(() => {
-    // dispatch()
+    console.log('useEffectTriger')
     getListing()
       .then(apiResponse => {
         setListings(apiResponse)
-        // dispatch(clearWaiting)
         return null
       })
       .catch(err => {
         console.error(err)
       })
-  }, [])
+  }, [dropdownLists])
 
-  function deleteFromList(id) {
+  function deleteFromList (id) {
     dispatch(deleteListingFromList(id))
     getListing()
       .then(apiResponse => {
         setListings(apiResponse)
-        // dispatch(clearWaiting)
         return null
       })
       .catch(err => {
@@ -45,14 +45,37 @@ function PetsitterListing (props) {
       })
   }
 
-  // << this is for service search bar >>
-  function selectService() {
-  }
-  // << this is for location search bar >>
-  const [filterTxt, setfilterTxt] = useState('')
+  // << this is for select service and pet type >>
+  function setSelectPetBar (event) {
+    setDropdownLists({
+      ...dropdownLists,
+      [event.target.name]: event.target.value
 
-  function searchBar(text) {
-    setfilterTxt(text)
+    })
+
+  }
+
+  // << this is for location search bar >>
+  function handleChange (event) {
+    const searchTerm = event.target.value
+    setSearch(searchTerm)
+  }
+
+  function handleSubmit (event) {
+    event.preventDefault()
+    console.log('drop', dropdownLists)
+    console.log('search', search)
+
+    getListing(search)
+      .then(listings => {
+        const filterdata = listings.filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()) && listing.pet_type === dropdownLists.pet && listing.service_rate === dropdownLists.service)
+        setListings(filterdata)
+
+        return null
+      })
+      .catch(err => {
+        console.error(err)
+      })
   }
 
   return (
@@ -63,24 +86,38 @@ function PetsitterListing (props) {
           <div>
             <p>I am looking for</p>
             <div className="listing-button">
-              <button onClick={selectService} className="lisiting-button-item">Pet Sitting </button>
-              <button className="lisiting-button-item">Pet Boarding</button>
-              <button className="lisiting-button-item">Pet Grooming</button>
-              <button className="lisiting-button-item">Pet Walking</button>
+              <select onChange={ setSelectPetBar} value={dropdownLists.service} name="service" className ="select-pet">
+                <option value="-1">--- Select Service ---</option>
+                <option value="$20/day">Pet Sitting</option>
+                <option value="$30/day">Pet Boarding</option>
+                <option value="$40/day">Pet Grooming</option>
+                <option value="$50/day">Pet Walking</option>
+              </select>
             </div>
             <div>
               <p>My pet type</p>
-              <select name="pet" className="select-pet">
-                <option value="Dog">Dog</option>
-                <option value="Cat">Cat</option>
+              <select onChange={setSelectPetBar} value={dropdownLists.pet} name="pet" className ="select-pet">
+                <option value="-1">--- Select Pet Type ---</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
               </select>
             </div>
             <div>
               <p>Near me in</p>
               <div className="wrap">
                 <div className="searchbar-button">
-                  <input type="text" onChange={(event) => searchBar(event.target.value)} id='searchValue' className="searchbar" placeholder='Input your area' name='searchValue'></input>
-                  <button type="submit" className="searchButton">
+                  <input
+                    onChange={handleChange}
+                    value={search}
+                    type="text"
+                    id='searchValue'
+                    className="searchbar"
+                    placeholder='Input your area'
+                    name='searchValue'></input>
+                  <button
+                    onClick={handleSubmit}
+                    type="submit"
+                    className="searchButton">
                     <i className="fa fa-search"></i>
                   </button>
                 </div>
@@ -99,14 +136,32 @@ function PetsitterListing (props) {
       {/* display all lists */}
       <p>Scroll down to browse Pet Sitters for Boarding and Sitting near you💗</p>
 
-      {filterTxt.length === 0
+      {/* search function : select service or pet type */}
+      { dropdownLists
+        ? listings
+          .filter(pet => pet.pet_type === dropdownLists.pet && pet.service_rate === dropdownLists.serice)
+          .map((listing) => {
+            return <>
+              <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
+            </>
+          })
+        : listings
+          .map((listing) => {
+            return <>
+              <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
+            </>
+          })
+      }
+
+      {/* search function : location */}
+      {search.length === 0
         ? listings.map((listing) => {
           return <>
             <ListingsItem listing={listing} deleteFromList={deleteFromList} />
           </>
         })
         : listings
-          .filter(listing => listing.location.toLowerCase().includes(filterTxt.toLowerCase()))
+          // .filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()))
           .map((listing) => {
             return <>
               <ListingsItem listing={listing} deleteFromList={deleteFromList} />

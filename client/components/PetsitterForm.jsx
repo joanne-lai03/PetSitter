@@ -31,7 +31,8 @@ export default function PetSitterForm () {
 
     postListing(form)
       .then(() => {
-        navigate(`/petsitters/profiles/${form.id}`)
+        navigate('/')
+        // navigate(`/petsitters/profiles/${form.id}`)
         return null
       })
       .catch(err => {
@@ -108,6 +109,7 @@ export default function PetSitterForm () {
           placeholder="I live on a lifestyle block. I have lots of grass and spare space for guinea pigs and rabbits."/>
 
         <p> Promotion listing: <a title="A sentence or two to grab your potential client's attention! This text that will show up in on the listings page"><img src="https://i.ibb.co/smSqZXF/Screen-Shot-2022-02-25-at-3-02-05-PM.png" height="14px"/></a></p>
+
         <textarea name="promoListing"
           onChange={handleChange}
           className='form-box form-textarea form-font '
@@ -117,6 +119,7 @@ export default function PetSitterForm () {
           className='nav-register'
           onClick={handleSubmit} >
             Submit</button></p>
+
       </form>
     </div>
   )

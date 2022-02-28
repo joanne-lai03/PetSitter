@@ -290,7 +290,9 @@ a {
   width: 400px;
   padding: 2em;
   text-align: center;
-  border-radius: 4px;
+  border-radius: 4px;  
+  margin: -60px 0 ;
+
 }
 
 a.button-linktoaddprofile {
@@ -307,10 +309,12 @@ a.button-linktoaddprofile {
 }
 
 .lists-all {
-  display: flex;
-  width: 1000px;
-  border: 1px solid #333;
-  background-color: #f6f6f6;
+    display: flex;
+    width: 1000px;
+    border: 1px solid #333;
+    background-color: #F6F6F6;
+    margin: -40px 0;
+
 }
 
 .lists-right {
@@ -357,7 +361,7 @@ a.button-linktoaddprofile {
   margin: 0 auto;
   display: block;
   width: 230px;
-  height: 30px;
+  height: 40px;
   /* text-align: center; */
   border: solid 3px orange;
   outline: none;
