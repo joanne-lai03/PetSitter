@@ -41,7 +41,7 @@ function ListingsItem (props) {
         {/* Delete botton */}
         {listing.auth0_id === auth0Id && <a onClick={deleteFromList}><i className="fa-solid fa-trash-alt fa-size"></i></a>}
         {/* Edit botton */}
-        {listing.auth0_id === auth0Id && <Link to='/petsitters/profiles/edit/:id' onClick={updateListItem}><i className="fa-solid fa-pen-to-square fa-size"></i></Link>}
+        {listing.auth0_id === auth0Id && <Link to={`/petsitters/profiles/edit/${listing.id}`} onClick={updateListItem}><i className="fa-solid fa-pen-to-square fa-size"></i></Link>}
       </div>
     </>
   )

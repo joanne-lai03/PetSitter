@@ -4,7 +4,8 @@ module.exports = {
   listPetsitters,
   addListing,
   deleteListing,
-  updateListing
+  updateListing,
+  fetchListingbyId
 }
 
 function listPetsitters (db = connection) {
@@ -59,4 +60,10 @@ function updateListing (id, auth0Id, listingDetails, db = connection) {
         .where('id', id)
         .update(listingDetails)
     })
+}
+
+function fetchListingbyId (id, db = connection) {
+  return db('petsitters')
+    .where('id', id)
+    .select()
 }

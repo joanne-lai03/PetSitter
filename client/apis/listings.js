@@ -25,16 +25,24 @@ export function postListing (newListing, token) {
     .then(res => res.body)
 }
 
+// get listing by id
+export function getListingById (id, token) {
+  return request
+    .get(`${rootUrl}/${id}`)
+    .set('authorization', `Bearer ${token}`)
+    .then(res => res.body)
+}
+
 // update listing
 export function updateListing (id, updatedListing, token) {
   return request
-    .patch(rootUrl`/${id}`)
+    .patch(`${rootUrl}/${id}`)
     .set('authorization', `Bearer ${token}`)
     .send(updatedListing)
     .then(res => res.body)
 }
 
-// dlelet listing
+// delete listing
 export function deleteListing (id, token) {
   return request
     .delete(`${rootUrl}/${id}`)

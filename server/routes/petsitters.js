@@ -52,6 +52,19 @@ router.delete('/:id', checkJwt, (req, res) => {
     })
 })
 
+router.get('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  db.fetchListingbyId(id)
+    .then(listing => {
+      res.json(listing)
+      return null
+    })
+    .catch(err => {
+      console.error(err)
+      res.status(500).json({ message: 'Something went wrong' })
+    })
+})
+
 router.patch('/:id', checkJwt, (req, res) => {
   const id = Number(req.params.id)
   const auth0Id = req.user?.sub
