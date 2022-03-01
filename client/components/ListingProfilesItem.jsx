@@ -8,7 +8,7 @@ export function ListingProfilesItem (props) {
     <>
       <div className='profile-flex-container'>
         <div className="mainprofile-left">
-          <img className='profile-picture' src="/images/sample.png" alt="Profile image"></img>
+          <img className='profile-picture' src={`/images/profilephotos/${listingProfiles.name}.jpeg`} alt="Profile image"></img>
         </div>
 
         <div className='mainprofile-right'>
