@@ -16,6 +16,7 @@ import WaitIndicator from './WaitIndicator'
 import MyAccountEdit from './MyAccountEdit'
 import Helpdesk from './Helpdesk'
 import ContectBtn from './ContectBtn'
+import AboutUs from './AboutUs'
 
 export default function App () {
   const navigate = useNavigate()
@@ -35,6 +36,7 @@ export default function App () {
           <Route path='/petsitters/add' element={<PetsitterForm />} />
           <Route path='/petsitters/profiles/:id' element={<ListingProfiles />} />
           <Route path='/helpdesk' element={<Helpdesk />} />
+          <Route path='/aboutus' element={<AboutUs />} />
         </Routes>
         <Footer />
       </div>
