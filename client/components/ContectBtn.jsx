@@ -1,9 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function ContectBtn () {
   return (
-    <div className='question-bubble'>
-      <i className="fa-solid fa-comment-exclamation fa-2x"></i>
-    </div>
+    <Link to='/helpdesk' className='question-bubble'>
+      <i className="fa-solid fa-comments"></i>
+      <span className='helpText'>Do you need to help?</span>
+    </Link>
   )
 }
