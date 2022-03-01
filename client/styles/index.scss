@@ -377,32 +377,76 @@ a.button-linktoaddprofile {
 // Footer
 
 .footer{
-  margin-top: 1rem;
-  // text-align: right;
-  padding: 1rem;
-  background-color: #503500;
-  position: fixed;
+  margin-top: 20px;
+  text-align: right;
+  padding: 20px 0px 20px 0px;
+  background-color: #ffedd5;
+  position: none;
   bottom: 0;
   left: 0;
   width: 100%;
 }
 
-.footer-links {
-  text-align: right;
-  height: 40px;
-  padding: 0;
-  margin-right: 0.5rem;
+.footer-layout {
+  text-align: center;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 200fr 400fr;
+  gap: 0px;
+  justify-content: space-evenly;
 }
 
-.alignleft {
-	float: left;
-  height: 20px;
-  width: 20px;
-  padding-right: 2em;
+.footer-copyright {
+  font-size: 12px;
+  font-style: italic;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
-.alignright {
-	float: right;
+
+.f-social {
+  padding: 20px 20px 0px 20px;
 }
+
+.f-inline {
+  display: inline;
+  padding-left: 10px;
+}
+
+.f-logo {
+  height: 100px;
+  padding: 1px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+    width: 50%;
+  display: block;
+}
+
+.f-newsletter {
+  padding: 0px;
+  
+}
+
+.f-links {
+  
+  padding: 40px 10px 20px 10px;
+  margin: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.f-links li {
+margin-left: 60px;
+margin-right: 60px;
+font-size: 17px;
+text-transform: uppercase;
+font-weight: bold
+}
+
 
 //Listing Profile Styles
 
