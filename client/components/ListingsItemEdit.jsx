@@ -36,6 +36,10 @@ export default function ListingsItemEdit () {
 
   }
 
+  function handleSubmit () {
+
+  }
+
   return (
     <div>
       <h1>Petsitter editing form</h1>
@@ -44,13 +48,13 @@ export default function ListingsItemEdit () {
         <p className='label'> Name:</p>
         <input name="name"
           onChange={handleChange}
-          value={editForm.name} // need to update code so it takes user's name from account
+          value={editForm.name}
           className='form-box'/>
 
         <p> Location:</p>
         <input name="location"
           onChange={handleChange}
-          value={editForm.location} // need to update code so it takes user's location from account
+          value={editForm.location}
           className='form-box'
         />
 
