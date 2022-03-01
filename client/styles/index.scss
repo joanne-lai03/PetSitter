@@ -634,14 +634,54 @@ a.button-linktoaddprofile:hover {
 .faq-screen {
   margin: 2rem;
 }
+.faq-ol {
+  background: darkorange;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
 
 .faq-main-li {
   font-weight: 600;
+  color: #fff;
+  background: darkorange;
+  display: block;
+  float: left;
+  padding: 1rem;
+  position: relative;
+  text-decoration: none;
+  transition-duration: 0.5s;
+  width: 100%;
+}
+
+.faq-main-li:hover {
+  background: red;
+  cursor: pointer;
 }
 
 .faq-sup-ul {
-  font-weight: normal;
+  background: orange;
+  visibility: hidden;
+  opacity: 0;
+  min-width: 5rem;
+  position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+  left: 0;
+  display: none;
 }
+
+.faq-main-li li:hover > ul,
+.faq-main-li li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+.faq-sup-li {
+  clear: both;
+  width: 100%;
+}
+
 .faq-sup-title {
   color: #b8824d;
 }
@@ -780,7 +820,7 @@ a.button-linktoaddprofile:hover {
 
 // Footer
 
-.footer{
+.footer {
   margin-top: 20px;
   text-align: right;
   padding: 20px 0px 20px 0px;
@@ -823,7 +863,7 @@ a.button-linktoaddprofile:hover {
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
-    width: 50%;
+  width: 50%;
   display: block;
 }
 
@@ -841,13 +881,12 @@ a.button-linktoaddprofile:hover {
 }
 
 .f-links li {
-margin-left: 60px;
-margin-right: 60px;
-font-size: 17px;
-text-transform: uppercase;
-font-weight: bold;
+  margin-left: 60px;
+  margin-right: 60px;
+  font-size: 17px;
+  text-transform: uppercase;
+  font-weight: bold;
 }
-
 
 .f-suscribe-button {
   margin-left: 10px;
@@ -862,4 +901,3 @@ font-weight: bold;
   cursor: pointer;
   transition: background-color 200ms ease-in-out, box-shadow 200ms ease-in-out;
 }
-

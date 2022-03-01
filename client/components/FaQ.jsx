@@ -1,16 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function FaQ () {
+  const [clicked, setClicked] = useState({
+    finding: false,
+    Trust: false,
+    Inquiries: false,
+    Payment: false,
+    Privacy: false
+  })
+
+  console.log(clicked)
+
   return (
     <section className='faq-screen'>
-      <ol className="faq-ul">
+      <ol className="faq-ol">
         <li className="faq-main-li">Finding a Pet Sitter
-          <ul className='faq-sup-ul'>How does Petsitter work?
-            <li className='faq-sup-li faq-sup-title'>Petsitter is a self-service platform for finding trusted and insured pet sitters. </li>
+
+          <ul className='faq-sup-ul'>
+            <li className='faq-sup-li faq-sup-title'>How does Petsitter work?</li>
+            <li className='faq-sup-li'>Petsitter is a self-service platform for finding trusted and insured pet sitters. </li>
             <li className='faq-sup-li'><p>You can search for a pet sitter in your area by entering your address or hometown in the search box. Filtering for the service and period you need will give you the best results.
 You can contact sitters via their profile for free to organize a meet & greet. You will find the “Contact” button on the profile of each pet sitter.
 We recommend you contact at least 2 to 3 pet sitters to find one that best suits you and your pet. Make sure to check their average response time.</p></li>
           </ul>
+
           <ul className='faq-sup-ul'>How can I find a pet sitter?
             <li className='faq-sup-li'>
             Whether you are looking for a dog sitter, a cat sitter, or a sitter for your guinea pig, rabbit or goldfish, you have come to the right place.
