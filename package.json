@@ -40,6 +40,33 @@
       "bundle.js"
     ]
   },
+  "jest": {
+    "verbose": true,
+    "projects": [
+      {
+        "displayName": "client",
+        "testEnvironment": "jsdom",
+        "testMatch": [
+          "<rootDir>/client/**/*.test.js"
+        ],
+        "setupFilesAfterEnv": [
+          "@testing-library/jest-dom"
+        ]
+      },
+      {
+        "displayName": "server",
+        "testMatch": [
+          "<rootDir>/server/**/*.test.js"
+        ]
+      },
+      {
+        "displayName": "e2e",
+        "testMatch": [
+          "**/e2e/?(*.)+(spec|test).[jt]s?(x)"
+        ]
+      }
+    ]
+  }, 
   "dependencies": {
     "@auth0/auth0-react": "^1.8.0",
     "@formspree/react": "^2.2.4",
@@ -47,8 +74,6 @@
     "@fortawesome/free-regular-svg-icons": "^6.0.0",
     "@fortawesome/free-solid-svg-icons": "^6.0.0",
     "@fortawesome/react-fontawesome": "^0.1.17",
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/user-event": "^13.5.0",
     "express": "^4.17.1",
     "express-jwt": "^6.1.0",
     "express-jwt-authz": "^2.4.1",
@@ -66,7 +91,9 @@
     "@babel/plugin-transform-runtime": "7.15.0",
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
-    "@testing-library/react": "^12.1.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.1.9",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.3.0",
     "dotenv": "^10.0.0",
