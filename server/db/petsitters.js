@@ -3,7 +3,8 @@ const connection = require('./connection')
 module.exports = {
   listPetsitters,
   addListing,
-  deleteListing
+  deleteListing,
+  updateListing
 }
 
 function listPetsitters (db = connection) {
@@ -12,9 +13,8 @@ function listPetsitters (db = connection) {
 }
 
 function addListing (listing, db = connection) {
-  const { id, auth0Id, name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = listing
+  const { auth0Id, name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = listing
   const newListing = {
-    id,
     auth0_id: auth0Id,
     name,
     location,
@@ -47,4 +47,16 @@ function authorizeUpdate (listing, auth0Id) {
   if (listing.auth0_id !== auth0Id) {
     throw new Error('Unauthorized')
   }
+}
+
+function updateListing (id, auth0Id, listingDetails, db = connection) {
+  return db('petsitters')
+    .where('id', id)
+    .first()
+    .then(listing => authorizeUpdate(listing, auth0Id))
+    .then(() => {
+      return db('petsitters')
+        .where('id', id)
+        .update(listingDetails)
+    })
 }

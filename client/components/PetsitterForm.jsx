@@ -4,14 +4,13 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 export default function PetSitterForm () {
-  const auth0Id = useSelector(state => state.user.auth0Id)
+  const { auth0Id, token } = useSelector(state => state.user)
   const navigate = useNavigate()
   const [form, setForm] = useState({
     auth0Id: auth0Id,
-    id: '',
     name: '',
     location: '',
-    petNumber: '',
+    petNumber: null,
     petType: '',
     petSize: '',
     homeType: '',
@@ -32,9 +31,9 @@ export default function PetSitterForm () {
   function handleSubmit (event) {
     event.preventDefault()
 
-    postListing(form)
+    postListing(form, token)
       .then(() => {
-        navigate('/')
+        navigate('/petsitters')
         // navigate(`/petsitters/profiles/${form.id}`)
         return null
       })

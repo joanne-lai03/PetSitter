@@ -13,6 +13,7 @@ import Listings from './Listings'
 import Login from './Login'
 import WaitIndicator from './WaitIndicator'
 import MyAccountEdit from './MyAccountEdit'
+import ListingsItemEdit from './ListingsItemEdit'
 // import ContectBtn from './ContectBtn'
 
 export default function App () {
@@ -33,6 +34,8 @@ export default function App () {
           <Route path='/petsitters' element={<Listings />} />
           <Route path='/petsitters/add' element={<PetsitterForm />} />
           <Route path='/petsitters/profiles/:id' element={<ListingProfiles />} />
+          <Route path='/petsitters/profiles/edit/:id' element={<ListingsItemEdit />}
+          />
           {/* <Route path='/contectus' element={< />} /> */}
           {/* stretch goal form jinny */}
         </Routes>

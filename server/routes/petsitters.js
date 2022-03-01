@@ -18,10 +18,9 @@ router.get('/', (req, res) => {
     })
 })
 
-// Add new petsitters lising
+// Add new petsitters listing
 router.post('/', (req, res) => {
-  const { id, auth0Id, name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = req.body
-  const listingData = { id, auth0Id, name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing }
+  const listingData = req.body
   db.addListing(listingData)
     .then((result) => {
       res.json(result)
@@ -50,5 +49,21 @@ router.delete('/:id', checkJwt, (req, res) => {
         )
       }
       res.status(500).send(err.message)
+    })
+})
+
+router.patch('/:id', checkJwt, (req, res) => {
+  const id = Number(req.params.id)
+  const auth0Id = req.user?.sub
+  const listingDetails = req.body
+
+  db.updateListing(id, auth0Id, listingDetails)
+    .then((listing) => {
+      res.json(listing)
+      return null
+    })
+    .catch(err => {
+      console.error(err)
+      res.status(500).json({ message: 'Failed to edit listing' })
     })
 })

@@ -17,27 +17,20 @@ export function getListing () {
 }
 
 // add listing
-export function postListing (listing, token) {
-  const newListing = {
-    auth0Id: listing.auth0Id,
-    id: listing.id,
-    name: listing.name,
-    location: listing.location,
-    petNumber: listing.petNumber,
-    petType: listing.petType,
-    petSize: listing.petSize,
-    homeType: listing.homeType,
-    serviceRate: listing.serviceRate,
-    availability: listing.availability,
-    description: listing.description,
-    promoListing: listing.promoListing
-
-  }
-
+export function postListing (newListing, token) {
   return request
     .post(rootUrl)
     .set('authorization', `Bearer ${token}`)
     .send(newListing)
+    .then(res => res.body)
+}
+
+// update listing
+export function updateListing (id, updatedListing, token) {
+  return request
+    .patch(rootUrl`/${id}`)
+    .set('authorization', `Bearer ${token}`)
+    .send(updatedListing)
     .then(res => res.body)
 }
 
