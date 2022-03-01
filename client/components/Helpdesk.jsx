@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+
 import ContactSupport from './ContactSupport'
+import FaQ from './FaQ'
 
 export default function Helpdesk () {
+  const [btnClick, setBtnClick] = useState(false)
+  const [display, setDisplay] = useState('block')
   function handleOnclick () {
-    return (
-      <ContactSupport />
-    )
+    setBtnClick(true)
+    setDisplay('none')
   }
 
   return (
@@ -17,7 +20,13 @@ export default function Helpdesk () {
         <input type="text" />
 
       </div>
-      <button onClick={handleOnclick} className='common-button helpdesk-button'>Do you need to contact support?</button>
+      {
+        btnClick
+          ? <ContactSupport />
+          : <FaQ />
+      }
+
+      <button onClick={handleOnclick} style={{ display: display }} className='common-button helpdesk-button'>Do you need to contact support?</button>
     </section>
   )
 }
