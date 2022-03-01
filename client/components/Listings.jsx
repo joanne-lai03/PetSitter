@@ -103,7 +103,7 @@ function Listings () {
               </select>
             </div>
             <div>
-              <p>Near me in</p>
+              <p>Location</p>
               <div className="wrap">
                 <div className="searchbar-button">
                   <input
