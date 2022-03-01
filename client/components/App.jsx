@@ -17,7 +17,6 @@ import MyAccountEdit from './MyAccountEdit'
 import Helpdesk from './Helpdesk'
 import ContectBtn from './ContectBtn'
 import AboutUs from './AboutUs'
-
 export default function App () {
   const navigate = useNavigate()
   cacheUser(useAuth0, navigate)
@@ -28,6 +27,7 @@ export default function App () {
         <WaitIndicator />
         <ContectBtn />
         <Routes>
+          {/* <ScrollToTop /> */}
           <Route path='/' element={<Main />} />
           <Route path='/register' element={<Registration />} />
           <Route path='/myaccount' element={<Login />} />

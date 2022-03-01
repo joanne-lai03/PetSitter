@@ -332,8 +332,8 @@ a {
 }
 
 .listing-top {
+  width: 50%;
   padding: 20px 0;
-  width: 800px;
   background-color: rgba(255, 237, 213, 0.8);
   position: absolute;
   top: 50%;
@@ -406,10 +406,11 @@ a.button-linktoaddprofile:hover {
 
 .lists-all {
   display: flex;
-  width: 1000px;
+  width: 80%;
   background-color: #f6f6f6;
   margin: -40px 0;
   border: 2px solid #fff3dd;
+  margin-bottom: 0;
 }
 
 .lists-right {
@@ -417,7 +418,6 @@ a.button-linktoaddprofile:hover {
   margin-top: 0;
 
   h3 {
-    margin-left: 2em;
     margin-bottom: 10px;
   }
 }
@@ -439,7 +439,6 @@ a.button-linktoaddprofile:hover {
 }
 
 .button-checkprofile {
-  margin-left: 2em;
   margin-bottom: 1em;
   margin-top: 1em;
 }
@@ -452,8 +451,8 @@ a.button-linktoaddprofile:hover {
 }
 
 .lists-profile-pic {
-  margin-left: 10px;
-  width: 80%;
+  margin-left: 3em;
+  width: 60%;
   border-radius: 50%;
 }
 
@@ -465,9 +464,9 @@ a.button-linktoaddprofile:hover {
   padding: 5px 0;
 }
 
-.lists-ul-item {
-  padding-left: 4em;
-}
+// .lists-ul-item {
+//   padding-left: 4em;
+// }
 
 .fa-size {
   font-size: 1.25em;

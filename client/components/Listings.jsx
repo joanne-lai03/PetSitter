@@ -150,7 +150,7 @@ function Listings () {
         <Link to='/petsitters/add' className="button-linktoaddprofile">Add to listing</Link>
       </div>
       {/* display all lists */}
-      <p>Scroll down to browse our friendly pet sitters to help with your boarding or caring needs for your furry best friend! 💖</p>
+      <p>Scroll down to browse our friendly pet sitters to help with your boarding <br></br>or caring needs for your furry best friend! 💖</p>
       { listings.map((listing) => {
         return <>
           <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
