@@ -34,12 +34,23 @@ export function getListingById (id, token) {
 }
 
 // update listing
-export function updateListing (id, updatedListing, token) {
+export function updateListing (id, updatedItem, state, navigate) {
+  const { auth0Id, token } = state
+  const patchListing = {
+    ...updatedItem,
+    auth0_id: auth0Id
+  }
+
   return request
     .patch(`${rootUrl}/${id}`)
     .set('authorization', `Bearer ${token}`)
-    .send(updatedListing)
-    .then(res => res.body)
+    .send(patchListing)
+    .catch((err) => {
+      console.error(err.message)
+    })
+    .finally(() => {
+      navigate('/petsitters')
+    })
 }
 
 // delete listing
