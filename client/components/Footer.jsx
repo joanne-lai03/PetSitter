@@ -27,8 +27,8 @@ const Footer = () => {
           <div className="f-newsletter">
             Subscribe to our newsletter to get our latest news.
             <form className="f-inline" >
-              <input type="email" name="email" placeholder="Enter your email address" />
-              <input className="common-button" type="submit" onClick={handleSubmit} value="Subscribe" />
+              <input type="email" name="email" placeholder="Enter email address" />
+              <input className="f-suscribe-button" type="submit" onClick={handleSubmit} value="Subscribe" />
             </form>
 
           </div>
