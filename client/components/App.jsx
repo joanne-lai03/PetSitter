@@ -15,6 +15,8 @@ import WaitIndicator from './WaitIndicator'
 import MyAccountEdit from './MyAccountEdit'
 import Helpdesk from './Helpdesk'
 import ContectBtn from './ContectBtn'
+import ListingsItemEdit from './ListingsItemEdit'
+// import ContectBtn from './ContectBtn'
 
 export default function App () {
   const navigate = useNavigate()
@@ -34,6 +36,10 @@ export default function App () {
           <Route path='/petsitters/add' element={<PetsitterForm />} />
           <Route path='/petsitters/profiles/:id' element={<ListingProfiles />} />
           <Route path='/helpdesk' element={<Helpdesk />} />
+          <Route path='/petsitters/profiles/edit/:id' element={<ListingsItemEdit />}
+          />
+          {/* <Route path='/contectus' element={< />} /> */}
+          {/* stretch goal form jinny */}
         </Routes>
       </div>
     </>

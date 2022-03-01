@@ -1,4 +1,4 @@
-import { getListing, postListing, deleteListing } from '../apis/listings'
+import { getListing, postListing, deleteListing, getListingById } from '../apis/listings'
 import { showError } from './error'
 
 export const FETCH_LISTING_PENDING = 'FETCH_LISTING_PENDING'
@@ -6,6 +6,8 @@ export const FETCH_LISTING_SUCCESS = 'FETCH_LISTING_SUCCESS'
 export const DELETELISTING_FROM_LIST_PENDING = 'DELETELISTING_FROM_LIST_PENDING'
 export const DELETELISTING_FROM_LIST_SUCCESS = 'DELETELISTING_FROM_LIST_SUCCESS'
 export const ADD_TO_LIST = 'ADD_TO_LIST'
+export const UPDATE_LISTING_PENDING = 'UPDATE_LISTING_PENDING'
+export const UPDATE_LISTING_SUCCESS = 'UPDATE_LISTING_SUCCESS'
 
 export function fetchListingPending () {
   return {
@@ -77,6 +79,35 @@ export function deleteListingFromList (id, token) {
 
     return deleteListing(id, token)
       .catch((err) => {
+        const errMessage = err.response?.text || err.message
+        dispatch(showError(errMessage))
+      })
+  }
+}
+
+// === Edit ===
+export function updateListingPending () {
+  return {
+    type: UPDATE_LISTING_PENDING
+  }
+}
+
+export function updateListingSuccess (listing) {
+  return {
+    type: UPDATE_LISTING_SUCCESS,
+    listing
+  }
+}
+
+export function updatingListingById (id, token) {
+  return (dispatch) => {
+    dispatch(updateListingPending())
+    return getListingById(id, token)
+      .then(listing => {
+        dispatch(updateListingSuccess(listing))
+        return null
+      })
+      .catch(err => {
         const errMessage = err.response?.text || err.message
         dispatch(showError(errMessage))
       })
