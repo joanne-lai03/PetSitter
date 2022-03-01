@@ -50,15 +50,17 @@ function authorizeUpdate (listing, auth0Id) {
   }
 }
 
-function updateListing (id, auth0Id, listingDetails, db = connection) {
+function updateListing (id, newdata, db = connection) {
+  const { auth0_id } = newdata
+  // ignore....it...lint issue but working perfectly
   return db('petsitters')
     .where('id', id)
     .first()
-    .then(listing => authorizeUpdate(listing, auth0Id))
+    .then(listing => authorizeUpdate(listing, auth0_id))
     .then(() => {
       return db('petsitters')
-        .where('id', id)
-        .update(listingDetails)
+        .where({ id, auth0_id })
+        .update(newdata)
     })
 }
 

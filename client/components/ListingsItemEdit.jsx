@@ -1,100 +1,108 @@
 import React, { useState, useEffect } from 'react'
-import { updateListing } from '../apis/listings'
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import updateListingById from '../actions/listings'
+import { getListing, updateListing } from '../apis/listings'
+import { useSelector } from 'react-redux'
+import { useParams, useNavigate } from 'react-router-dom'
+import { useFormik } from 'formik'
+
+// import updateListingById from '../actions/listings'
 
 export default function ListingsItemEdit () {
-  const dispatch = useDispatch
+  const navigate = useNavigate()
   const { id } = useParams()
-  const { auth0Id, token } = useSelector(state => state.user)
-
-  // const listing = listingArr.find(el => el.id === Number(id))
-
-  const [editForm, setEditForm] = useState([]
-    // {
-    // auth0Id: auth0Id,
-    // name: listing.name,
-    // location: listing.location,
-    // petNumber: listing.pet_number,
-    // petType: listing.pet_type,
-    // petSize: listing.pet_size,
-    // homeType: listing.home_type,
-    // serviceRate: listing.service_rate,
-    // availability: listing.availability,
-    // description: listing.description,
-    // promoListing: listing.promo_listing
-  // }
-  )
+  const state = useSelector(state => state.user)
+  const [listingprofile, setListingProfile] = useState({})
 
   useEffect(() => {
-    const action = updateListingById(id, token)
-    dispatch(action)
+    getListing()
+      .then(apiResponse => {
+        setListingProfile(apiResponse.find(obj => obj.id === Number(id))) // find only the one that matches
+        return null
+      })
+      .catch(err => {
+        console.error(err)
+      })
   }, [])
 
-  function handleChange (e) {
-
-  }
+  const formik = useFormik({
+    initialValues: {
+      availability: '',
+      description: '',
+      home_type: '',
+      location: '',
+      name: '',
+      pet_number: '',
+      pet_size: '',
+      pet_type: '',
+      promo_listing: '',
+      service_rate: ''
+    },
+    onSubmit: values => {
+      updateListing(id, values, state, navigate)
+    }
+  })
 
   return (
     <div>
       <h1>Petsitter editing form</h1>
       <h5>Edit your listing below:</h5>
-      <form className='form'>
+      <form className='form' onSubmit={formik.handleSubmit} >
         <p className='label'> Name:</p>
         <input name="name"
-          onChange={handleChange}
-          value={editForm.name} // need to update code so it takes user's name from account
+          onChange={formik.handleChange}
+          placeholder={listingprofile.name}
+          value={formik.values.name} // need to update code so it takes user's name from account
           className='form-box'/>
 
         <p> Location:</p>
         <input name="location"
-          onChange={handleChange}
-          value={editForm.location} // need to update code so it takes user's location from account
+          onChange={formik.handleChange}
+          value={formik.values.location} // need to update code so it takes user's location from account
           className='form-box'
         />
 
         <p> Amount of pets I can look after at one time:</p>
-        <input name="petNumber"
-          onChange={handleChange}
-          value={editForm.petNumber}
+        <input name="pet_number"
+          onChange={formik.handleChange}
+          value={formik.values.pet_number}
           className='form-box'
         />
 
         <p> Pet Type:</p>
-        <input name="petType"
-          onChange={handleChange}
-          value={editForm.petType}
+        <input name="pet_type"
+          onChange={formik.handleChange}
+          placeholder={listingprofile.pet_type}
+          value={formik.values.pet_type}
           className='form-box'
         />
 
         <p> Pet sizes:</p>
-        <input name="petSize"
-          onChange={handleChange}
-          value={editForm.petSize}
+        <input name="pet_size"
+          onChange={formik.handleChange}
+          value={formik.values.pet_size}
           className='form-box'
         />
 
         <p> Home Type:</p>
-        <input name="homeType"
-          onChange={handleChange}
-          value={editForm.homeType}
+        <input name="home_type"
+          onChange={formik.handleChange}
+          value={formik.values.home_type}
           className='form-box'
         />
 
         <p> Availability: <a title="Write down the days you think you'll be available. This can be further discussed when the client makes an inquiry"><img src="https://i.ibb.co/smSqZXF/Screen-Shot-2022-02-25-at-3-02-05-PM.png" height="14px"/></a></p>
         <input name="availability"
-          onChange={handleChange}
-          value={editForm.availability}
+          onChange={formik.handleChange}
+          value={formik.values.availability}
           className='form-box'
         />
 
         <p> Service and Rates:</p>
-        <select id="serviceRate"
-          name="serviceRate"
-          onChange={handleChange}
+        <select id="service_rate"
+          name="service_rate"
+          onChange={formik.handleChange}
           className='form-box'
-          value={editForm.serviceRate}>
+          value={formik.values.service_rate}
+        >
           <option value="-1">--- Select Service ---</option>
           <option name="serviceRate1">Pet Sitting - $15 per hour</option>
           <option name="serviceRate2">Pet Boarding - $40 per day</option>
@@ -104,23 +112,23 @@ export default function ListingsItemEdit () {
 
         <p> Description: <a title="Write a few sentences about who you are to attract potential clients!"><img src="https://i.ibb.co/smSqZXF/Screen-Shot-2022-02-25-at-3-02-05-PM.png" height="14px"/></a></p>
         <textarea name="description"
-          onChange={handleChange}
-          value={editForm.description}
+          onChange={formik.handleChange}
+          value={formik.values.description}
           className='form-box form-textarea form-font'
         />
 
         <p> Promotion listing: <a title="A sentence or two to grab your potential client's attention! This text that will show up in on the listings page"><img src="https://i.ibb.co/smSqZXF/Screen-Shot-2022-02-25-at-3-02-05-PM.png" height="14px"/></a></p>
 
-        <textarea name="promoListing"
-          onChange={handleChange}
-          value={editForm.promoListing}
+        <textarea name="promo_listing"
+          onChange={formik.handleChange}
+          value={formik.values.promo_listing}
           className='form-box form-textarea form-font '
         />
 
-        <p><button type="submit"
-          className='nav-register'
-          onClick={handleSubmit} >
-          Submit</button></p>
+        <button
+          className='common-button'
+          type='submit'
+        >Edit</button>
 
       </form>
     </div>

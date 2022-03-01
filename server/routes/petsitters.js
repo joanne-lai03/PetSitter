@@ -22,8 +22,8 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const listingData = req.body
   db.addListing(listingData)
-    .then((result) => {
-      res.json(result)
+    .then(result => {
+      res.json({ result })
       return null
     })
     .catch(err => {
@@ -54,6 +54,7 @@ router.delete('/:id', checkJwt, (req, res) => {
 
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
+
   db.fetchListingbyId(id)
     .then(listing => {
       res.json(listing)
@@ -65,12 +66,11 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.patch('/:id', checkJwt, (req, res) => {
+router.patch('/:id', (req, res) => {
   const id = Number(req.params.id)
-  const auth0Id = req.user?.sub
   const listingDetails = req.body
 
-  db.updateListing(id, auth0Id, listingDetails)
+  db.updateListing(id, listingDetails)
     .then((listing) => {
       res.json(listing)
       return null

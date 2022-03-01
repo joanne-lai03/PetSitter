@@ -34,10 +34,10 @@ export default function App () {
           <Route path='/myaccount/edit' element={<MyAccountEdit />} />
           <Route path='/petsitters' element={<Listings />} />
           <Route path='/petsitters/add' element={<PetsitterForm />} />
+          <Route path='/petsitters/edit/:id' element={<ListingsItemEdit />} />
           <Route path='/petsitters/profiles/:id' element={<ListingProfiles />} />
           <Route path='/helpdesk' element={<Helpdesk />} />
-          <Route path='/petsitters/profiles/edit/:id' element={<ListingsItemEdit />}
-          />
+
           {/* <Route path='/contectus' element={< />} /> */}
           {/* stretch goal form jinny */}
         </Routes>
