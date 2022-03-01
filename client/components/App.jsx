@@ -13,18 +13,18 @@ import Listings from './Listings'
 import Login from './Login'
 import WaitIndicator from './WaitIndicator'
 import MyAccountEdit from './MyAccountEdit'
-// import ContectBtn from './ContectBtn'
+import Helpdesk from './Helpdesk'
+import ContectBtn from './ContectBtn'
 
 export default function App () {
   const navigate = useNavigate()
   cacheUser(useAuth0, navigate)
-
   return (
     <>
       <div className='app'>
         <Nav />
         <WaitIndicator />
-        {/* <ContectBtn /> */}
+        <ContectBtn />
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/register' element={<Registration />} />
@@ -33,8 +33,7 @@ export default function App () {
           <Route path='/petsitters' element={<Listings />} />
           <Route path='/petsitters/add' element={<PetsitterForm />} />
           <Route path='/petsitters/profiles/:id' element={<ListingProfiles />} />
-          {/* <Route path='/contectus' element={< />} /> */}
-          {/* stretch goal form jinny */}
+          <Route path='/helpdesk' element={<Helpdesk />} />
         </Routes>
       </div>
     </>

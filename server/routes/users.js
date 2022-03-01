@@ -51,19 +51,6 @@ router.get('/', (req, res) => {
     })
 })
 
-// // GET /api/v1/users/auth0|12334
-// router.get('/:id', async (req, res) => {
-//   const { id } = req.params
-
-//   try {
-//     const roles = await getUserRoles(id)
-//     res.json({ roles })
-//   } catch (error) {
-//     console.error(error)
-//     res.status(500).json({ message: 'Unable to retrieve user roles' })
-//   }
-// })
-
 // PATCH /api/v1/users/
 router.patch('/', (req, res) => {
   const user = req.body
