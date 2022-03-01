@@ -119,7 +119,7 @@ export default function PetSitterForm () {
           placeholder="If you want someone to look after your furbaby, I'm your man!"/>
 
         <p><button type="submit"
-          className='nav-register'
+          className='common-button'
           onClick={handleSubmit} >
             Submit</button></p>
 

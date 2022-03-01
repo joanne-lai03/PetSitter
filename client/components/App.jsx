@@ -11,6 +11,7 @@ import ListingProfiles from './ListingProfiles'
 import Registration from './Registration'
 import Listings from './Listings'
 import Login from './Login'
+import Footer from './Footer'
 import WaitIndicator from './WaitIndicator'
 import MyAccountEdit from './MyAccountEdit'
 import Helpdesk from './Helpdesk'
@@ -35,6 +36,7 @@ export default function App () {
           <Route path='/petsitters/profiles/:id' element={<ListingProfiles />} />
           <Route path='/helpdesk' element={<Helpdesk />} />
         </Routes>
+        <Footer />
       </div>
     </>
   )

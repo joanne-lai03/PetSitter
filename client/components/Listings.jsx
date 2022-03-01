@@ -75,6 +75,16 @@ function Listings () {
       })
   }
 
+  // function searchBar (text) {
+  //   setfilterTxt(text)
+
+  //     //   return null
+  //     // })
+  //     // .catch(err => {
+  //     //   console.error(err)
+  //     // })
+  // }
+
   return (
     <>
       <div className="listing-image">
@@ -171,7 +181,7 @@ function Listings () {
           </>
         })
         : listings
-          // .filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()))
+        // .filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()))
           .map((listing) => {
             return <>
               <ListingsItem listing={listing} deleteFromList={deleteFromList} />
