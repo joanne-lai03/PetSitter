@@ -18,7 +18,8 @@ export default function ListingsItemEdit () {
     pet_size: '',
     pet_type: '',
     promo_listing: '',
-    service_rate: ''
+    service_rate: '',
+    img: ''
   })
 
   useEffect(() => {
@@ -43,7 +44,8 @@ export default function ListingsItemEdit () {
       pet_size: listingprofile.pet_size,
       pet_type: listingprofile.pet_type,
       promo_listing: listingprofile.promo_listing,
-      service_rate: listingprofile.service_rate
+      service_rate: listingprofile.service_rate,
+      img: listingprofile.img
     },
     enableReinitialize: true,
     onSubmit: values => {
@@ -95,6 +97,13 @@ export default function ListingsItemEdit () {
         <input name="home_type"
           onChange={formik.handleChange}
           value={formik.values.home_type}
+          className='form-box'
+        />
+
+        <p> Picture URL:</p>
+        <input name="img"
+          onChange={formik.handleChange}
+          value={formik.values.img}
           className='form-box'
         />
 

@@ -4,21 +4,22 @@ import { useSelector } from 'react-redux'
 
 function ListingsItem (props) {
   const listing = props.listing
-  const { id } = props.listing
+  const { id, img } = props.listing
   const auth0Id = useSelector(state => state.user.auth0Id)
 
   function deleteFromList () {
     props.deleteFromList(id)
   }
+  console.log(img)
 
   return (
     <>
       <div className="lists-all">
         <div className="lists-left">
-          {listing.id < 10
-            ? <img className="lists-profile-pic" src={`/images/profilephotos/${listing.name}.jpeg`} />
-            : <img className="lists-profile-pic lists-profile-pic-default" src= '/images/logo_petsitter_maincolor500.png' />
-          }
+          { img === null
+            ? <img className="lists-profile-pic lists-profile-pic-default" src='/images/logo_petsitter_maincolor500.png' />
+            : <img className="lists-profile-pic" src={img} />}
+
         </div>
         <ul className="lists-right">
           <li>

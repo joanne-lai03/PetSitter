@@ -1,14 +1,15 @@
 import React from 'react'
 
 export function ListingProfilesItem (props) {
-  // console.log(props.listingProfile)
   const listingProfiles = props.listingProfile
 
   return (
     <>
       <div className='profile-flex-container'>
         <div className="mainprofile-left">
-          <img className='profile-picture' src="/images/sample.png" alt="Profile image"></img>
+          {listingProfiles.img === null
+            ? <img className='profile-picture' src='/images/logo_petsitter_maincolor500.png' alt="Profile image"></img>
+            : <img className='profile-picture' src={listingProfiles.img} alt="Profile image"></img>}
         </div>
 
         <div className='mainprofile-right'>
