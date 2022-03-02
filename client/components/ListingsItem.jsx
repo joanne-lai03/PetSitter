@@ -20,6 +20,7 @@ function ListingsItem (props) {
         <div className="lists-left">
           <img className="lists-profile-pic" src={`/images/profilephotos/${listing.name}.jpeg`} />
         </div>
+
         <ul className="lists-right">
           <li>
             <h3>{listing.name}</h3>
