@@ -1,5 +1,5 @@
 import React from 'react'
-import ButtonMailto from './Mailto'
+import ButtonMailto from '../actions/mailto'
 
 export function ListingProfilesItem (props) {
   // console.log(props.listingProfile)
