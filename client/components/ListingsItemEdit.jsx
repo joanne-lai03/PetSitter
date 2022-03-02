@@ -9,7 +9,7 @@ import { useFormik } from 'formik'
 export default function ListingsItemEdit () {
   const navigate = useNavigate()
   const { id } = useParams()
-  const token = useSelector(state => state.user.token)
+  const state = useSelector(state => state.user)
   const [listingprofile, setListingProfile] = useState({})
 
   useEffect(() => {
@@ -25,28 +25,21 @@ export default function ListingsItemEdit () {
 
   const formik = useFormik({
     initialValues: {
-      availability: '',
-      description: '',
-      home_type: '',
-      location: '',
+      availability: listingprofile.availability,
+      description: listingprofile.description,
+      home_type: listingprofile.home_type,
+      location: listingprofile.location,
       name: listingprofile.name,
-      pet_number: listingprofile.petNumber,
-      pet_size: '',
-      pet_type: '',
-      promo_listing: '',
-      service_rate: ''
+      pet_number: listingprofile.pet_number,
+      pet_size: listingprofile.pet_size,
+      pet_type: listingprofile.pet_type,
+      promo_listing: listingprofile.promo_listing,
+      service_rate: listingprofile.service_rate
     },
-    onSubmit: async values => {
-      await updateListing(id, values, token)
-      navigate('/petsitters')
+    onSubmit: values => {
+      updateListing(id, values, state, navigate)
     }
   })
-
-  console.log('hey', listingprofile)
-  // const id2 = Number(id) - 1
-  // console.log('id', id2)
-  // console.log('listingprofile', listingprofile.availability)
-  // console.log('helloooo', listings[id2].availability)
 
   return (
     <div>
@@ -57,7 +50,7 @@ export default function ListingsItemEdit () {
         <input name="name"
           type="text"
           onChange={formik.handleChange}
-          defaultValue={listingprofile.name}
+          value={formik.values.name}
           className='form-box'/>
 
         <p> Location:</p>
@@ -70,7 +63,7 @@ export default function ListingsItemEdit () {
         <p> Amount of pets I can look after at one time:</p>
         <input name="pet_number"
           onChange={formik.handleChange}
-          value={formik.values.petNumber}
+          value={formik.values.pet_number}
           className='form-box'
         />
 

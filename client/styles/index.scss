@@ -405,11 +405,11 @@ a.button-linktoaddprofile:hover{
 }
 
 .lists-all {
-    display: flex;
-    width: 1000px;
-    background-color: #F6F6F6;
-    margin: -40px 0;
-    border: 2px solid #fff3dd;
+  display: flex;
+  width: 1000px;
+  background-color: #f6f6f6;
+  margin: -2rem 0;
+  border: 2px solid #fff3dd;
 }
 
 .lists-right {
@@ -443,18 +443,24 @@ border: 1px solid #fb923c;
   margin-bottom: 1em;
   margin-top: 1em;
 }
-.lists-left{
-  margin:auto;
+.lists-left {
+  margin: auto;
+  width: 35%;
 }
 
 .profile-span{
   font-weight: bold;
 }
 
-.lists-profile-pic{
-  margin-left: 10px;
-  width: 80%;
+.lists-profile-pic {
+  margin-left: 3em;
+  width: 60%;
   border-radius: 50%;
+}
+
+.lists-profile-pic-default {
+  margin-right: 5rem;
+  border-radius: 0;
 }
 
 .fa-solid {
