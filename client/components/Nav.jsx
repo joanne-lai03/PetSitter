@@ -38,18 +38,18 @@ function Nav () {
       <section className='nav-item'>
         <IfAuthenticated>
           <section className='sign'>
-            <Link to='/' className='nav-link'>Home</Link>
-            <Link to='/myaccount' className='nav-link'>My Account</Link>
-            <Link to='/petsitters' className='nav-link'>Find Petsitters</Link>
-            <Link to='/faq' className='nav-link'>FAQ</Link>
-            <a href='/' onClick={handleLogoff} className='nav-link'>Log Out</a>
+            <Link to='/' className='nav-link secondaryhover'>Home</Link>
+            <Link to='/myaccount' className='nav-link secondaryhover'>My Account</Link>
+            <Link to='/petsitters' className='nav-link secondaryhover'>Find Petsitters</Link>
+            <Link to='/faq' className='nav-link secondaryhover'>FAQ</Link>
+            <a href='/' onClick={handleLogoff} className='nav-link secondaryhover'>Log Out</a>
           </section>
         </IfAuthenticated>
         <IfNotAuthenticated>
           <section className='sign'>
-            <Link to='/' className='nav-link'>Home</Link>
-            <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
-            <a href='/register' onClick={handleRegister} className='nav-link nav-register'>Register</a>
+            <Link to='/' className='nav-link secondaryhover'>Home</Link>
+            <a href='/' onClick={handleLogin} className='nav-link secondaryhover'>Sign in</a>
+            <a href='/myaccount' onClick={handleRegister} className='nav-link nav-register primaryhover nav-child'>Register</a>
           </section>
         </IfNotAuthenticated>
       </section>

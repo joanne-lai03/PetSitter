@@ -146,7 +146,7 @@ export default function ListingsItemEdit () {
         <button
           className='common-button'
           type='submit'
-        >Edit</button>
+        >Submit</button>
 
       </form>
     </div>

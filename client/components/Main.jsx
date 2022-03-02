@@ -30,7 +30,7 @@ export default function Main () {
             }
           </IfAuthenticated>
           <IfNotAuthenticated>
-            <Link to='/register' className='nav-register' onClick={handleRegister}>Register Now!</Link>
+            <Link to='/myaccount' className='nav-register' onClick={handleRegister}>Register Now!</Link>
           </IfNotAuthenticated>
         </div>
       </div>
