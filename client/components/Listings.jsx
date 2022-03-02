@@ -93,11 +93,11 @@ function Listings () {
               <p>My pet type</p>
               <select onChange={setSelectPetBar} value={dropdownLists.pet} name="pet" className ="select-pet">
                 <option value="-1">--- Select Pet Type ---</option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="guinea pig">Guinea pig</option>
-                <option value="rabbit">Rabbits</option>
-                <option value="rabbit">Sheep</option>
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+                <option value="Guinea pig">Guinea pig</option>
+                <option value="Rabbit">Rabbit</option>
+                <option value="Sheep">Sheep</option>
               </select>
             </div>
             <div>
