@@ -17,6 +17,7 @@ import Helpdesk from './Helpdesk'
 import ContactBtn from './ContactBtn'
 import ListingsItemEdit from './ListingsItemEdit'
 import AboutUs from './AboutUs'
+import Footer from './Footer'
 
 export default function App () {
   const navigate = useNavigate()
@@ -40,6 +41,7 @@ export default function App () {
           <Route path='/aboutus' element={<AboutUs />} />
         </Routes>
       </div>
+      <Footer />
     </>
   )
 }

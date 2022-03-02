@@ -104,7 +104,10 @@ a {
   border: 1px solid #fb923c;
   // background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
   transition: 0.4s;
-  outline:none;
+  outline: none;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
 }
 .nav-link {
   padding-top: 7px;
@@ -126,7 +129,7 @@ a {
 }
 
 .form {
-  width: 250px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -385,6 +388,7 @@ a {
   text-align: center;
   border-radius: 4px;
   margin: -60px 0;
+  margin-bottom: 1em;
 }
 
 a.button-linktoaddprofile {
@@ -817,7 +821,7 @@ border: 1px solid #fb923c;
 // Footer
 
 .footer {
-  margin-top: 20px;
+  margin-top: 130px;
   text-align: right;
   padding: 20px 0px 20px 0px;
   background-color: #ffedd5;
@@ -962,4 +966,10 @@ border: 1px solid #fb923c;
   margin-left: auto;
   margin-right: auto;
   width: 40%;
+}
+
+//
+.main-comment{
+  text-align: center;
+  font-size: 1.5em;
 }

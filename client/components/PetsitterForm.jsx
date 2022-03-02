@@ -44,7 +44,7 @@ export default function PetSitterForm () {
 
   return (
     <div>
-      <h1>Pet sitter form</h1>
+      <h1>Petsitter Form</h1>
       <h5>Fill out the form below to create a listing</h5>
       <form className='form'>
         <p className='label'> Name:</p>
@@ -71,25 +71,25 @@ export default function PetSitterForm () {
         <input name="petType"
           onChange={handleChange}
           className='form-box'
-          placeholder="guinea pigs and rabbits"/>
+          placeholder="Guinea pigs"/>
 
         <p> Pet sizes:</p>
         <input name="petSize"
           onChange={handleChange}
           className='form-box'
-          placeholder="small"/>
+          placeholder="Small"/>
 
         <p> Home Type:</p>
         <input name="homeType"
           onChange={handleChange}
           className='form-box'
-          placeholder="castle"/>
+          placeholder="Castle"/>
 
-        <p> Availability: <a title="Write down the days you think you'll be available. This can be further discussed when the client makes an inquiry"><img src="https://i.ibb.co/smSqZXF/Screen-Shot-2022-02-25-at-3-02-05-PM.png" height="14px"/></a></p>
+        <p> Availability: <a title="Write down the days you think you'll be available. This can be further discussed when the client makes an inquiry."><img src="https://i.ibb.co/smSqZXF/Screen-Shot-2022-02-25-at-3-02-05-PM.png" height="14px"/></a></p>
         <input name="availability"
           onChange={handleChange}
           className='form-box'
-          placeholder="all day errrdaay!"/>
+          placeholder="Monday - Wednesday after 5pm"/>
 
         <p> Service and Rates:</p>
         <select id="serviceRate"
@@ -108,9 +108,9 @@ export default function PetSitterForm () {
         <textarea name="description"
           onChange={handleChange}
           className='form-box form-textarea form-font'
-          placeholder="I live on a lifestyle block. I have lots of grass and spare space for guinea pigs and rabbits."/>
+          placeholder="I live on a lifestyle block. I have lots of grass and spare space for guinea pigs."/>
 
-        <p> Promotion listing: <a title="A sentence or two to grab your potential client's attention! This text that will show up in on the listings page"><img src="https://i.ibb.co/smSqZXF/Screen-Shot-2022-02-25-at-3-02-05-PM.png" height="14px"/></a></p>
+        <p> Promotion listing: <a title="A sentence or two to grab your potential client's attention! This text that will show up on the listings page."><img src="https://i.ibb.co/smSqZXF/Screen-Shot-2022-02-25-at-3-02-05-PM.png" height="14px"/></a></p>
 
         <textarea name="promoListing"
           onChange={handleChange}

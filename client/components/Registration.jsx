@@ -48,11 +48,11 @@ export default function Register () {
             className='form-box'
             id='name'
             name='name'
-            placeholder='Please write your Name...'
+            placeholder='Write Your Name'
             onChange={formik.handleChange}
             value={formik.values.name}
           />
-          <label htmlFor='location' className='label'>Your Location(City,uburb)</label>
+          <label htmlFor='location' className='label'>Your Location (Suburb or City)</label>
           {showAnyErrors('location')}
           <input
             className='form-box'
@@ -60,9 +60,10 @@ export default function Register () {
             name='location'
             onChange={formik.handleChange}
             value={formik.values.location}
+            placeholder='e.g. Auckland'
           />
 
-          <label htmlFor='description' className='label'>About yourself</label>
+          <label htmlFor='description' className='label'>Introduction</label>
           {showAnyErrors('description')}
           <textarea
             className='form-box form-textarea'
@@ -70,6 +71,7 @@ export default function Register () {
             name='description'
             onChange={formik.handleChange}
             value={formik.values.description}
+            placeholder='Tell me a little bit about yourself'
           />
 
         </div>

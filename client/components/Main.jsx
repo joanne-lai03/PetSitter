@@ -20,19 +20,17 @@ export default function Main () {
       <img className="main-img" src="/images/homeimg.jpeg" alt="" />
       <div className="main-box">
         <div className="main-comment">
-          <span>Are you looking for pet sitter?</span><br />
-          <span>or</span><br />
-          <span>Would you like to becom pet sitter?</span><br />
+          <span>Are you looking for a petsitter?</span><br />
         </div>
         <div className='main-box-button'>
           <IfAuthenticated>
             {user.id === null
-              ? <Link to='/myaccount' className='nav-register' onClick={handleRegister}>Resister Now !</Link>
-              : <Link to='/petsitters' className='nav-register nav-petsitter'>Find a pet sitter</Link>
+              ? <Link to='/myaccount' className='nav-register' onClick={handleRegister}>Register Now!</Link>
+              : <Link to='/petsitters' className='nav-register nav-petsitter'>Find a petsitter</Link>
             }
           </IfAuthenticated>
           <IfNotAuthenticated>
-            <Link to='/register' className='nav-register' onClick={handleRegister}>Resister Now !</Link>
+            <Link to='/register' className='nav-register' onClick={handleRegister}>Register Now!</Link>
           </IfNotAuthenticated>
         </div>
       </div>
