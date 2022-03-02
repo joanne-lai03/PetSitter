@@ -3,7 +3,9 @@ const connection = require('./connection')
 module.exports = {
   listPetsitters,
   addListing,
-  deleteListing
+  deleteListing,
+  updateListing,
+  fetchListingbyId
 }
 
 function listPetsitters (db = connection) {
@@ -12,9 +14,8 @@ function listPetsitters (db = connection) {
 }
 
 function addListing (listing, db = connection) {
-  const { id, auth0Id, name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = listing
+  const { auth0Id, name, location, petNumber, petType, petSize, homeType, serviceRate, availability, description, promoListing } = listing
   const newListing = {
-    id,
     auth0_id: auth0Id,
     name,
     location,
@@ -47,4 +48,24 @@ function authorizeUpdate (listing, auth0Id) {
   if (listing.auth0_id !== auth0Id) {
     throw new Error('Unauthorized')
   }
+}
+
+function updateListing (id, newdata, db = connection) {
+  const { auth0_id } = newdata
+  // ignore....it...lint issue but working perfectly
+  return db('petsitters')
+    .where('id', id)
+    .first()
+    .then(listing => authorizeUpdate(listing, auth0_id))
+    .then(() => {
+      return db('petsitters')
+        .where({ id, auth0_id })
+        .update(newdata)
+    })
+}
+
+function fetchListingbyId (id, db = connection) {
+  return db('petsitters')
+    .where('id', id)
+    .select()
 }

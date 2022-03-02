@@ -1,5 +1,4 @@
 import React from 'react'
-import ButtonMailto from '../actions/mailto'
 
 export function ListingProfilesItem (props) {
   // console.log(props.listingProfile)
@@ -9,7 +8,7 @@ export function ListingProfilesItem (props) {
     <>
       <div className='profile-flex-container'>
         <div className="mainprofile-left">
-          <img className='profile-picture' src={`/images/profilephotos/${listingProfiles.name}.jpeg`} alt="Profile image"></img>
+          <img className='profile-picture' src="/images/sample.png" alt="Profile image"></img>
         </div>
 
         <div className='mainprofile-right'>
@@ -21,7 +20,7 @@ export function ListingProfilesItem (props) {
             <li className='pet_size'><i className="fa-solid fa-poo"></i>Size of Pet:  {listingProfiles.pet_size}</li>
             <li className='home_type'><i className="fa-solid fa-house"></i>Type of Home:  {listingProfiles.home_type}</li>
           </ul>
-          <ButtonMailto label= {`Contact ${listingProfiles.name}`} mailto={`mailto:${listingProfiles.name}@gmail.com`}></ButtonMailto>
+          <button className='nav-register button-profile'><i className="fa-solid fa-envelope"></i>Contact to {listingProfiles.name}</button>
         </div>
       </div>
 

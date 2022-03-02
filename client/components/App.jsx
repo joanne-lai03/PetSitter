@@ -11,11 +11,11 @@ import ListingProfiles from './ListingProfiles'
 import Registration from './Registration'
 import Listings from './Listings'
 import Login from './Login'
-import Footer from './Footer'
 import WaitIndicator from './WaitIndicator'
 import MyAccountEdit from './MyAccountEdit'
 import Helpdesk from './Helpdesk'
-import ContectBtn from './ContectBtn'
+import ContactBtn from './ContactBtn'
+import ListingsItemEdit from './ListingsItemEdit'
 import AboutUs from './AboutUs'
 
 export default function App () {
@@ -26,20 +26,19 @@ export default function App () {
       <div className='app'>
         <Nav />
         <WaitIndicator />
-        <ContectBtn />
+        <ContactBtn />
         <Routes>
-          {/* <ScrollToTop /> */}
           <Route path='/' element={<Main />} />
           <Route path='/register' element={<Registration />} />
           <Route path='/myaccount' element={<Login />} />
           <Route path='/myaccount/edit' element={<MyAccountEdit />} />
           <Route path='/petsitters' element={<Listings />} />
           <Route path='/petsitters/add' element={<PetsitterForm />} />
+          <Route path='/petsitters/edit/:id' element={<ListingsItemEdit />} />
           <Route path='/petsitters/profiles/:id' element={<ListingProfiles />} />
           <Route path='/faq' element={<Helpdesk />} />
           <Route path='/aboutus' element={<AboutUs />} />
         </Routes>
-        <Footer />
       </div>
     </>
   )
