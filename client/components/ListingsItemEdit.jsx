@@ -33,7 +33,6 @@ export default function ListingsItemEdit () {
         console.error(err)
       })
   }, [])
-
   const formik = useFormik({
     initialValues: {
       availability: listingprofile.availability,
@@ -47,6 +46,7 @@ export default function ListingsItemEdit () {
       promo_listing: listingprofile.promo_listing,
       service_rate: listingprofile.service_rate
     },
+    enableReinitialize: true,
     onSubmit: values => {
       updateListing(id, values, state, navigate)
     },
@@ -82,7 +82,6 @@ export default function ListingsItemEdit () {
         <p> Pet Type:</p>
         <input name="pet_type"
           onChange={formik.handleChange}
-          placeholder={listingprofile.pet_type}
           value={formik.values.pet_type}
           className='form-box'
         />

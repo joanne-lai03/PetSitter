@@ -1,22 +1,23 @@
 import React from 'react'
 import { useForm, ValidationError } from '@formspree/react'
 
-export default function ContactSupport () {
+export default function ContactSupport (props) {
   const [state, handleSubmit] = useForm('mayvjned')
+  const { handleCondition } = props
 
   if (state.succeeded) {
     return (
-      <p>Your request sent to our manegement team, <br/>
+      <div className='contact-sent'>
+        <p>Your request sent to our manegement team, <br/>
       we will reply soon, Thank you!</p>
+      </div>
     )
   }
   return (
 
     <section className='helpdesk-Screen'>
-
-      <h1 className='helpdesk-title'>
-        <img className='helpdesk-logo' src='/images/logo_petsitter_maincolor.png' alt='logoimg' />
-        Contact Support</h1>
+      <img className='helpdesk-logo' src='/images/logo_petsitter_maincolor.png' alt='logoimg' />
+      <h1 className='helpdesk-title'>Contact Support</h1>
 
       <form onSubmit={handleSubmit} className='flex-myaccountContainer'>
         <label htmlFor='name'><i className="fa-solid icon_deco fa-user"></i>Name</label>
@@ -68,10 +69,14 @@ export default function ContactSupport () {
           field='message'
           errors={state.errors}
         />
-
-        <button type='submit' className='common-button ' disabled={state.submitting}>
+        <div className="contact-coloum">
+          <button onClick={handleCondition} className='common-button opposit-button '>
+      close
+          </button>
+          <button type='submit' className='common-button ' disabled={state.submitting}>
       Submit
-        </button>
+          </button>
+        </div>
 
       </form>
 
