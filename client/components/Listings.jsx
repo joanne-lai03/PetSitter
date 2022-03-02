@@ -61,8 +61,6 @@ function Listings () {
 
   function handleSubmit (event) {
     event.preventDefault()
-    console.log('drop', dropdownLists)
-    console.log('search', search)
 
     getListing(search)
       .then(listings => {

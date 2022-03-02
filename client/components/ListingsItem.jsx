@@ -10,7 +10,6 @@ function ListingsItem (props) {
   function deleteFromList () {
     props.deleteFromList(id)
   }
-  console.log(img)
 
   return (
     <>
