@@ -75,16 +75,6 @@ function Listings () {
       })
   }
 
-  // function searchBar (text) {
-  //   setfilterTxt(text)
-
-  //     //   return null
-  //     // })
-  //     // .catch(err => {
-  //     //   console.error(err)
-  //     // })
-  // }
-
   return (
     <>
       <div className="listing-image">
@@ -113,7 +103,7 @@ function Listings () {
               </select>
             </div>
             <div>
-              <p>Location</p>
+              <p>Near me in</p>
               <div className="wrap">
                 <div className="searchbar-button">
                   <input
@@ -150,7 +140,7 @@ function Listings () {
         <Link to='/petsitters/add' className="button-linktoaddprofile">Add to listing</Link>
       </div>
       {/* display all lists */}
-      <p>Scroll down to browse our friendly pet sitters to help with your boarding <br></br>or caring needs for your furry best friend! 💖</p>
+      <p>Scroll down to browse our friendly pet sitters to help with your boarding or caring needs for your furry best friend! 💖</p>
       { listings.map((listing) => {
         return <>
           <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
@@ -181,7 +171,7 @@ function Listings () {
           </>
         })
         : listings
-        // .filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()))
+          // .filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()))
           .map((listing) => {
             return <>
               <ListingsItem listing={listing} deleteFromList={deleteFromList} />
