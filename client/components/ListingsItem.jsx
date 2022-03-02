@@ -20,6 +20,7 @@ function ListingsItem (props) {
             : <img className="lists-profile-pic lists-profile-pic-default" src= '/images/logo_petsitter_maincolor500.png' />
           }
         </div>
+
         <ul className="lists-right">
           <li>
             <h3>{listing.name}</h3>

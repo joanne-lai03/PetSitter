@@ -104,7 +104,10 @@ a {
   border: 1px solid #fb923c;
   // background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
   transition: 0.4s;
-  outline:none;
+  outline: none;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
 }
 .nav-link {
   padding-top: 7px;
@@ -126,7 +129,7 @@ a {
 }
 
 .form {
-  width: 250px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -331,7 +334,8 @@ a {
 }
 
 .listing-top {
-  padding: 20px 0;
+  width: 50%;
+  padding: 10px 0;
   width: 800px;
   background-color: rgba(255, 237, 213, 0.8);
   position: absolute;
@@ -384,6 +388,7 @@ a {
   text-align: center;
   border-radius: 4px;
   margin: -60px 0;
+  margin-bottom: 1em;
 }
 
 a.button-linktoaddprofile {
@@ -639,7 +644,7 @@ border: 1px solid #fb923c;
   background-color: var(--color-lightorange);
 }
 .helpdesk-button {
-  width: 100%;
+  width: 30%;
   padding: 0 2rem;
 }
 .contact-coloum {
@@ -816,7 +821,7 @@ border: 1px solid #fb923c;
 // Footer
 
 .footer {
-  margin-top: 20px;
+  margin-top: 130px;
   text-align: right;
   padding: 20px 0px 20px 0px;
   background-color: #ffedd5;
@@ -899,6 +904,56 @@ border: 1px solid #fb923c;
   transition: background-color 200ms ease-in-out, box-shadow 200ms ease-in-out;
 }
 
+// media screen for petsitters list ============================
+
+@media screen and (max-width: 768px) {
+  body {
+    background-color: orange;
+  }
+  // nav ============================
+  .nav-link {
+    margin-right: 8px;
+    font-size: 14px;
+  }
+  .nav-item {
+    width: 100%;
+  }
+  
+  // petsitters list ============================
+  .listing-top p {
+    font-size: 1.25em;
+  }
+  .select-pet{
+    height: 30px;
+  }
+  .listing-top{
+    padding:0;
+  }
+  .searchbar{
+    height: 30px;
+  }
+
+  .searchButton {
+    height: 30px;
+    width: 25%;
+  }    
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    background-color: blue;
+  }
+  .lists-all{
+    display: block;
+  }
+  .listing-top {
+    padding: 8px 0 !important;
+  }
+  .lists-profile-pic {
+    margin: 1em auto 0;
+    display: block;
+  }
+}
 // About Us
 
 .about-us-container {
@@ -911,4 +966,14 @@ border: 1px solid #fb923c;
   margin-left: auto;
   margin-right: auto;
   width: 40%;
+}
+
+//
+.main-comment{
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.dog {
+  text-align: center;
 }

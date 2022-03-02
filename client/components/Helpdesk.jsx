@@ -27,7 +27,7 @@ export default function Helpdesk () {
       </div> */}
 
       <FaQ />
-      <button onClick={handleOnclick} style={{ display: display }} className='common-button helpdesk-button'>Do you need to contact support?</button>
+      <button onClick={handleOnclick} style={{ display: display }} className='common-button helpdesk-button'>Contact Us</button>
 
       {
         btnClick

@@ -103,7 +103,7 @@ function Listings () {
               </select>
             </div>
             <div>
-              <p>Near me in</p>
+              <p>My location</p>
               <div className="wrap">
                 <div className="searchbar-button">
                   <input
@@ -112,7 +112,7 @@ function Listings () {
                     type="text"
                     id='searchValue'
                     className="searchbar"
-                    placeholder='Input your area'
+                    placeholder='Suburb or City'
                     name='searchValue'></input>
                   {/* <button
                     onClick={handleSubmit}
@@ -135,12 +135,11 @@ function Listings () {
       </div>
 
       <div className="linkto-add-profile">
-        <h3>Would you like to be a pet sitter?</h3>
+        <h3>Would you like to be a petsitter?</h3>
         <p>Please click here to post your profile!</p>
         <Link to='/petsitters/add' className="button-linktoaddprofile">Add to listing</Link>
       </div>
       {/* display all lists */}
-      <p>Scroll down to browse our friendly pet sitters to help with your boarding or caring needs for your furry best friend! 💖</p>
       { listings.map((listing) => {
         return <>
           <ListingsItem listing={listing} deleteFromList={deleteFromList}/>

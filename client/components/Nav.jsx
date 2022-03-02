@@ -39,10 +39,10 @@ function Nav () {
         <IfAuthenticated>
           <section className='sign'>
             <Link to='/' className='nav-link'>Home</Link>
-            <Link to='/myaccount' className='nav-link'>My account</Link>
-            <Link to='/petsitters' className='nav-link'>PetSitterList</Link>
+            <Link to='/myaccount' className='nav-link'>My Account</Link>
+            <Link to='/petsitters' className='nav-link'>Find Petsitters</Link>
             <Link to='/faq' className='nav-link'>FAQ</Link>
-            <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
+            <a href='/' onClick={handleLogoff} className='nav-link'>Log Out</a>
           </section>
         </IfAuthenticated>
         <IfNotAuthenticated>
