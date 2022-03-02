@@ -5,7 +5,7 @@ export default function ContectBtn () {
   return (
     <Link to='/faq' className='question-bubble'>
       <i className="fa-solid fa-comments"></i>
-      <span className='helpText'>Do you need to help?</span>
+      <span className='helpText'>Do you need help?</span>
     </Link>
   )
 }
