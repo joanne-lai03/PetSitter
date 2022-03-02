@@ -41,7 +41,7 @@ function Nav () {
             <Link to='/' className='nav-link'>Home</Link>
             <Link to='/myaccount' className='nav-link'>My account</Link>
             <Link to='/petsitters' className='nav-link'>PetSitterList</Link>
-            <Link to='/helpdesk' className='nav-link'>Helpdesk</Link>
+            <Link to='/faq' className='nav-link'>FAQ</Link>
             <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
           </section>
         </IfAuthenticated>
