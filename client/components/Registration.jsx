@@ -1,91 +1,88 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { Navigate } from 'react-router-dom'
-import { addUser } from '../apis/users'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import addUser from '../apis/registerationApi'
+import { useAuth0 } from '@auth0/auth0-react'
 
-function Registration() {
-  const user = useSelector(state => state.user)
-  const navigate = Navigate()
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
-  const [form, setForm] = useState({
-    auth0Id: '',
-    name: '',
-    email: '',
-    description: ''
+const registerSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'This must be at least 2 characters long')
+    .max(15, 'Sorry, this must be under 15 characters long')
+    .required('Sorry it\'s Required')
+})
+
+export default function Register () {
+  const authUser = useAuth0().user
+  const navigate = useNavigate()
+
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      location: '',
+      description: ''
+    },
+    onSubmit: values => {
+      addUser(values, authUser, navigate)
+    },
+    validationSchema: registerSchema
   })
 
-  useEffect(() => {
-    setForm({
-      auth0Id: user.auth0Id,
-      name: user.name,
-      email: user.email,
-      description: user.description
-    })
-  }, [user])
-
-  function handleChange(e) {
-    const { name, value } = e.target
-    setForm({
-      ...form,
-      [name]: value
-    })
-  }
-
-  async function handleClick(e) {
-    e.preventDefault()
-    // registerUser(form, authUser, history.push)
-    try {
-      await addUser(form)
-      navigate('/')
-    } catch (error) {
-      console.error(error)
-    }
+  function showAnyErrors (inputName) {
+    return formik.errors[inputName] && formik.touched[inputName]
+      ? <p className='inputError'>{formik.errors[inputName]}</p>
+      : null
   }
 
   return (
-    <section className='form'>
-      <h2>Register Profile</h2>
-      <form className='registration'>
-        <label htmlFor='auth0Id'>auth0Id</label>
-        <input
-          name='auth0Id'
-          value={form.auth0Id}
-          onChange={handleChange}
-          disabled={true}
-        ></input>
+    <section className='flex-myaccountContainer'>
+      <h2>Register Your Account</h2>
 
-        <label htmlFor='name'>Name</label>
-        <input
-          name='name'
-          value={form.name}
-          onChange={handleChange}
-          disabled={true}
-        ></input>
+      <form onSubmit={formik.handleSubmit} className='register_form'>
+        <div className="field input-tray">
 
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          value={form.email}
-          onChange={handleChange}
-          disabled={true}
-        ></input>
+          <label htmlFor='name' className='label'>Name</label>
+          {showAnyErrors('name')}
+          <input
+            className='form-box'
+            id='name'
+            name='name'
+            placeholder='Write Your Name'
+            onChange={formik.handleChange}
+            value={formik.values.name}
+          />
+          <label htmlFor='location' className='label'>Your Location (Suburb or City)</label>
+          {showAnyErrors('location')}
+          <input
+            className='form-box'
+            id='location'
+            name='location'
+            onChange={formik.handleChange}
+            value={formik.values.location}
+            placeholder='e.g. Auckland'
+          />
 
-        <label htmlFor='description' >Description</label>
-        <textarea
-          name='description'
-          value={form.description}
-          onChange={handleChange}
-          cols={3}
-        ></textarea>
+          <label htmlFor='description' className='label'>Introduction</label>
+          {showAnyErrors('description')}
+          <textarea
+            className='form-box form-textarea'
+            id='description'
+            name='description'
+            onChange={formik.handleChange}
+            value={formik.values.description}
+            placeholder='Tell me a little bit about yourself'
+          />
+
+        </div>
+
         <button
-          type='button'
-          onClick={handleClick}
-        >
-          Register
-        </button>
+          className='registerSubmit common-button'
+          type='submit'
+        >Register</button>
+
       </form>
     </section>
+
   )
 }
-
-export default Registration

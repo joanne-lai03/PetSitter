@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
 
-import users from './users'
 import user from './user'
+import listings from './listings'
+import waiting from './waiting'
 
 export default combineReducers({
-  users,
-  user
+  user,
+  listings,
+  waiting
 })

@@ -1,6 +1,6 @@
 const express = require('express')
 const jwtAuthz = require('express-jwt-authz')
-const { getUserRoles, checkJwt } = require('../auth0')
+const checkJwt = require('../auth0')
 
 const db = require('../db/users')
 const router = express.Router()
@@ -10,9 +10,7 @@ const checkAdmin = jwtAuthz(['read:my_private_route'], { customScopeKey: 'permis
 
 // POST /api/v1/users/protected
 router.post('/', async (req, res) => {
-  const { auth0Id, name, email, description } = req.body
-  const user = { auth0Id, name, email, description }
-
+  const user = req.body
   try {
     await db.addUser(user)
     res.sendStatus(201)
@@ -53,17 +51,31 @@ router.get('/', (req, res) => {
     })
 })
 
-// GET /api/v1/users/auth0|12334
-router.get('/:id', async (req, res) => {
-  const { id } = req.params
+// // GET /api/v1/users/auth0|12334
+// router.get('/:id', async (req, res) => {
+//   const { id } = req.params
 
-  try {
-    const roles = await getUserRoles(id)
-    res.json({ roles })
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ message: 'Unable to retrieve user roles' })
-  }
+//   try {
+//     const roles = await getUserRoles(id)
+//     res.json({ roles })
+//   } catch (error) {
+//     console.error(error)
+//     res.status(500).json({ message: 'Unable to retrieve user roles' })
+//   }
+// })
+
+// PATCH /api/v1/users/
+router.patch('/', (req, res) => {
+  const user = req.body
+  db.patchUser(user)
+    .then(user => {
+      res.json({ user })
+      return null
+    })
+    .catch(err => {
+      console.error(err)
+      res.status(500).json({ message: 'Something went wrong' })
+    })
 })
 
 module.exports = router
