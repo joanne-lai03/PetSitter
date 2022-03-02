@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 
-// import updateListingById from '../actions/listings'
-
 export default function ListingsItemEdit () {
   const navigate = useNavigate()
   const { id } = useParams()
@@ -33,6 +31,7 @@ export default function ListingsItemEdit () {
         console.error(err)
       })
   }, [])
+
   const formik = useFormik({
     initialValues: {
       availability: listingprofile.availability,
@@ -49,8 +48,7 @@ export default function ListingsItemEdit () {
     enableReinitialize: true,
     onSubmit: values => {
       updateListing(id, values, state, navigate)
-    },
-    enableReinitialize: true
+    }
   })
 
   return (
