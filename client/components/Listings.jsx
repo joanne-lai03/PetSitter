@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import { getListing } from '../apis/listings'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteListingFromList } from '../actions/listings'
-// import { fetchListing } from '../actions/listing'
 
 function Listings () {
   const dispatch = useDispatch()
@@ -112,12 +111,6 @@ function Listings () {
                     className="searchbar"
                     placeholder='Suburb or City'
                     name='searchValue'></input>
-                  {/* <button
-                    onClick={handleSubmit}
-                    type="submit"
-                    className="searchButton">
-                    <i className="fa fa-search"></i>
-                  </button> */}
                 </div>
                 <button
                   onClick={handleSubmit}
@@ -143,38 +136,6 @@ function Listings () {
           <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
         </>
       })}
-
-      {/* search function : select service or pet type */}
-      {/* { dropdownLists
-        ? listings
-          // .filter(pet => pet.pet_type === dropdownLists.pet && pet.service_rate.toLowerCase().includes(dropdownLists.service.toLowerCase()))
-          .map((listing) => {
-            return <>
-              <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
-            </>
-          })
-        : listings
-          .map((listing) => {
-            return <>
-              <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
-            </>
-          })
-      } */}
-      {/* search function : location */}
-      {/* {search.length === 0
-        ? listings.map((listing) => {
-          return <>
-            <ListingsItem listing={listing} deleteFromList={deleteFromList} />
-          </>
-        })
-        : listings
-          // .filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()))
-          .map((listing) => {
-            return <>
-              <ListingsItem listing={listing} deleteFromList={deleteFromList} />
-            </>
-          })
-      } */}
     </>
 
   )
