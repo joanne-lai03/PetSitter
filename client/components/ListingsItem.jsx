@@ -21,6 +21,7 @@ function ListingsItem (props) {
             : <img className="lists-profile-pic" src={img} />}
 
         </div>
+
         <ul className="lists-right">
           <li>
             <h3>{listing.name}</h3>

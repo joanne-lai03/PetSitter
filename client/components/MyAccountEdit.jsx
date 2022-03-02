@@ -13,7 +13,7 @@ const registerSchema = Yup.object().shape({
   location: Yup.string()
     .required('Sorry it\'s Required'),
   description: Yup.string()
-    .min(10, 'Could you explain yourself more? 😸')
+    .min(10)
     .required('Sorry it\'s Required')
 })
 
@@ -43,7 +43,7 @@ export default function MyAccountEdit () {
 
   return (
     <section className='flex-myaccountContainer'>
-      <h1>MyAccount Edit</h1>
+      <h1>Edit My Account</h1>
       <form onSubmit={formik.handleSubmit} className='register_form'>
         <div className="field input-tray">
 
@@ -57,7 +57,7 @@ export default function MyAccountEdit () {
             onChange={formik.handleChange}
             value={formik.values.name}
           />
-          <label htmlFor='location' className='label'>Your Location(City,uburb)</label>
+          <label htmlFor='location' className='label'>Your Location (Suburb or City)</label>
           {showAnyErrors('location')}
           <input
             className='form-box'
@@ -68,7 +68,7 @@ export default function MyAccountEdit () {
             value={formik.values.location}
           />
 
-          <label htmlFor='description' className='label'>About yourself</label>
+          <label htmlFor='description' className='label'>Tell Me About Yourself</label>
           {showAnyErrors('description')}
           <textarea
             className='form-box form-textarea'
@@ -88,7 +88,7 @@ export default function MyAccountEdit () {
           <button
             className='common-button '
             type='submit'
-          >Edit</button>
+          >Submit</button>
         </div>
 
       </form>
