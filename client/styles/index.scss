@@ -408,7 +408,7 @@ a.button-linktoaddprofile:hover {
   display: flex;
   width: 1000px;
   background-color: #f6f6f6;
-  margin: -40px 0;
+  margin: -2rem 0;
   border: 2px solid #fff3dd;
 }
 
@@ -445,6 +445,7 @@ a.button-linktoaddprofile:hover {
 }
 .lists-left {
   margin: auto;
+  width: 35%;
 }
 
 .profile-span {
@@ -452,9 +453,14 @@ a.button-linktoaddprofile:hover {
 }
 
 .lists-profile-pic {
-  margin-left: 10px;
-  width: 80%;
+  margin-left: 3em;
+  width: 60%;
   border-radius: 50%;
+}
+
+.lists-profile-pic-default {
+  margin-right: 5rem;
+  border-radius: 0;
 }
 
 .fa-solid {

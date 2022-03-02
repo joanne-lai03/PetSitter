@@ -1,28 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-// import { deleteListingFromList } from '../actions/petsitterListing'
 
 function ListingsItem (props) {
   const listing = props.listing
-  // console.log(listing)
   const { id } = props.listing
   const auth0Id = useSelector(state => state.user.auth0Id)
-  // const dispatch = useDispatch()
 
   function deleteFromList () {
     props.deleteFromList(id)
-  }
-
-  function updateListItem () {
-    props.updateListItem(id)
   }
 
   return (
     <>
       <div className="lists-all">
         <div className="lists-left">
-          <img className="lists-profile-pic" src={`/images/profilephotos/${listing.name}.jpeg`} />
+          {listing.id < 10
+            ? <img className="lists-profile-pic" src={`/images/profilephotos/${listing.name}.jpeg`} />
+            : <img className="lists-profile-pic lists-profile-pic-default" src= '/images/logo_petsitter_maincolor500.png' />
+          }
         </div>
         <ul className="lists-right">
           <li>
@@ -41,7 +37,7 @@ function ListingsItem (props) {
         {/* Delete botton */}
         {listing.auth0_id === auth0Id && <a onClick={deleteFromList}><i className="fa-solid fa-trash-alt fa-size"></i></a>}
         {/* Edit botton */}
-        {listing.auth0_id === auth0Id && <Link to={`/petsitters/profiles/edit/${listing.id}`} onClick={updateListItem}><i className="fa-solid fa-pen-to-square fa-size"></i></Link>}
+        {listing.auth0_id === auth0Id && <Link to={`/petsitters/edit/${listing.id}`}><i className="fa-solid fa-pen-to-square fa-size"></i></Link>}
       </div>
     </>
   )
