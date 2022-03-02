@@ -12,6 +12,7 @@ exports.up = function (knex) {
     table.string('availability')
     table.string('description')
     table.string('promo_listing')
+    table.string('img')
   })
 }
 

@@ -31,7 +31,8 @@ export default function MyAccountEdit () {
     onSubmit: values => {
       updateUser(values, state, navigate)
     },
-    validationSchema: registerSchema
+    validationSchema: registerSchema,
+    enableReinitialize: true
   })
 
   function showAnyErrors (inputName) {

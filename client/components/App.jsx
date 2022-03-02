@@ -40,8 +40,8 @@ export default function App () {
           <Route path='/faq' element={<Helpdesk />} />
           <Route path='/aboutus' element={<AboutUs />} />
         </Routes>
+        <Footer />
       </div>
-      <Footer />
     </>
   )
 }
