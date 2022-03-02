@@ -29,7 +29,7 @@ export function ListingProfilesItem (props) {
       <div className="inu-box-a">
         <div className="dog">・ᴥ・</div>
         <h3>About {listingProfiles.name}</h3>
-        <p className='description'>Description: {listingProfiles.description}</p>
+        <p className='description'>{listingProfiles.description}</p>
       </div>
 
       <div className="profile-container">

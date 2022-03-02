@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const ButtonMailto = ({ mailto, label }) => {
   return (
 
-    <button className='nav-register button-profile button-mailto'>
+    <button className='nav-register button-profile button-mailto primaryhover'>
       <i className="fa-solid fa-envelope"></i>
       <Link
         to='#'

@@ -11,6 +11,8 @@
   --color-lightorange: #ffedd5;
 }
 
+
+
 // common unit
 .common-button {
   background-color: var(--color-orange);
@@ -43,6 +45,7 @@
 html,
 body {
   font-family: "Montserrat", sans-serif;
+  margin: 0;
 }
 p {
   margin: 0;
@@ -60,7 +63,8 @@ nav {
   background-color: #fff3dd;
   color: #333333;
   padding: 10px;
-  align-self: stretch;
+  // align-self: stretch;
+  width: 100vw;
 }
 
 .logo {
@@ -68,6 +72,7 @@ nav {
   align-items: center;
   width: 50%;
   padding: 0;
+  margin-left:20px;
 
   .logo-img {
     height: 40px;
@@ -108,6 +113,21 @@ a {
   text-align: center;
   display: block;
   margin: 0 auto;
+}
+
+.nav-child{
+  // display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #fb923c;
+  border: 1px solid #fb923c;
+  transition: 0.4s;
+  outline: none;
+  text-align: center;
+  display: block;
+  margin:0;
 }
 .nav-link {
   padding-top: 7px;
@@ -173,7 +193,7 @@ a {
   position: absolute;
   min-width: 60%;
   background-color: #ffedd5;
-  padding: 2rem;
+  padding: 3rem 2rem 2rem 2rem;
   top: 50%;
   left: 20%;
   -ms-transform: translate(-50%, -50%);
@@ -562,6 +582,7 @@ border: 1px solid #fb923c;
   display: block;
   // margin-left: auto;
   // margin-right: auto;
+  max-width: 100%;
 }
 
 .flex-container {
@@ -692,7 +713,7 @@ border: 1px solid #fb923c;
   // text-align: center;
   line-height: 2;
   width: 80%;
-  margin-left: 100px;
+  padding-left: 150px;
   h3{
     font-size: 24px;
     margin:0;
@@ -794,6 +815,7 @@ border: 1px solid #fb923c;
   // text-align: center; 
   border: 5px solid #666666; 
   border-radius: 50px;
+  margin-bottom: 0px !important;
  }
  .inu-box-a::before, 
  .inu-box-a::after {
@@ -891,13 +913,13 @@ border: 1px solid #fb923c;
 }
 
 .f-suscribe-button {
+  width: 8rem;
+  height: 1.75rem;
   margin-left: 10px;
   background-color: var(--color-orange);
   color: #fff;
   outline: none;
   text-decoration: none;
-  width: 10rem;
-  height: 1.5rem;
   border: none;
   border-radius: 2.5rem;
   cursor: pointer;
@@ -980,4 +1002,36 @@ border: 1px solid #fb923c;
 
 .button-mailto a{
   text-decoration: none;
+  
+}
+
+.button-mailto{
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #fb923c;
+  border: 1px solid #fb923c;
+  transition: 0.4s;
+  outline: none;
+  display: block;
+  margin: 1em 0 0 0!important;
+}
+
+// hover
+.primaryhover:hover{
+  color: #fb923c;
+  background: #fff;
+  border: 2px solid #fb923c;
+}
+
+.secondaryhover:hover{
+  color:#fb923c;
+}
+
+.contact-sent-message {
+  background: #fb923c;
+  padding: 2rem;
+  border-radius: 10px;
+  color: #fff;
 }

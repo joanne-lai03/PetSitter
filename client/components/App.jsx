@@ -8,7 +8,7 @@ import Nav from './Nav'
 import Main from './Main'
 import PetsitterForm from './PetsitterForm'
 import ListingProfiles from './ListingProfiles'
-import Registration from './Registration'
+// import Registration from './Registration'
 import Listings from './Listings'
 import Login from './Login'
 import WaitIndicator from './WaitIndicator'
@@ -30,7 +30,7 @@ export default function App () {
         <ContactBtn />
         <Routes>
           <Route path='/' element={<Main />} />
-          <Route path='/register' element={<Registration />} />
+          <Route path='/register' element={<Login />} />
           <Route path='/myaccount' element={<Login />} />
           <Route path='/myaccount/edit' element={<MyAccountEdit />} />
           <Route path='/petsitters' element={<Listings />} />

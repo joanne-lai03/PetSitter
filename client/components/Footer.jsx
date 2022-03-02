@@ -28,16 +28,16 @@ const Footer = () => {
             Subscribe to our newsletter to get our latest news.
             <form className="f-inline" >
               <input type="email" name="email" placeholder="Enter email address" />
-              <input className="f-suscribe-button" type="submit" onClick={handleSubmit} value="Subscribe" />
+              <input className="f-suscribe-button primaryhover" type="submit" onClick={handleSubmit} value="Subscribe" />
             </form>
 
           </div>
         </div>
         <div>
           <ul className="f-links">
-            <li><Link to='/' className='nav-link'>Home</Link></li>
-            <li><Link to='/aboutus' className='nav-link'>About Us</Link></li>
-            <li><Link to='/faq' className='nav-link'>FAQ</Link></li>
+            <li><Link to='/' className='nav-link secondaryhover'>Home</Link></li>
+            <li><Link to='/aboutus' className='nav-link secondaryhover'>About Us</Link></li>
+            <li><Link to='/faq' className='nav-link secondaryhover'>FAQ</Link></li>
           </ul>
           <img className="f-logo" src="/images/logo_vector.svg" /></div>
         <p className="footer-copyright">Made by animal lovers 💗 in Auckland, New Zealand<br />
