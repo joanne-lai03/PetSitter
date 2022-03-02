@@ -6,8 +6,10 @@ export default function ContactSupport () {
 
   if (state.succeeded) {
     return (
-      <p>Your request sent to our manegement team, <br/>
+      <div className='contact-sent'>
+        <p>Your request sent to our manegement team, <br/>
       we will reply soon, Thank you!</p>
+      </div>
     )
   }
   return (

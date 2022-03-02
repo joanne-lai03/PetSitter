@@ -18,12 +18,14 @@ export default function Helpdesk () {
       <div className='helpdesk-main'>
         <i className='fa-solid fa-magnifying-glass'></i>
         <input type="text" />
-
       </div>
+
+      <FaQ />
+
       {
         btnClick
           ? <ContactSupport />
-          : <FaQ />
+          : ''
       }
 
       <button onClick={handleOnclick} style={{ display: display }} className='common-button helpdesk-button'>Do you need to contact support?</button>

@@ -608,6 +608,12 @@ a.button-linktoaddprofile:hover {
 }
 
 //Helpdesk page
+.helpdesk-Screen {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 
 .helpdesk-title {
   text-align: center;
@@ -631,58 +637,36 @@ a.button-linktoaddprofile:hover {
 
 //FaQ :: need to change a lot
 .faq-screen {
-  margin: 2rem;
-}
-.faq-ol {
-  background: darkorange;
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
+  width: 50rem;
 }
 
-.faq-main-li {
-  font-weight: 600;
-  color: #fff;
-  background: darkorange;
-  display: block;
-  float: left;
-  padding: 1rem;
-  position: relative;
-  text-decoration: none;
-  transition-duration: 0.5s;
+.faq-row-wrapper {
+  margin: 3rem 0;
   width: 100%;
-}
 
-.faq-main-li:hover {
-  background: red;
-  cursor: pointer;
+  .faq-title {
+    h2 {
+      margin: 0 auto;
+      color: var(--color-orange);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  }
 }
+.faq-body {
+  .faq-row {
+    .row-title {
+      margin-left: 2rem;
+      font-weight: bold;
+    }
 
-.faq-sup-ul {
-  background: orange;
-  visibility: hidden;
-  opacity: 0;
-  min-width: 5rem;
-  position: absolute;
-  transition: all 0.5s ease;
-  margin-top: 1rem;
-  left: 0;
-  display: none;
-}
-
-.faq-main-li li:hover > ul,
-.faq-main-li li ul:hover {
-  visibility: visible;
-  opacity: 1;
-  display: block;
-}
-.faq-sup-li {
-  clear: both;
-  width: 100%;
-}
-
-.faq-sup-title {
-  color: #b8824d;
+    .row-content {
+      .row-content-text {
+        line-height: 1.8;
+        margin: 3rem;
+      }
+    }
+  }
 }
 
 //  main profile
