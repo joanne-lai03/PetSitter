@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Faq from 'react-faq-component'
 
 export default function FaQ () {
@@ -13,31 +13,31 @@ export default function FaQ () {
         
         We recommend you contact at least 2 to 3 pet sitters to find one that best suits you and your pet. Make sure to check their average response time.`
       },
-      {
-        title: 'How can I find a pet sitter?',
-        content:
-                `Whether you are looking for a dog sitter, a cat sitter, or a sitter for your guinea pig, rabbit or goldfish, you have come to the right place. Here's how to find your sitter:
+      // {
+      //   title: 'How can I find a pet sitter?',
+      //   content:
+      //           `Whether you are looking for a dog sitter, a cat sitter, or a sitter for your guinea pig, rabbit or goldfish, you have come to the right place. Here's how to find your sitter:
 
-                1. Type your hometown or suburb in the search.
-                2. Choose your service.
-                3. Choose your start and end date (or estimated dates if you're not quite sure yet)
-                4. Click on Find a sitter.
-                5. Browse the profiles of pet sitters in your area and contact the one(s) you like using the contact button on their profiles in order to ask for a meeting in person.
-                
-                You can move the map by clicking on it and dragging it in any direction if you want to change the search area or widen it by zooming out.`
-      },
-      {
-        title: 'What service can I book through Petsitter and what do they include?',
-        content: `Pet sitters on Petsitter can be booked for the following services:
+      //           1. Type your hometown or suburb in the search.
+      //           2. Choose your service.
+      //           3. Choose your start and end date (or estimated dates if you're not quite sure yet)
+      //           4. Click on Find a sitter.
+      //           5. Browse the profiles of pet sitters in your area and contact the one(s) you like using the contact button on their profiles in order to ask for a meeting in person.
 
-        - Home dog boarding
-        - Doggy daycare
-        - Dog walking
-        - Home visits
-        - House Sitting
-        
-        You will find below some details on what is expected of both the pet sitter and the pet owner during each service. This is to be used as a guideline - you and the sitter are welcome to reach an agreement on alternative arrangements.`
-      },
+      //           You can move the map by clicking on it and dragging it in any direction if you want to change the search area or widen it by zooming out.`
+      // },
+      // // {
+      //   title: 'What service can I book through Petsitter and what do they include?',
+      //   content: `Pet sitters on Petsitter can be booked for the following services:
+
+      //   - Home dog boarding
+      //   - Doggy daycare
+      //   - Dog walking
+      //   - Home visits
+      //   - House Sitting
+
+      //   You will find below some details on what is expected of both the pet sitter and the pet owner during each service. This is to be used as a guideline - you and the sitter are welcome to reach an agreement on alternative arrangements.`
+      // },
       {
         title: 'Can I trust a Petsitter’s pet sitter?',
         content: `Everything on Petsitter depends on trust, which is why we take verification seriously.

@@ -33,7 +33,6 @@ export default function Main () {
           </IfAuthenticated>
           <IfNotAuthenticated>
             <Link to='/register' className='nav-register' onClick={handleRegister}>Resister Now !</Link>
-            <Link to='/' className='nav-register'>Find a pet sitter</Link>
           </IfNotAuthenticated>
         </div>
       </div>

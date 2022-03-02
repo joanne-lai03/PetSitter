@@ -634,6 +634,10 @@ a.button-linktoaddprofile:hover {
   width: 100%;
   padding: 0 2rem;
 }
+.contact-coloum {
+  display: flex;
+  justify-content: space-around;
+}
 
 //FaQ :: need to change a lot
 .faq-screen {
@@ -834,7 +838,9 @@ a.button-linktoaddprofile:hover {
 .f-social {
   padding: 20px 20px 0px 20px;
 }
-
+.f-social:hover {
+  color: var(--color-orange);
+}
 .f-inline {
   display: inline;
   padding-left: 10px;
