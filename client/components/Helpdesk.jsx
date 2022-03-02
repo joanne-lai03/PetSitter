@@ -6,27 +6,35 @@ import FaQ from './FaQ'
 export default function Helpdesk () {
   const [btnClick, setBtnClick] = useState(false)
   const [display, setDisplay] = useState('block')
+
   function handleOnclick () {
     setBtnClick(true)
     setDisplay('none')
   }
 
+  function handleCondition () {
+    setBtnClick(false)
+    setDisplay('block')
+  }
+
   return (
     <section className='helpdesk-Screen'>
-
-      <h1 className='helpdesk-title'><img className='helpdesk-logo' src='/images/logo_petsitter_maincolor.png' alt='logoimg' />Helpdesk</h1>
-      <div className='helpdesk-main'>
+      <img className='helpdesk-logo' src='/images/logo_petsitter_maincolor.png' alt='logoimg' />
+      <h1 className='helpdesk-title'>Helpdesk</h1>
+      {/* <div className='helpdesk-main'>
         <i className='fa-solid fa-magnifying-glass'></i>
         <input type="text" />
+      </div> */}
 
-      </div>
+      <FaQ />
+      <button onClick={handleOnclick} style={{ display: display }} className='common-button helpdesk-button'>Do you need to contact support?</button>
+
       {
         btnClick
-          ? <ContactSupport />
-          : <FaQ />
+          ? <ContactSupport handleCondition={handleCondition} />
+          : ''
       }
 
-      <button onClick={handleOnclick} style={{ display: display }} className='common-button helpdesk-button'>Do you need to contact support?</button>
     </section>
   )
 }
