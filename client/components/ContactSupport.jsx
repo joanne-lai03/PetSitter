@@ -8,8 +8,8 @@ export default function ContactSupport (props) {
   if (state.succeeded) {
     return (
       <div className='contact-sent'>
-        <p>Your request sent to our manegement team, <br/>
-      we will reply soon, Thank you!</p>
+        <p className="contact-sent-message">Your request has been sent to our management team.<br/>
+      We will be in touch within 48 hours. </p>
       </div>
     )
   }
@@ -26,7 +26,7 @@ export default function ContactSupport (props) {
           type='text'
           name='name'
           id='full-name'
-          placeholder='name' />
+          placeholder='Name' />
         <ValidationError
           prefix='name'
           field='name'
@@ -40,14 +40,14 @@ export default function ContactSupport (props) {
           type='email'
           name='email'
           className='form-box'
-          placeholder='email address'
+          placeholder='Email Address'
         />
         <ValidationError
           prefix='Email'
           field='email'
           errors={state.errors}
         />
-        <label htmlFor='help'><i className="fa-solid icon_deco fa-circle-question"></i>What we can help?</label>
+        <label htmlFor='help'><i className="fa-solid icon_deco fa-circle-question"></i>How can we help?</label>
         <select className='helpdesk-dropdown' name='help' id='help' required=''>
           <option value="-1">--- Select Service ---</option>
           <option value="Pet Sitting">Pet Sitting</option>
@@ -63,6 +63,7 @@ export default function ContactSupport (props) {
           className='form-textarea form-box'
           id='message'
           name='message'
+          placeholder='Type your message here'
         />
         <ValidationError
           prefix='Message'

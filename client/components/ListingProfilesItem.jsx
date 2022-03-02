@@ -15,23 +15,23 @@ export function ListingProfilesItem (props) {
           <h3 className='name'>Name: {listingProfiles.name}</h3>
           <ul>
             <li className='location'><i className="fa-solid fa-location-dot"></i>Location:  {listingProfiles.location}</li>
-            <li className='pet_number'>< i className="fa-solid fa-paw"></i>Number of Pet:  {listingProfiles.pet_number}</li>
+            <li className='pet_number'>< i className="fa-solid fa-paw"></i>Number of Pets:  {listingProfiles.pet_number}</li>
             <li className='pet_type'><i className="fa-solid fa-bone"></i>Type of Pet:  {listingProfiles.pet_type}</li>
             <li className='pet_size'><i className="fa-solid fa-poo"></i>Size of Pet:  {listingProfiles.pet_size}</li>
             <li className='home_type'><i className="fa-solid fa-house"></i>Type of Home:  {listingProfiles.home_type}</li>
           </ul>
-          <button className='nav-register button-profile'><i className="fa-solid fa-envelope"></i>Contact to {listingProfiles.name}</button>
+          <button className='nav-register button-profile'><i className="fa-solid fa-envelope"></i>Contact {listingProfiles.name}</button>
         </div>
       </div>
 
       <div className="inu-box-a">
-        <div>・ᴥ・</div>
+        <div className="dog">・ᴥ・</div>
         <h3>About {listingProfiles.name}</h3>
         <p className='description'>Description: {listingProfiles.description}</p>
       </div>
 
       <div className="profile-container">
-        <h3>Service & Avialability </h3>
+        <h3>Service & Availability </h3>
         <p className='service_rate'><i className="fa-solid fa-money-check-dollar"></i>Service rate: {listingProfiles.service_rate}</p>
         <p className='availability'><i className="fa-solid fa-clock"></i>Availability: {listingProfiles.availability}</p>
       </div>
