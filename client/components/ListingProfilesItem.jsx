@@ -33,7 +33,7 @@ export function ListingProfilesItem (props) {
       </div>
 
       <div className="profile-container">
-        <h3>Service & Availability</h3>
+        <h3>Service &amp; Availability</h3>
         <p className='service_rate'><i className="fa-solid fa-money-check-dollar"></i>Service rate: {listingProfiles.service_rate}</p>
         <p className='availability'><i className="fa-solid fa-clock"></i>Availability: {listingProfiles.availability}</p>
       </div>
