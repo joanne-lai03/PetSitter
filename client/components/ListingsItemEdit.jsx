@@ -10,7 +10,18 @@ export default function ListingsItemEdit () {
   const navigate = useNavigate()
   const { id } = useParams()
   const state = useSelector(state => state.user)
-  const [listingprofile, setListingProfile] = useState({})
+  const [listingprofile, setListingProfile] = useState({
+    availability: '',
+    description: '',
+    home_type: '',
+    location: '',
+    name: '',
+    pet_number: '',
+    pet_size: '',
+    pet_type: '',
+    promo_listing: '',
+    service_rate: ''
+  })
 
   useEffect(() => {
     getListing()
@@ -38,7 +49,8 @@ export default function ListingsItemEdit () {
     },
     onSubmit: values => {
       updateListing(id, values, state, navigate)
-    }
+    },
+    enableReinitialize: true
   })
 
   return (
