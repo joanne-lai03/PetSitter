@@ -177,7 +177,8 @@ a {
 //🎨🎨🎨 Main screen
 .main {
   position: relative;
-  margin-top: -100px;
+  margin-top: -150px;
+  margin-bottom: -120px;
 }
 
 .main-img {
@@ -805,8 +806,8 @@ border: 1px solid #fb923c;
 .inu-box-a {
   position: relative;
   margin: 3em auto;
-  padding: 20px 50px 20px;
-  width: 60%; 
+  padding: 20px 50px 60px;
+  width: 50%; 
   background: #fff3dd;; 
   color: #333333; 
   // font-weight: bold; 
@@ -841,7 +842,7 @@ border: 1px solid #fb923c;
 // Footer
 
 .footer {
-  margin-top: 130px;
+  margin-top: 80px;
   text-align: right;
   padding: 20px 0px 20px 0px;
   background-color: #ffedd5;
@@ -927,9 +928,6 @@ border: 1px solid #fb923c;
 // media screen for petsitters list ============================
 
 @media screen and (max-width: 768px) {
-  body {
-    background-color: orange;
-  }
   // nav ============================
   .nav-link {
     margin-right: 8px;
@@ -960,9 +958,6 @@ border: 1px solid #fb923c;
 }
 
 @media screen and (max-width: 480px) {
-  body {
-    background-color: blue;
-  }
   .lists-all{
     display: block;
   }
@@ -978,15 +973,30 @@ border: 1px solid #fb923c;
 
 .about-us-container {
   width: 70%;
+  h1{
+    color: #fb923c;
+    text-align: center;
+  }
+  h3{
+    color:#fb923c;
+  }
 }
-
+.aboutus-img {
+  display: flex;
+  max-width: 1000px;
+}
 .about-us-img {
   margin: 10px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
+  width: 50%;
 }
+.abou-us-comment {
+  text-align: center;
+  margin-bottom: 1em;
+}
+.about-us-p{
+  margin-bottom: 4em;
+}
+
 
 //
 .main-comment{
