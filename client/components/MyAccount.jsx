@@ -15,8 +15,6 @@ export default function MyAccount (props) {
       </ul>
       <div className="changeMyaccount">
         <Link className='linkBtn' to='/myaccount/edit'><i className="fa-solid fa-pen-to-square fa-size icon_deco "></i></Link>
-        {/* <a className='linkBtn'><i className="fa-solid fa-trash-alt fa-size icon_deco "></i></a> */}
-        {/* I don't want to they delete account */}
       </div>
     </section >
   )

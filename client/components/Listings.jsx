@@ -1,12 +1,13 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import ListingsItem from './ListingsItem'
 import React, { useEffect, useState } from 'react'
-import { getListing } from '../apis/listings'
+import { getListing, deleteListing } from '../apis/listings'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteListingFromList } from '../actions/listings'
 
 function Listings () {
   const dispatch = useDispatch()
+  const navicate = useNavigate()
   const token = useSelector(state => state.user.token)
 
   // << Using useState >>
@@ -30,13 +31,21 @@ function Listings () {
 
   function deleteFromList (id) {
     dispatch(deleteListingFromList(id, token))
-    getListing()
-      .then(apiResponse => {
-        setListings(apiResponse)
-        return null
-      })
+    // eslint-disable-next-line promise/catch-or-return
+    deleteListing(id, token)
+      .then(() =>
+        // eslint-disable-next-line promise/no-nesting
+        getListing()
+          .then(apiResponse => {
+            setListings(apiResponse)
+            return null
+          })
+      )
       .catch(err => {
         console.error(err)
+      })
+      .finally(() => {
+        navicate('/petsitters')
       })
   }
 
@@ -128,8 +137,8 @@ function Listings () {
         <Link to='/petsitters/add' className="button-linktoaddprofile">Add to listing</Link>
       </div>
       {/* display all lists */}
-      { listings.map((listing) => {
-        return <ListingsItem key={listing.id} listing={listing} deleteFromList={deleteFromList}/>
+      { listings.map((listItem) => {
+        return <ListingsItem key={listItem.id} listing={listItem} deleteFromList={deleteFromList}/>
       })}
     </>
 
