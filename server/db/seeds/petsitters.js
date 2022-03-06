@@ -6,7 +6,7 @@ exports.seed = function (knex) {
       return knex('petsitters').insert([
         {
           id: 1,
-          auth0_id: 'rowValue1',
+          auth0_id: 'auth0|61414f84d35ac900717bc285',
           name: 'Claire',
           location: 'Auckland',
           pet_number: 2,
@@ -22,7 +22,7 @@ exports.seed = function (knex) {
 
         {
           id: 2,
-          auth0_id: 'rowValue1',
+          auth0_id: 'auth0|61414f84d35ac900717bc285',
           name: 'Joanne',
           location: 'Auckland',
           pet_number: 1,
@@ -38,7 +38,7 @@ exports.seed = function (knex) {
 
         {
           id: 3,
-          auth0_id: 'rowValue1',
+          auth0_id: 'auth0|61414f84d35ac900717bc285',
           name: 'Jinny',
           location: 'Auckland',
           pet_number: 3,
@@ -53,7 +53,7 @@ exports.seed = function (knex) {
         },
         {
           id: 4,
-          auth0_id: 'rowValue1',
+          auth0_id: 'auth0|61414f84d35ac900717bc285',
           name: 'Hiro',
           location: 'Auckland',
           pet_number: 2,
@@ -68,7 +68,7 @@ exports.seed = function (knex) {
         },
         {
           id: 5,
-          auth0_id: 'rowValue1',
+          auth0_id: 'auth0|61414f84d35ac900717bc285',
           name: 'Sadie',
           location: 'Auckland',
           pet_number: 1,
@@ -83,7 +83,7 @@ exports.seed = function (knex) {
         },
         {
           id: 6,
-          auth0_id: 'rowValue1',
+          auth0_id: 'auth0|61414f84d35ac900717bc285',
           name: 'Ahmad',
           location: 'Auckland',
           pet_number: 5,
@@ -98,7 +98,7 @@ exports.seed = function (knex) {
         },
         {
           id: 7,
-          auth0_id: 'rowValue1',
+          auth0_id: 'auth0|61414f84d35ac900717bc285',
           name: 'Prue',
           location: 'Auckland',
           pet_number: 1,
@@ -113,7 +113,7 @@ exports.seed = function (knex) {
         },
         {
           id: 8,
-          auth0_id: 'rowValue1',
+          auth0_id: 'auth0|61414f84d35ac900717bc285',
           name: 'Jared',
           location: 'Auckland',
           pet_number: 3,
@@ -128,7 +128,7 @@ exports.seed = function (knex) {
         },
         {
           id: 9,
-          auth0_id: 'rowValue1',
+          auth0_id: 'auth0|61414f84d35ac900717bc285',
           name: 'Eleanor',
           location: 'Auckland',
           pet_number: 1,
