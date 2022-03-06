@@ -21,3 +21,4 @@ auth_config.json
 .vscode
 .idea
 
+node_modules
