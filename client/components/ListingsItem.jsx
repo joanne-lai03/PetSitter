@@ -7,10 +7,6 @@ function ListingsItem (props) {
   const { id, img } = props.listing
   const auth0Id = useSelector(state => state.user.auth0Id)
 
-  function deleteFromList () {
-    props.deleteFromList(id)
-  }
-
   return (
     <>
       <div className="lists-all">
@@ -36,7 +32,7 @@ function ListingsItem (props) {
         </ul>
 
         {/* Delete botton */}
-        {listing.auth0_id === auth0Id && <a onClick={deleteFromList}><i className="fa-solid fa-trash-alt fa-size"></i></a>}
+        {listing.auth0_id === auth0Id && <Link to='#' onClick={() => props.deleteFromList(id)}><i className="fa-solid fa-trash-alt fa-size"></i></Link>}
         {/* Edit botton */}
         {listing.auth0_id === auth0Id && <Link to={`/petsitters/edit/${listing.id}`}><i className="fa-solid fa-pen-to-square fa-size"></i></Link>}
       </div>
