@@ -11,7 +11,7 @@ function ListingsItem (props) {
     <>
       <div className="lists-all">
         <div className="lists-left">
-          { img === null
+          { img === null || img === ''
             ? <img className="lists-profile-pic lists-profile-pic-default" src='/images/logo_petsitter_maincolor500.png' />
             : <img className="lists-profile-pic" src={img} />}
 

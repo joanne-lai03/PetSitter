@@ -8,7 +8,7 @@ export function ListingProfilesItem (props) {
     <>
       <div className='profile-flex-container'>
         <div className="mainprofile-left">
-          {listingProfiles.img === null
+          {listingProfiles.img === null || listingProfiles.img === ''
             ? <img className='profile-picture' src='/images/logo_petsitter_maincolor500.png' alt="Profile image"></img>
             : <img className='profile-picture' src={listingProfiles.img} alt="Profile image"></img>}
         </div>

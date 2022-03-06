@@ -7,14 +7,11 @@ import { deleteListingFromList } from '../actions/listings'
 
 function Listings () {
   const dispatch = useDispatch()
+  const token = useSelector(state => state.user.token)
 
   // << Using useState >>
   const [listings, setListings] = useState([])
-
-  const token = useSelector(state => state.user.token)
-
   const [search, setSearch] = useState('')
-
   const [dropdownLists, setDropdownLists] = useState({
     service: '-1',
     pet: '-1'
@@ -132,9 +129,7 @@ function Listings () {
       </div>
       {/* display all lists */}
       { listings.map((listing) => {
-        return <>
-          <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
-        </>
+        return <ListingsItem key={listing.id} listing={listing} deleteFromList={deleteFromList}/>
       })}
     </>
 

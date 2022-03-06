@@ -17,7 +17,8 @@ export default function PetSitterForm () {
     serviceRate: '',
     availability: '',
     description: '',
-    promoListing: ''
+    promoListing: '',
+    img: ''
   })
 
   function handleChange (event) {
@@ -34,7 +35,6 @@ export default function PetSitterForm () {
     postListing(form, token)
       .then(() => {
         navigate('/petsitters')
-        // navigate(`/petsitters/profiles/${form.id}`)
         return null
       })
       .catch(err => {
@@ -86,6 +86,13 @@ export default function PetSitterForm () {
           onChange={handleChange}
           className='form-box'
           placeholder="Castle"/>
+
+        <p> Picture URL:</p>
+        <input name="img"
+          onChange={handleChange}
+          placeholder="picture's URL"
+          className='form-box'
+        />
 
         <p>*Availability: <a title="Write down the days you think you'll be available. This can be further discussed when the client makes an inquiry."><img src="https://i.ibb.co/smSqZXF/Screen-Shot-2022-02-25-at-3-02-05-PM.png" height="14px"/></a></p>
         <input name="availability"
