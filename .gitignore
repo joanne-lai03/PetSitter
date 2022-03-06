@@ -22,3 +22,4 @@ auth_config.json
 .idea
 
 node_modules
+/lib
