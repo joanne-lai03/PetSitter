@@ -9,11 +9,6 @@ export function getListing () {
     .then(res => {
       return res.body
     })
-  // << if you need MOCK DATA>>
-  // return Promise.resolve([{
-  //   id: 1,
-  //   name:'Ahmad' .....
-  // }])
 }
 
 // add listing
@@ -58,6 +53,6 @@ export function deleteListing (id, token) {
   return request
     .delete(`${rootUrl}/${id}`)
     .set('authorization', `Bearer ${token}`)
-    .send()
+    .send({ id })
     .then(res => res.body)
 }

@@ -1,21 +1,18 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import ListingsItem from './ListingsItem'
 import React, { useEffect, useState } from 'react'
-import { getListing } from '../apis/listings'
+import { getListing, deleteListing } from '../apis/listings'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteListingFromList } from '../actions/listings'
-// import { fetchListing } from '../actions/listing'
 
 function Listings () {
   const dispatch = useDispatch()
+  const navicate = useNavigate()
+  const token = useSelector(state => state.user.token)
 
   // << Using useState >>
   const [listings, setListings] = useState([])
-
-  const token = useSelector(state => state.user.token)
-
   const [search, setSearch] = useState('')
-
   const [dropdownLists, setDropdownLists] = useState({
     service: '-1',
     pet: '-1'
@@ -34,13 +31,21 @@ function Listings () {
 
   function deleteFromList (id) {
     dispatch(deleteListingFromList(id, token))
-    getListing()
-      .then(apiResponse => {
-        setListings(apiResponse)
-        return null
-      })
+    // eslint-disable-next-line promise/catch-or-return
+    deleteListing(id, token)
+      .then(() =>
+        // eslint-disable-next-line promise/no-nesting
+        getListing()
+          .then(apiResponse => {
+            setListings(apiResponse)
+            return null
+          })
+      )
       .catch(err => {
         console.error(err)
+      })
+      .finally(() => {
+        navicate('/petsitters')
       })
   }
 
@@ -112,12 +117,6 @@ function Listings () {
                     className="searchbar"
                     placeholder='Suburb or City'
                     name='searchValue'></input>
-                  {/* <button
-                    onClick={handleSubmit}
-                    type="submit"
-                    className="searchButton">
-                    <i className="fa fa-search"></i>
-                  </button> */}
                 </div>
                 <button
                   onClick={handleSubmit}
@@ -138,43 +137,9 @@ function Listings () {
         <Link to='/petsitters/add' className="button-linktoaddprofile">Add to listing</Link>
       </div>
       {/* display all lists */}
-      { listings.map((listing) => {
-        return <>
-          <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
-        </>
+      { listings.map((listItem) => {
+        return <ListingsItem key={listItem.id} listing={listItem} deleteFromList={deleteFromList}/>
       })}
-
-      {/* search function : select service or pet type */}
-      {/* { dropdownLists
-        ? listings
-          // .filter(pet => pet.pet_type === dropdownLists.pet && pet.service_rate.toLowerCase().includes(dropdownLists.service.toLowerCase()))
-          .map((listing) => {
-            return <>
-              <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
-            </>
-          })
-        : listings
-          .map((listing) => {
-            return <>
-              <ListingsItem listing={listing} deleteFromList={deleteFromList}/>
-            </>
-          })
-      } */}
-      {/* search function : location */}
-      {/* {search.length === 0
-        ? listings.map((listing) => {
-          return <>
-            <ListingsItem listing={listing} deleteFromList={deleteFromList} />
-          </>
-        })
-        : listings
-          // .filter(listing => listing.location.toLowerCase().includes(search.toLowerCase()))
-          .map((listing) => {
-            return <>
-              <ListingsItem listing={listing} deleteFromList={deleteFromList} />
-            </>
-          })
-      } */}
     </>
 
   )

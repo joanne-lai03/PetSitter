@@ -24,9 +24,9 @@ export default function MyAccountEdit () {
 
   const formik = useFormik({
     initialValues: {
-      name: '',
-      location: '',
-      description: ''
+      name: state.name,
+      location: state.location,
+      description: state.description
     },
     onSubmit: values => {
       updateUser(values, state, navigate)

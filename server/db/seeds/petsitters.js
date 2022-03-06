@@ -31,7 +31,7 @@ exports.seed = function (knex) {
           home_type: 'House',
           service_rate: 'Pet Sitting - $15 per hour',
           availability: 'Thursday - Sunday from 5pm',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+          description: 'I am a big fan of dogs and have lots of experience caring for other people’s fur babies! I have been trusted by a pug owner for the past few years looking after her dog Coco whenever she goes on holiday. I also help my neighbour look after his dog regularly by taking his dog out for walks, playing fetch and giving his dog cuddles when he requests it!Feel free to contact me about your petsitting needs. I will be happy to make my place feel like a home away from home for your dog!',
           promo_listing: 'Dog lover who does not own her own pets but love looking after other dogs. Has plenty of experience looking after other dogs.',
           img: '/images/profilephotos/Joanne.jpeg'
         },

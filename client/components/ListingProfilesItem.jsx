@@ -8,7 +8,7 @@ export function ListingProfilesItem (props) {
     <>
       <div className='profile-flex-container'>
         <div className="mainprofile-left">
-          {listingProfiles.img === null
+          {listingProfiles.img === null || listingProfiles.img === ''
             ? <img className='profile-picture' src='/images/logo_petsitter_maincolor500.png' alt="Profile image"></img>
             : <img className='profile-picture' src={listingProfiles.img} alt="Profile image"></img>}
         </div>
@@ -29,7 +29,8 @@ export function ListingProfilesItem (props) {
       <div className="inu-box-a">
         <div className="dog">・ᴥ・</div>
         <h3>About {listingProfiles.name}</h3>
-        <p className='description'>{listingProfiles.description}</p>
+        {/* <p className='description'>{listingProfiles.description}</p> */}
+        <p className='description'>I am a big fan of dogs and have lots of experience caring for other people’s fur babies! <br></br>I have been trusted by a pug owner for the past few years looking after her dog Coco whenever she goes on holiday. <br></br>I also help my neighbour look after his dog regularly by taking his dog out for walks, playing fetch and giving his dog cuddles when he requests it!Feel free to contact me about your petsitting needs. <br></br>I will be happy to make my place feel like a home away from home for your dog!</p>
       </div>
 
       <div className="profile-container">

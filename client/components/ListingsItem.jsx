@@ -4,20 +4,15 @@ import { useSelector } from 'react-redux'
 
 function ListingsItem (props) {
   const listing = props.listing
-  const { id, img } = props.listing
   const auth0Id = useSelector(state => state.user.auth0Id)
-
-  function deleteFromList () {
-    props.deleteFromList(id)
-  }
 
   return (
     <>
       <div className="lists-all">
         <div className="lists-left">
-          { img === null
+          { listing.img === null || listing.img === ''
             ? <img className="lists-profile-pic lists-profile-pic-default" src='/images/logo_petsitter_maincolor500.png' />
-            : <img className="lists-profile-pic" src={img} />}
+            : <img className="lists-profile-pic" src={listing.img} />}
 
         </div>
 
@@ -36,7 +31,7 @@ function ListingsItem (props) {
         </ul>
 
         {/* Delete botton */}
-        {listing.auth0_id === auth0Id && <a onClick={deleteFromList}><i className="fa-solid fa-trash-alt fa-size"></i></a>}
+        {listing.auth0_id === auth0Id && <Link to={'/petsitters'} onClick={() => props.deleteFromList(listing.id)}><i className="fa-solid fa-trash-alt fa-size"></i></Link>}
         {/* Edit botton */}
         {listing.auth0_id === auth0Id && <Link to={`/petsitters/edit/${listing.id}`}><i className="fa-solid fa-pen-to-square fa-size"></i></Link>}
       </div>
