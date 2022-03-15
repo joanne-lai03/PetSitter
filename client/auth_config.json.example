@@ -1,5 +1,6 @@
 {
-  "domain": "harakeke-2022-jinny.au.auth0.com",
-  "clientId": "jIPxlFp4Wk62we7zJ2IFBHj15OavlgQZ",
+  "domain": "petsitter.au.auth0.com",
+  "clientId": "g1nhW90pcp0Mignb7devGCskTbT07qil",
   "audience": "https://petsitter/api"
 }
+
